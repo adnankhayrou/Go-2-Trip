@@ -1,216 +1,87 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.index')
+@section('content')
+<div class="container">
 
-        <title>Laravel</title>
-        <!-- bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <div class="text-center mt-5">
+     <h1 class="fw_bold text-primary ">Find Best Products For Your Trip</h1>
+    </div>
+
+   <div class="container row mx-auto">
+   {{-- @foreach ($meals as $meal) --}}
+     <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
+         <div class="card border-dark bg-dark  shadow-lg  rounded">
+           <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
+         <div class="card-body text-center">
+           <h5 class="card-title fw-bold text-light">test</h5>
+           <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+           <p class="card-text text-success">test</p>
+           <hr class="my-1" />
+           <p class="fw-bold text-light">Available on :</p>
+           <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
+         </div>    
+       </div>
+     </div>
+
+     <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
+        <div class="card border-dark bg-dark  shadow-lg  rounded">
+          <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold text-light">test</h5>
+          <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+          <p class="card-text text-success">test</p>
+          <hr class="my-1" />
+          <p class="fw-bold text-light">Available on :</p>
+          <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
+        </div>    
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
+        <div class="card border-dark bg-dark  shadow-lg  rounded">
+          <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold text-light">test</h5>
+          <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+          <p class="card-text text-success">test</p>
+          <hr class="my-1" />
+          <p class="fw-bold text-light">Available on :</p>
+          <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
+        </div>    
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
+        <div class="card border-dark bg-dark  shadow-lg  rounded">
+          <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold text-light">test</h5>
+          <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+          <p class="card-text text-success">test</p>
+          <hr class="my-1" />
+          <p class="fw-bold text-light">Available on :</p>
+          <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
+        </div>    
+      </div>
+    </div>
+
+    
+   {{-- @endforeach --}}
+ </div> 
+ <div class="text-end mb-5 mt-3 me-4">
+    <button class="btn btn-dark"><a href="{{ url('landing') }}" class="text-decoration-none text-light">Find more <b> >></b></a></button>
+ </div>
+</div>
+@stop
 
 
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+@section('scripts')
+<script>
+    window.addEventListener("scroll", ()=>{
+    document.querySelector("#nav").style.background = "whitesmoke"
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{asset('css\app.css')}}">
-        
-    </head>
-    <body>
-        
-        <div class="home">
-            {{-- navbar --}}
-            <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top" id="nav">
-
-                <div class="container-fluid">
-                    <a href="{{ url('/') }}" class="ms-3" >
-                        <img src = "{{asset('/images/go to trip.svg')}}" alt="logo" style="with:3em;  height:3em;"/>
-                    </a>
-                    <div>
-                    @if (Route::has('login'))
-                {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
-                    @auth
-                    <button class="ms-2 btn btn-dark me-2 "><a href="{{ url('/dashboard') }}" class="text-light text-decoration-none fs-bold">Dashboard</a></button>
-                    @else
-                    <button class="ms-2 btn btn-dark"><a href="{{ route('login') }}" class="text-light text-decoration-none fs-bold">Log in</a></button>
-                       
-                            @if (Route::has('register'))
-                            <button class="ms-2 btn btn-dark"><a href="{{ route('register') }}" class="text-light text-decoration-none fs-bold">Register</a></button>
-                            @endif
-                        {{-- </div> --}}
-                       
-                    @endauth
-                </div>
-             @endif
-                 
-                </div>
-              </nav>
-              {{-- end of navbar --}}
-              {{-- button start --}}
-                {{-- <div class="position-absolute bottom-50 end-50">
-                    <button class="btn btn-dark">start now</button>
-                </div> --}}
-
-        </div>
-           
-
-              {{-- <div class="">
-                  <div class="">
-                      <img src="{{asset('images/22.svg')}}" class=" w-100 h-50 border-bold shadow ">
-                  </div>
-            </div> --}}
-            {{-- <div class="container-fluid ">
-                <div class="row flex-nowrap ">
-                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light shadow">
-                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                                <span class="fs-5 d-none d-sm-inline mb-5"></span>
-                            </a>
-                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-5" id="menu">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link align-middle px-0">
-                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                        <li class="w-100">
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-                                </li>
-                                <li>
-                                    <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                        <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                                    <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                        <li class="w-100">
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                        <li class="w-100">
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                                </li>
-                            </ul>
-                            <hr>
-                            
-                        </div>
-                    </div>
-                    <div class="col py-3 mt-4"> --}}
-                        <div class="container">
-
-                            <div class="text-center mt-5">
-                             <h1 class="fw_bold text-primary ">Find Best Products For Your Trip</h1>
-                            </div>
-             
-                           <div class="container row mx-auto">
-                           {{-- @foreach ($meals as $meal) --}}
-                             <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                                 <div class="card border-dark bg-dark  shadow-lg  rounded">
-                                   <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-                                 <div class="card-body text-center">
-                                   <h5 class="card-title fw-bold text-light">test</h5>
-                                   <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                                   <p class="card-text text-success">test</p>
-                                   <hr class="my-1" />
-                                   <p class="fw-bold text-light">Available on :</p>
-                                   <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                                 </div>    
-                               </div>
-                             </div>
-
-                             <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                                <div class="card border-dark bg-dark  shadow-lg  rounded">
-                                  <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-                                <div class="card-body text-center">
-                                  <h5 class="card-title fw-bold text-light">test</h5>
-                                  <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                                  <p class="card-text text-success">test</p>
-                                  <hr class="my-1" />
-                                  <p class="fw-bold text-light">Available on :</p>
-                                  <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                                </div>    
-                              </div>
-                            </div>
-
-                            <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                                <div class="card border-dark bg-dark  shadow-lg  rounded">
-                                  <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-                                <div class="card-body text-center">
-                                  <h5 class="card-title fw-bold text-light">test</h5>
-                                  <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                                  <p class="card-text text-success">test</p>
-                                  <hr class="my-1" />
-                                  <p class="fw-bold text-light">Available on :</p>
-                                  <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                                </div>    
-                              </div>
-                            </div>
-
-                            <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                                <div class="card border-dark bg-dark  shadow-lg  rounded">
-                                  <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-                                <div class="card-body text-center">
-                                  <h5 class="card-title fw-bold text-light">test</h5>
-                                  <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                                  <p class="card-text text-success">test</p>
-                                  <hr class="my-1" />
-                                  <p class="fw-bold text-light">Available on :</p>
-                                  <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                                </div>    
-                              </div>
-                            </div>
-
-                            
-                           {{-- @endforeach --}}
-                         </div> 
-                     </div>
-                    {{-- </div>
-                </div>
-            </div> --}}
-
-    <script>
-        window.addEventListener("scroll", ()=>{
-        document.querySelector("#nav").style.background = "whitesmoke"
-
-    if (window.scrollY === 0) {
-        document.querySelector("#nav").style.backgroundColor = "transparent";
-
-    }
+if (window.scrollY === 0) {
+    document.querySelector("#nav").style.backgroundColor = "transparent";
+  }
 })
-    </script>
-    </body>
-</html>
+</script>
+@stop

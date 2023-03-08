@@ -1,5 +1,5 @@
-
-
+@include('header')
+@include('nav')
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light shadow">
@@ -73,3 +73,16 @@
         </div>
     </div>
 </div>
+
+
+
+
+<script>
+    window.addEventListener("scroll", ()=>{
+    document.querySelector("#nav").style.background = "whitesmoke"
+
+if (window.scrollY === 0) {
+    document.querySelector("#nav").style.backgroundColor = "transparent";
+  }
+})
+</script>
