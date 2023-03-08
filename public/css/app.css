@@ -20,10 +20,14 @@ body{
         background-image: url(/images/coverres.svg);
   }
 
+}
+
 @media (max-width: 420px){
     .home{
         background-image: url(/images/covers.svg);
     }
+
+    
 }
 
 ::-webkit-scrollbar

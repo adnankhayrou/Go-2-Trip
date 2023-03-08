@@ -3,7 +3,7 @@
 <div class="container">
 
     <div class="text-center mt-5">
-     <h1 class="fw_bold text-primary ">Find Best Products For Your Trip</h1>
+     <h1 class="fw_bold text-dark ">Find Best Products For Your Trip</h1>
     </div>
 
    <div class="container row mx-auto">

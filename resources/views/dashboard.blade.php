@@ -17,28 +17,33 @@
                                 </a>
                                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link align-middle px-0">
+                                        <a href="#" class="nav-link align-middle px-0 text-dark">
                                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                                         </a>
                                     </li>
+                                    <hr>
                                     <li>
-                                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
                                             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                                     </li>
+                                    <hr>
                                     <li>
-                                        <a href="#" class="nav-link px-0 align-middle">
+                                        <a href="#" class="nav-link px-0 align-middle text-dark">
                                             <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
                                     </li>
+                                    <hr>
                                     <li>
-                                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
                                             <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
                                     </li>
+                                    <hr>
                                     <li>
-                                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                                        <a href="{{ url('landing') }}" class="nav-link px-0 align-middle text-dark">
+                                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">All Products</span> </a>
                                     </li>
+                                    <hr>
                                     <li>
-                                        <a href="#" class="nav-link px-0 align-middle">
+                                        <a href="#" class="nav-link px-0 align-middle text-dark">
                                             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
                                     </li>
                                 </ul>
@@ -47,29 +52,33 @@
                             </div>
                         </div>
                         <div class="col py-3">
+                        
                             <div class="row items-center me-0">
-                                <h1 class="col fw-bold ms-5 mt-5">Your products</h1>
+                                <h1 class="col fw-bold ms-3 mt-5">Your products</h1>
                                
-                                <button class="col-4 me-5 mt-5 btn btn-primary w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button>
+                                <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button>
                                 </div>
                             <div class="container pt-5 table-responsive">
                         
-                                        <table class="table table-responsive bg-white rounded">
+                                        <table class="table table-responsive bg-white rounded me-5">
                                             <thead>
                                               <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Image</th>
                                                 <th scope="col">Descriptio</th>
+                                                <th scope="col">City</th>
+                                                <th scope="col">telephone</th>
                                                 <th scope="col">Date</th>
+                                                <th scope="col">Category</th>
                                                 <th scope="col">Edit</th>
                                                 <th scope="col">Delete</th>
                                               </tr>
                                             </thead>
                                             <tbody>
-                                                @php
+                                                {{-- @php
                                                 $count = 1;
-                                                @endphp
+                                                @endphp --}}
                                             {{-- @foreach ($meals as $meal) --}}
                                               <tr>
                                                 <td>test</td>
@@ -77,14 +86,17 @@
                                                 <td><img class="rounded" src="{{asset('/images/22.svg')}}" width="100" height="60"></td>
                                                 <td><span class="d-inline-block text-truncate" style="max-width: 150px;">test</span></td>
                                                 <td>test</td>
+                                                <td>test</td>
+                                                <td>test</td>
+                                                <td>test</td>
                                                 <td><a href="" class="text-decoration-none text-primary fw-bold">edit</a></td>
                                                 <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
                                               </tr>
                                               
                                                
-                                              @php
+                                              {{-- @php
                                                 $count ++;
-                                                @endphp
+                                                @endphp --}}
                                                 {{-- @endforeach --}}
                                             </tbody>
                                          </table> 
