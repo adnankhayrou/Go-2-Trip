@@ -48,6 +48,11 @@
                 </div>
               </nav>
               {{-- end of navbar --}}
+              {{-- button start --}}
+                {{-- <div class="position-absolute bottom-50 end-50">
+                    <button class="btn btn-dark">start now</button>
+                </div> --}}
+
         </div>
            
 
@@ -56,14 +61,14 @@
                       <img src="{{asset('images/22.svg')}}" class=" w-100 h-50 border-bold shadow ">
                   </div>
             </div> --}}
-            <div class="container-fluid">
-                <div class="row flex-nowrap">
+            {{-- <div class="container-fluid ">
+                <div class="row flex-nowrap ">
                     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light shadow">
                         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                             <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                                 <span class="fs-5 d-none d-sm-inline mb-5"></span>
                             </a>
-                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-5" id="menu">
                                 <li class="nav-item">
                                     <a href="#" class="nav-link align-middle px-0">
                                         <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
@@ -124,11 +129,78 @@
                             
                         </div>
                     </div>
-                    <div class="col py-3">
-                        Content area...
-                    </div>
+                    <div class="col py-3 mt-4"> --}}
+                        <div class="container">
+
+                            <div class="text-center mt-5">
+                             <h1 class="fw_bold text-primary ">Find Best Products For Your Trip</h1>
+                            </div>
+             
+                           <div class="container row mx-auto">
+                           {{-- @foreach ($meals as $meal) --}}
+                             <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
+                                 <div class="card border-dark bg-dark  shadow-lg  rounded">
+                                   <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
+                                 <div class="card-body text-center">
+                                   <h5 class="card-title fw-bold text-light">test</h5>
+                                   <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+                                   <p class="card-text text-success">test</p>
+                                   <hr class="my-1" />
+                                   <p class="fw-bold text-light">Available on :</p>
+                                   <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
+                                 </div>    
+                               </div>
+                             </div>
+
+                             <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
+                                <div class="card border-dark bg-dark  shadow-lg  rounded">
+                                  <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
+                                <div class="card-body text-center">
+                                  <h5 class="card-title fw-bold text-light">test</h5>
+                                  <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+                                  <p class="card-text text-success">test</p>
+                                  <hr class="my-1" />
+                                  <p class="fw-bold text-light">Available on :</p>
+                                  <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
+                                </div>    
+                              </div>
+                            </div>
+
+                            <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
+                                <div class="card border-dark bg-dark  shadow-lg  rounded">
+                                  <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
+                                <div class="card-body text-center">
+                                  <h5 class="card-title fw-bold text-light">test</h5>
+                                  <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+                                  <p class="card-text text-success">test</p>
+                                  <hr class="my-1" />
+                                  <p class="fw-bold text-light">Available on :</p>
+                                  <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
+                                </div>    
+                              </div>
+                            </div>
+
+                            <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
+                                <div class="card border-dark bg-dark  shadow-lg  rounded">
+                                  <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
+                                <div class="card-body text-center">
+                                  <h5 class="card-title fw-bold text-light">test</h5>
+                                  <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+                                  <p class="card-text text-success">test</p>
+                                  <hr class="my-1" />
+                                  <p class="fw-bold text-light">Available on :</p>
+                                  <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
+                                </div>    
+                              </div>
+                            </div>
+
+                            
+                           {{-- @endforeach --}}
+                         </div> 
+                     </div>
+                    {{-- </div>
                 </div>
-            </div>
+            </div> --}}
 
     <script>
         window.addEventListener("scroll", ()=>{
