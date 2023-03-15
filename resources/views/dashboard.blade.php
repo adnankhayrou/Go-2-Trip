@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -51,8 +45,59 @@
                                 
                             </div>
                         </div>
-                        <div class="col py-3">
-                        
+                        <div class="col py-2">
+                            {{-- <div class="col-md-3 col-xl-3 col-sm-6 col-12 mb-2"> --}}
+                            <div class="container">
+                                <!-- Minimal statistics section start -->
+
+                            <div class="row ">
+                                <div class="col-12 mt-3 mb-1">
+                                <h4 class="text-uppercase">Statistics</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 m-1">
+                                    <div class="card row">
+                                        <div class="text-center">
+                                            <i class="bi bi-list-ul"></i>
+                                            <h3>156</h3>
+                                            <p>Comments</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 m-1">
+                                    <div class="card row">
+                                        <div class="text-center">
+                                            <i class="bi bi-list-ul"></i>
+                                            <h3>156</h3>
+                                            <p>Comments</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 m-1">
+                                    <div class="card row">
+                                        <div class="text-center">
+                                            <i class="bi bi-list-ul"></i>
+                                            <h3>156</h3>
+                                            <p>Comments</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 m-1">
+                                    <div class="card row">
+                                        <div class="text-center">
+                                            <i class="bi bi-list-ul"></i>
+                                            <h3>156</h3>
+                                            <p>Comments</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                  
+                            </div>
+
+
+                            <!-- // Minimal statistics section end -->
+                            </div>
                             <div class="row items-center me-0">
                                 <h1 class="col fw-bold ms-3 mt-5">Your products</h1>
                                
@@ -89,7 +134,7 @@
                                                 <td>test</td>
                                                 <td>test</td>
                                                 <td>test</td>
-                                                <td><a href="" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                                                <td><a href="{{ url('edit') }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                                                 <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
                                               </tr>
                                               

@@ -15,8 +15,11 @@
                     </li>
                     <hr>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
+                      @if (Route::has('login'))
+                          {{-- <button class="ms-2 btn btn-dark me-2 "><a href="{{ url('/dashboard') }}" class="text-light text-decoration-none fs-bold">Dashboard</a></button> --}}
+                        <a href="{{ url('/dashboard') }}" class="nav-link px-0 align-middle text-dark">
                             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                            @endif
                     </li>
                     <hr>
                     <li>
@@ -226,7 +229,7 @@
 
 
 @include('footer')
-<script>
+{{-- <script>
     window.addEventListener("scroll", ()=>{
     document.querySelector("#nav").style.background = "whitesmoke"
 
@@ -234,4 +237,4 @@ if (window.scrollY === 0) {
     document.querySelector("#nav").style.backgroundColor = "transparent";
   }
 })
-</script>
+</script> --}}
