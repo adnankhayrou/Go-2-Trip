@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
 
-  <div class="text-center mt-5">
+  <div class="text-center mt-4 mb-3">
     <h1 class="fw_bold text-dark ">Find Best Products For Your Trip</h1>
    </div>
 
@@ -10,26 +10,26 @@
     <div class="container">
         <div class="row justify-content-center">
             <!-- Single Catagory -->
+            <div class="col-12 col-sm-6 col-md-4 ">
+              <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(/images/22.svg); height: 10rem;">
+                  <div class="catagory-content ">
+                      <a href="" class="text-decoration-none text-light"><h1>Shoes</h1></a>
+                  </div>
+              </div>
+          </div>
+            <!-- Single Catagory -->
             <div class="col-12 col-sm-6 col-md-4">
-                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img " style="background-image: url(/images/cover.svg);">
+                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(/images/23.svg); height: 10rem;">
                     <div class="catagory-content">
-                        <a href="#">Clothing</a>
+                        <a href="" class="text-decoration-none text-light"><h1>Shoes</h1></a>
                     </div>
                 </div>
             </div>
             <!-- Single Catagory -->
             <div class="col-12 col-sm-6 col-md-4">
-                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(/images/cover.svg);">
+                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(/images/24.svg); height: 10rem;">
                     <div class="catagory-content">
-                        <a href="#">Shoes</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Single Catagory -->
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(/images/cover.svg);">
-                    <div class="catagory-content">
-                        <a href="#">Accessories</a>
+                        <a href="" class="text-decoration-none text-light"><h1>Shoes</h1></a>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,9 @@
     </div>
 </div>
 
-    
+<div class="text-center mt-5">
+  <h1 class="fw_bold text-dark ">Find Best Products For Your Trip</h1>
+ </div>
 
    <div class="container row mx-auto">
    {{-- @foreach ($meals as $meal) --}}
@@ -101,6 +103,41 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="cards-wrapper">
+
+            <div class="card bg-dark rounded">
+              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-light">Card title</h5>
+                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card d-none d-md-block bg-dark rounded">
+              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-light">Card title</h5>
+                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card d-none d-md-block bg-dark rounded">
+              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-light">Card title</h5>
+                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            
             <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
               <div class="card border-dark bg-dark  shadow-lg  rounded">
                 <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
@@ -140,39 +177,7 @@
           </div>    
         </div>
       </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-          <div class="cards-wrapper">
-            <div class="card bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card d-none d-md-block bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card d-none d-md-block bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="cards-wrapper">
-            
+
           </div>
         </div>
       </div>

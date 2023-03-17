@@ -64,7 +64,7 @@
             Content area...
            
             <div>
-                <form class="container card mt-5">
+                <form class="container card mt-5 rounded">
                         <div class=" row">
                             <input class="col form-control form-control form-control-borderless" type="search" placeholder="Search here">
                             <button class="col-auto btn btn-dark m-1" type="submit">Search</button>
