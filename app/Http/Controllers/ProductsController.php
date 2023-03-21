@@ -15,7 +15,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        $products = Products::all();
+        return view('dashboard')->with('products', $products);
     }
 
     /**
@@ -36,7 +37,8 @@ class ProductsController extends Controller
      */
     public function store(StoreProductsRequest $request)
     {
-        //
+        Products::create($request->all() + ['user_id' => Auth()->user()->id]);
+        return redirect('/dashboard');
     }
 
     /**
@@ -47,7 +49,9 @@ class ProductsController extends Controller
      */
     public function show(Products $products)
     {
-        //
+        $user = Auth()->user();
+        $products = Products::find($user->id == $products->user_id);
+        return view('dashboard')->with('products', $products);
     }
 
     /**
@@ -56,9 +60,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit($id)
     {
-        //
+        $products = Products::find($id);
+        return view('/edit')->with('products', $products);
     }
 
     /**
@@ -70,7 +75,7 @@ class ProductsController extends Controller
      */
     public function update(UpdateProductsRequest $request, Products $products)
     {
-        //
+        $products->update($request->all());
     }
 
     /**
@@ -79,8 +84,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy($id)
     {
-        //
+        $products = Products::find($id);
+        $products->delete();
+        return redirect('/dashboard');
     }
 }

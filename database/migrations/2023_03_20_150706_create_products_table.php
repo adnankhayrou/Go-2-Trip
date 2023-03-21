@@ -15,6 +15,17 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('image');
+            $table->text('description');
+            $table->float('prix');
+            $table->integer('telephone');
+            // $table->unsignedBigInteger('city_id')->nullable();
+            // $table->foreign('city_id')->references('id')->on('citys')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->unsignedBigInteger('category_id')->nullable();
+            // $table->foreign('category_id')->references('id')->on('categorys')->onDelete('cascade');
             $table->timestamps();
         });
     }
