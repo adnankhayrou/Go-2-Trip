@@ -48,15 +48,17 @@ class RolesAndPermissionsSeeder extends Seeder
             'add product',
             'edit My product',
             'delete My product',
-            'edit my profil',
-            'delete my profil',
-            'view my profil',
+            'add comment',
+            'edit comment',
+            'delete comment',
+            'view comment',
         ]);
 
         Role::create(['name' => $user])->givePermissionTo([
-            'edit my profil',
-            'delete my profil',
-            'view my profil',
+            'add comment',
+            'edit comment',
+            'delete comment',
+            'view comment',
         ]);
     }
 }
