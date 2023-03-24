@@ -19,8 +19,18 @@ class Products extends Model
         'category_id',
     ];
 
-    // public function category()
-    // {
-    //     return $this->belongsTo(Category::class);
-    // }
+    public function categorys()
+    {
+        return $this->belongsTo(Categorys::class);
+    }
+
+    public function citys()
+    {
+        return $this->belongsTo(Citys::class);
+    }
+
+    public function comments()
+    {
+        return $this->belongsTo(comments::class);
+    }
 }

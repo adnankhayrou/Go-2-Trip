@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Comments extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name'
+    ];
+
+    public function products()
+    {
+        return $this->belongsTo(Products::class);
+    }
 }

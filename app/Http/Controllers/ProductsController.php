@@ -75,7 +75,16 @@ class ProductsController extends Controller
      */
     public function update(UpdateProductsRequest $request, Products $products)
     {
-        $products->update($request->all());
+        $user = Auth()->user();
+        if (!$user->can('edit All product')  && $user->id != $products->user_id) {
+            return response([
+                'status' => false,
+                'message' => "You don't have permission to edit this product!",
+            ], 200);
+        }else $products->update($request->all());
+
+        return redirect('/dashboard');
+
     }
 
     /**
@@ -84,10 +93,16 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Products $products)
     {
-        $products = Products::find($id);
-        $products->delete();
+        $user = Auth()->user();
+        if (!$user->can('delete All product')  && $user->id != $products->user_id) {
+            return response([
+                'status' => false,
+                'message' => "You don't have permission to delete this product!",
+            ], 200);
+        }else $products->delete();
+
         return redirect('/dashboard');
     }
 }

@@ -15,7 +15,8 @@ class CategorysController extends Controller
      */
     public function index()
     {
-        //
+        $categorys = Categorys::orderBy('id')->get();
+        return view('dashboard')->with('categorys', $categorys);
     }
 
     /**
@@ -36,7 +37,8 @@ class CategorysController extends Controller
      */
     public function store(StoreCategorysRequest $request)
     {
-        //
+        Categorys::create($request->all());
+        return redirect('/dashboard');
     }
 
     /**
@@ -47,7 +49,8 @@ class CategorysController extends Controller
      */
     public function show(Categorys $categorys)
     {
-        //
+        $categorys->find($categorys->id);
+        return view('dashboard')->with('categorys', $categorys);
     }
 
     /**
@@ -58,7 +61,8 @@ class CategorysController extends Controller
      */
     public function edit(Categorys $categorys)
     {
-        //
+        $categorys->find($categorys->id);
+        return view('/edit')->with('categorys', $categorys);
     }
 
     /**
@@ -70,7 +74,9 @@ class CategorysController extends Controller
      */
     public function update(UpdateCategorysRequest $request, Categorys $categorys)
     {
-        //
+        $categorys->update($request->all());
+
+        return redirect('/dashboard');
     }
 
     /**
@@ -81,6 +87,6 @@ class CategorysController extends Controller
      */
     public function destroy(Categorys $categorys)
     {
-        //
+        $categorys->delete();
     }
 }

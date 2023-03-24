@@ -15,7 +15,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comments::orderBy('id')->get();
+        return view('dashboard')->with('comments', $comments);
     }
 
     /**
@@ -36,7 +37,8 @@ class CommentsController extends Controller
      */
     public function store(StoreCommentsRequest $request)
     {
-        //
+        Comments::create($request->all());
+        return redirect('/dashboard');
     }
 
     /**
@@ -47,7 +49,8 @@ class CommentsController extends Controller
      */
     public function show(Comments $comments)
     {
-        //
+        $comments->find($comments->id);
+        return view('dashboard')->with('comments', $comments);
     }
 
     /**
@@ -58,7 +61,8 @@ class CommentsController extends Controller
      */
     public function edit(Comments $comments)
     {
-        //
+        $comments->find($comments->id);
+        return view('/edit')->with('comments', $comments);
     }
 
     /**
@@ -70,7 +74,8 @@ class CommentsController extends Controller
      */
     public function update(UpdateCommentsRequest $request, Comments $comments)
     {
-        //
+        $comments->update($request->all());
+        return redirect('/dashboard');
     }
 
     /**
@@ -81,6 +86,6 @@ class CommentsController extends Controller
      */
     public function destroy(Comments $comments)
     {
-        //
+        $comments->delete();
     }
 }

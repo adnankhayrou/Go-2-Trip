@@ -46,10 +46,10 @@
                             </div>
                         </div>
                         <div class="col py-2">
-                            {{-- <div class="col-md-3 col-xl-3 col-sm-6 col-12 mb-2"> --}}
+
+                                @if (Auth()->user()->can('edit All product'))
                             <div class="container">
                                 <!-- Minimal statistics section start -->
-
                             <div class="row ">
                                 <div class="col-12 mt-3 mb-1">
                                 <h4 class="text-uppercase">Statistics</h4>
@@ -98,11 +98,18 @@
 
                             <!-- // Minimal statistics section end -->
                             </div>
+                            {{-- all products --}}
+                            @endif
                             <div class="row items-center me-0">
-                                <h1 class="col fw-bold ms-3 mt-5">Your products</h1>
+                                @if (Auth()->user()->can('edit All product'))
+                                <h1 class="col fw-bold ms-3 mt-5">All Products</h1>  
+                                @else
+                                <h1 class="col fw-bold ms-3 mt-5">Your Products</h1>  
+                                @endif
                                
-                                <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button>
+                                <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="" data-bs-toggle="modal"><a href="{{ url('add') }}"><b>+ </b> Add Product</a></button>
                                 </div>
+                                
                             <div class="container pt-5 table-responsive">
                         
                                         <table class="table table-responsive bg-white rounded me-5">
@@ -147,10 +154,170 @@
                                          </table> 
                                         
                                    </div>
+                                   {{-- end of products --}}
+                
+                        {{-- categorys --}}
+
+
+                        <div class="row items-center me-0">
+                           
+                            <h1 class="col fw-bold ms-3 mt-5">Add New Category</h1>  
+                         
+                            <form class="col-4" action="" method="POST" id="" data-parsley-validate>
+                                <div class=" d-flex">
+                                <input type="text" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                                <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
+                                </div>
+                            </form>
+                            {{-- <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button> --}}
+                            </div>
+                        <div class="container pt-5 table-responsive">
+                        
+                            <table class="table table-responsive bg-white rounded me-5">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    {{-- @php
+                                    $count = 1;
+                                    @endphp --}}
+                                {{-- @foreach ($meals as $meal) --}}
+                                  <tr>
+                                    <td>test</td>
+                                    <td>test</td>
+                                    <td><a href="{{ url('edit') }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                                    <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                                  </tr>
+                                  
+                                   
+                                  {{-- @php
+                                    $count ++;
+                                    @endphp --}}
+                                    {{-- @endforeach --}}
+                                </tbody>
+                             </table> 
+                            
+                       </div>
+                       {{-- end of categorys --}}
+
+                       {{-- citys --}}
+                       <div class="row items-center me-0">
+                        <h1 class="col fw-bold ms-3 mt-5">Citys</h1>  
+                         
+                        <form class="col-4" action="" method="POST" id="" data-parsley-validate>
+                            <div class=" d-flex">
+                            <input type="text" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                            <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
+                            </div>
+                        </form>
+                       
+                        {{-- <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button> --}}
                         </div>
+                    <div class="container pt-5 table-responsive">
+                    
+                        <table class="table table-responsive bg-white rounded me-5">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {{-- @php
+                                $count = 1;
+                                @endphp --}}
+                            {{-- @foreach ($meals as $meal) --}}
+                              <tr>
+                                <td>test</td>
+                                <td>test</td>
+                                <td><a href="{{ url('edit') }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                                <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                              </tr>
+                              
+                               
+                              {{-- @php
+                                $count ++;
+                                @endphp --}}
+                                {{-- @endforeach --}}
+                            </tbody>
+                         </table> 
+                        
+                   </div>
+                   {{-- end of citys --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- add product form -->
+	{{-- <div  class="modal fade" id="modal-meal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="SaveProduct" method="POST" id="form" enctype="multipart/form-data">
+                 @csrf
+					<div class="modal-header">
+						<h5 class="modal-title fw-bold">New item</h5>
+						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+					</div>
+					<div class="modal-body">
+			
+							<input type="hidden" name="id" >
+							<div class="mb-3">
+								<label class="form-label">Name</label>
+								<input type="text" name="name" class="form-control rounded" />
+                                <small class="text-danger">
+                                    @error('name')
+                                    {{ $message }}
+                                @enderror
+                               </small>
+							</div>
+
+                            <div class="mb-3">
+                                <label for="image" class="col-form-label" id="image">Image</label>
+                                <input type="file" class="form-control border rounded" id="images" name="image" >
+                                <small class="text-danger"> 
+                                    @error('image')
+                                    {{ $message }}
+                                @enderror
+                                </small>
+                            </div>
+                
+							<div class="mb-0">
+								<label class="form-label">Description</label>
+								<textarea class="form-control border rounded" name="description" rows="7"></textarea>
+                                <small class="text-danger">
+                                    @error('description')
+                                    {{ $message }}
+                                @enderror
+                                </small>
+							</div>
+
+                            <div class="mb-3">
+								<label class="form-label">Date</label>
+								<input type="date" name="date" class="form-control rounded" />
+                                <small class="text-danger">
+                                    @error('date')
+                                    {{ $message }}
+                                @enderror</small>
+							</div>
+						
+					</div>
+					<div class="modal-footer">
+						<a href="/dashboard" class="btn btn-white border" >Cancel</a>
+						<button type="submit" class="btn btn-primary text-light bg-primary">Add Meal</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div> --}}
+    {{-- end form --}}
 </x-app-layout>

@@ -1,15 +1,15 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
     
     <div class="container items-center">
         <h1 class="col fw-bold mt-3 mb-2 text-center fs-2">Edit product</h1>
         </div>
     <!-- edit meal form -->
-    <div class="container pt-3 w-50 bg-white rounded">
+    <div class="container pt-3 w-75 bg-white rounded">
         <form action="" method="POST" id="form" class=" pb-2" enctype="multipart/form-data">
             @csrf
                
@@ -18,7 +18,7 @@
             <input type="hidden" name="id" >
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" name="name" class="form-control rounded" value="" required/>
+                <input type="text" name="name" class="form-control rounded border" value="" required/>
                 {{-- <small class="text-danger"> --}}
                     {{-- @error('name')
                     {{ $message }}
@@ -38,7 +38,7 @@
            
             <div class="mb-0">
                 <label class="form-label">Description</label>
-                <textarea class="form-control border rounded" name="description" rows="7" ></textarea>
+                <textarea class="form-control border rounded" name="description" rows="4" ></textarea>
                 {{-- <small class="text-danger"> --}}
                     {{-- @error('description')
                     {{ $message }}
@@ -47,7 +47,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Date</label>
-                <input type="date" name="date" class="form-control rounded" value="" required/>
+                <input type="date" name="date" class="form-control rounded border" value="" required/>
                 {{-- <small class="text-danger"> --}}
                     {{-- @error('date')
                     {{ $message }}
@@ -57,7 +57,7 @@
             </div>
             <div class="modal-footer">
                 <a href="/dashboard" class="btn btn-white border" >Cancel</a>
-                <button type="submit" class="btn btn-primary ms-2 text-light bg-primary">Save Change</button>
+                <button type="submit" class="btn btn-dark ms-2 text-light bg-dark">Save</button>
             </div>
          </form>   
 

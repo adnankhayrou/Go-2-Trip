@@ -8,6 +8,15 @@
                     <span class="fs-5 d-none d-sm-inline mb-5"></span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-5" id="menu">
+                  {{-- <li>
+                    @if (Route::has('login'))
+                    <a href="{{ url('/add') }}" class="nav-link px-0 align-middle text-dark">
+                      <i class="fs-4 bi-plus"></i> <span class="ms-1 d-none d-sm-inline">Add an item</span> </a>
+                      <button class="col-4 btn btn-dark w-auto" href="" data-bs-toggle="modal"><a href="{{ url('add') }}" class="text-decoration-none text-light
+                        "><b>+ </b> Add an item</a></button>
+                          @endif
+                  </li> --}}
+                  <hr>
                     <li class="nav-item mt-4">
                         <a href="{{ url('/') }}" class="nav-link align-middle px-0 text-dark">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
@@ -61,13 +70,22 @@
             </div>
         </div>
         <div class="col py-3">
-            Content area...
+          content
+          <div class="row items-center me-0">
+            
+            <h3 class="col fw-bold ms-3 mt-5">All items</h3>  
+           
+            @if (Route::has('login'))
+              <button class="col-4 btn btn-dark w-auto mt-5" href="" data-bs-toggle="modal"><a href="{{ url('add') }}" class="text-decoration-none text-light
+                "><b>+ </b> Add an item</a></button>
+                  @endif            
+                </div>
            
             <div>
-                <form class="container card mt-5 rounded">
+                <form class="container card mt-3 rounded">
                         <div class=" row">
-                            <input class="col form-control form-control form-control-borderless" type="search" placeholder="Search here">
-                            <button class="col-auto btn btn-dark m-1" type="submit">Search</button>
+                            <input class="col form-control form-control form-control-borderless me-2" type="search" placeholder="Search here">
+                            <button class="col-auto btn btn-dark m-1 me-2" type="submit">Search</button>
                         </div>
                 </form>
 
@@ -103,6 +121,7 @@
             
                <div class="row mx-auto">
                {{-- @foreach ($meals as $meal) --}}
+               @for($i=0;$i<8;$i++)
                  <div class="col-md-4 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
                      <div class="card border-dark bg-dark  shadow-lg  rounded">
                        <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="100">
@@ -116,106 +135,15 @@
                      </div>    
                    </div>
                  </div>
-            
-                 <div class="col-md-4 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                    <div class="card border-dark bg-dark  shadow-lg  rounded">
-                      <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="100">
-                    <div class="card-body text-center">
-                      <h5 class="card-title fw-bold text-light">test</h5>
-                      <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                      <p class="card-text text-success">test</p>
-                      <hr class="my-1" />
-                      <p class="fw-bold text-light">Available on :</p>
-                      <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                    </div>    
+                 {{-- <div class="col-md-4 col-lg-3 p-2 col-12 card bg-dark rounded">
+                  <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-light">Card title</h5>
+                    <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                   </div>
-                </div>
-            
-                <div class="col-md-4 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                    <div class="card border-dark bg-dark  shadow-lg  rounded">
-                      <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="100">
-                    <div class="card-body text-center">
-                      <h5 class="card-title fw-bold text-light">test</h5>
-                      <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                      <p class="card-text text-success">test</p>
-                      <hr class="my-1" />
-                      <p class="fw-bold text-light">Available on :</p>
-                      <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                    </div>    
-                  </div>
-                </div>
-            
-                <div class="col-md-4 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                    <div class="card border-dark bg-dark  shadow-lg  rounded">
-                      <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="100">
-                    <div class="card-body text-center">
-                      <h5 class="card-title fw-bold text-light">test</h5>
-                      <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                      <p class="card-text text-success">test</p>
-                      <hr class="my-1" />
-                      <p class="fw-bold text-light">Available on :</p>
-                      <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                    </div>    
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                    <div class="card border-dark bg-dark  shadow-lg  rounded">
-                      <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="100">
-                    <div class="card-body text-center">
-                      <h5 class="card-title fw-bold text-light">test</h5>
-                      <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                      <p class="card-text text-success">test</p>
-                      <hr class="my-1" />
-                      <p class="fw-bold text-light">Available on :</p>
-                      <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                    </div>    
-                  </div>
-                </div>
-           
-                <div class="col-md-4 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                   <div class="card border-dark bg-dark  shadow-lg  rounded">
-                     <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="100">
-                   <div class="card-body text-center">
-                     <h5 class="card-title fw-bold text-light">test</h5>
-                     <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                     <p class="card-text text-success">test</p>
-                     <hr class="my-1" />
-                     <p class="fw-bold text-light">Available on :</p>
-                     <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                   </div>    
-                 </div>
-               </div>
-           
-               <div class="col-md-4 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                   <div class="card border-dark bg-dark  shadow-lg  rounded">
-                     <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="100">
-                   <div class="card-body text-center">
-                     <h5 class="card-title fw-bold text-light">test</h5>
-                     <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                     <p class="card-text text-success">test</p>
-                     <hr class="my-1" />
-                     <p class="fw-bold text-light">Available on :</p>
-                     <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                   </div>    
-                 </div>
-               </div>
-           
-               <div class="col-md-4 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                   <div class="card border-dark bg-dark  shadow-lg  rounded">
-                     <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="100">
-                   <div class="card-body text-center">
-                     <h5 class="card-title fw-bold text-light">test</h5>
-                     <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                     <p class="card-text text-success">test</p>
-                     <hr class="my-1" />
-                     <p class="fw-bold text-light">Available on :</p>
-                     <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-                   </div>    
-                 </div>
-               </div>
-            
-                
+                </div> --}}
+                @endfor
                {{-- @endforeach --}}
              </div> 
              {{-- <div class="text-end mb-5 mt-3 me-4">

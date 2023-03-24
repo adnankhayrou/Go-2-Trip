@@ -15,7 +15,8 @@ class CitysController extends Controller
      */
     public function index()
     {
-        //
+        $citys = Citys::orderBy('id')->get();
+        return view('dashboard')->with('citys', $citys);
     }
 
     /**
@@ -36,7 +37,8 @@ class CitysController extends Controller
      */
     public function store(StoreCitysRequest $request)
     {
-        //
+        Citys::create($request->all());
+        return redirect('/dashboard');
     }
 
     /**
@@ -47,7 +49,8 @@ class CitysController extends Controller
      */
     public function show(Citys $citys)
     {
-        //
+        $citys->find($citys->id);
+        return view('dashboard')->with('citys', $citys);
     }
 
     /**
@@ -58,7 +61,8 @@ class CitysController extends Controller
      */
     public function edit(Citys $citys)
     {
-        //
+        $citys->find($citys->id);
+        return view('/edit')->with('citys', $citys);
     }
 
     /**
@@ -70,7 +74,8 @@ class CitysController extends Controller
      */
     public function update(UpdateCitysRequest $request, Citys $citys)
     {
-        //
+        $citys->update($request->all());
+        return redirect('/dashboard');
     }
 
     /**
@@ -81,6 +86,6 @@ class CitysController extends Controller
      */
     public function destroy(Citys $citys)
     {
-        //
+        $citys->delete();
     }
 }

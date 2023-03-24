@@ -32,4 +32,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('add', function () {
+        return view('add');
+    });
 });
