@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="py-12">
+    {{-- <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"> --}}
                 <div class="container-fluid">
                     <div class="row flex-nowrap">
                         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light shadow">
@@ -107,12 +107,12 @@
                                 <h1 class="col fw-bold ms-3 mt-5">Your Products</h1>  
                                 @endif
                                
-                                <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="" data-bs-toggle="modal"><a href="{{ url('add') }}"><b>+ </b> Add Product</a></button>
+                                <button class="col-4 me-3 mt-5 btn btn-dark w-auto" href="" data-bs-toggle="modal"><a href="{{ url('add') }}"><b>+ </b> Add Product</a></button>
                                 </div>
                                 
                             <div class="container pt-5 table-responsive">
                         
-                                        <table class="table table-responsive bg-white rounded me-5">
+                                        <table class="table table-responsive bg-white rounded">
                                             <thead>
                                               <tr>
                                                 <th scope="col">#</th>
@@ -158,14 +158,14 @@
                 
                         {{-- categorys --}}
 
-
+                        @if (Auth()->user()->can('edit All product'))
                         <div class="row items-center me-0">
                            
                             <h1 class="col fw-bold ms-3 mt-5">Add New Category</h1>  
                          
-                            <form class="col-4" action="" method="POST" id="" data-parsley-validate>
+                            <form class="col-4" action="addCategory" method="POST" id="" data-parsley-validate>
                                 <div class=" d-flex">
-                                <input type="text" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                                <input type="text" name="name" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
                                 <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                                 </div>
                             </form>
@@ -203,15 +203,17 @@
                              </table> 
                             
                        </div>
+                       @endif
                        {{-- end of categorys --}}
 
                        {{-- citys --}}
+                       @if (Auth()->user()->can('edit All product'))
                        <div class="row items-center me-0">
                         <h1 class="col fw-bold ms-3 mt-5">Citys</h1>  
                          
-                        <form class="col-4" action="" method="POST" id="" data-parsley-validate>
+                        <form class="col-4" action="addCity" method="POST" id="" data-parsley-validate>
                             <div class=" d-flex">
-                            <input type="text" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                            <input type="text" name="name" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
                             <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                             </div>
                         </form>
@@ -250,12 +252,13 @@
                          </table> 
                         
                    </div>
+                   @endif
                    {{-- end of citys --}}
                     </div>
                 </div>
-            </div>
+            {{-- </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <!-- add product form -->

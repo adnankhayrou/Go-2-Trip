@@ -15,14 +15,14 @@
                
                <div class="modal-body">
        
-            <input type="hidden" name="id" >
+            {{-- <input type="hidden" name="id" > --}}
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" name="name" class="form-control rounded border" value="" required/>
-                {{-- <small class="text-danger"> --}}
-                    {{-- @error('name')
+                <input type="text" name="title" class="form-control rounded border" value="" required/>
+                <small class="text-danger">
+                    @error('title')
                     {{ $message }}
-                @enderror</small> --}}
+                @enderror</small>
             </div>
 
             {{-- <img class="rounded" src="" width="100" height="50"> --}}
@@ -30,28 +30,28 @@
            <div class="mb-3">
              <label for="image" class="col-form-label" id="image">Image</label>
              <input type="file" class="form-control border rounded" id="images" name="image" required>
-             {{-- <small class="text-danger"> --}}
-                {{-- @error('image')
+             <small class="text-danger">
+                @error('image')
                 {{ $message }}
-            @enderror</small> --}}
+            @enderror</small>
            </div>
            
             <div class="mb-0">
                 <label class="form-label">Description</label>
                 <textarea class="form-control border rounded" name="description" rows="4" ></textarea>
-                {{-- <small class="text-danger"> --}}
-                    {{-- @error('description')
+                <small class="text-danger">
+                    @error('description')
                     {{ $message }}
-                @enderror</small> --}}
+                @enderror</small>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Date</label>
                 <input type="date" name="date" class="form-control rounded border" value="" required/>
-                {{-- <small class="text-danger"> --}}
-                    {{-- @error('date')
+                <small class="text-danger">
+                    @error('date')
                     {{ $message }}
-                @enderror</small> --}}
+                @enderror</small>
             </div>
                    
             </div>
