@@ -37,7 +37,7 @@ class CommentsController extends Controller
      */
     public function store(StoreCommentsRequest $request)
     {
-        Comments::create($request->all());
+        Comments::create($request->all() + ['user_id' => Auth()->user()->id]);
         return redirect('/dashboard');
     }
 

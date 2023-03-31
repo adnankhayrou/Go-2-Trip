@@ -103,7 +103,7 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="cards-wrapper">
-            @for($i=0;$i<4;$i++)
+            {{-- @for($i=0;$i<3;$i++) --}}
             <div class="card bg-dark rounded">
               <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -112,12 +112,12 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
-            @endfor
+            {{-- @endfor --}}
         </div>
         </div>
         <div class="carousel-item">
           <div class="cards-wrapper">
-            @for($i=0;$i<4;$i++)
+            {{-- @for($i=0;$i<3;$i++) --}}
             <div class="card bg-dark rounded">
               <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -126,7 +126,7 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
-            @endfor
+            {{-- @endfor --}}
           </div>
         </div>
         <div class="carousel-item">
@@ -145,7 +145,7 @@
               </div>    
             </div>
           </div> --}}
-          @for($i=0;$i<4;$i++)
+          {{-- @for($i=0;$i<3;$i++) --}}
             <div class="card bg-dark rounded">
               <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -154,7 +154,24 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
-            @endfor
+            <div class="card bg-dark rounded">
+              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-light">Card title</h5>
+                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card bg-dark rounded">
+              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-light">Card title</h5>
+                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            
+            {{-- @endfor --}}
 
           </div>
         </div>

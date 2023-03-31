@@ -163,9 +163,13 @@
                            
                             <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Categorys</h1>  
                          
+<<<<<<< HEAD
                             <form class="col" action="" method="" id="" data-parsley-validate>
+=======
+                            <form class="col-4" action="addCategory" method="POST" id="" data-parsley-validate>
+>>>>>>> 5434ad218156ebddc95db2912afb585e99a9f9f5
                                 <div class=" d-flex">
-                                <input type="text" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                                <input type="text" name="name" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
                                 <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                                 </div>
                             </form>
@@ -211,9 +215,13 @@
                        <div class="row items-center me-0">
                         <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Citys</h1>  
                          
+<<<<<<< HEAD
                         <form class="col" action="" method="" id="" data-parsley-validate>
+=======
+                        <form class="col-4" action="addCity" method="POST" id="" data-parsley-validate>
+>>>>>>> 5434ad218156ebddc95db2912afb585e99a9f9f5
                             <div class=" d-flex">
-                            <input type="text" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                            <input type="text" name="name" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
                             <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                             </div>
                         </form>
