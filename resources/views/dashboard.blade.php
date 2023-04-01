@@ -3,8 +3,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"> --}}
                 <div class="container-fluid">
-                    <div class="row flex-nowrap">
-                        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light shadow">
+                    <div class="row">
+                        <div class="col-2 col-md-3 col-lg-2 px-sm-2 px-0 bg-light shadow">
                             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                                 <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                                     <span class="fs-5 d-none d-sm-inline mb-5"></span>
@@ -45,7 +45,7 @@
                                 
                             </div>
                         </div>
-                        <div class="col py-2">
+                        <div class="col-10 col-md-9 col-lg-10 py-2">
 
                                 @if (Auth()->user()->can('edit All product'))
                             <div class="container">
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 m-1">
+                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                                     <div class="card row">
                                         <div class="text-center">
                                             <i class="bi bi-list-ul"></i>
@@ -65,7 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 m-1">
+                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                                     <div class="card row">
                                         <div class="text-center">
                                             <i class="bi bi-list-ul"></i>
@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 m-1">
+                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                                     <div class="card row">
                                         <div class="text-center">
                                             <i class="bi bi-list-ul"></i>
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 m-1">
+                                <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                                     <div class="card row">
                                         <div class="text-center">
                                             <i class="bi bi-list-ul"></i>
@@ -161,9 +161,10 @@
                         @if (Auth()->user()->can('edit All product'))
                         <div class="row items-center me-0">
                            
-                            <h1 class="col fw-bold ms-3 mt-5">Add New Category</h1>  
-                         
-                            <form class="col-4" action="addCategory" method="POST" id="" data-parsley-validate>
+                            <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Categorys</h1>  
+                        
+                            <form class="col" action="" method="POST" id="" data-parsley-validate>
+
                                 <div class=" d-flex">
                                 <input type="text" name="name" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
                                 <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
@@ -173,7 +174,7 @@
                             </div>
                         <div class="container pt-5 table-responsive">
                         
-                            <table class="table table-responsive bg-white rounded me-5">
+                            <table class="table table-responsive bg-white rounded">
                                 <thead>
                                   <tr>
                                     <th scope="col">#</th>
@@ -209,9 +210,10 @@
                        {{-- citys --}}
                        @if (Auth()->user()->can('edit All product'))
                        <div class="row items-center me-0">
-                        <h1 class="col fw-bold ms-3 mt-5">Citys</h1>  
+                        <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Citys</h1>  
                          
-                        <form class="col-4" action="addCity" method="POST" id="" data-parsley-validate>
+                        <form class="col" action="" method="POST" id="" data-parsley-validate>
+
                             <div class=" d-flex">
                             <input type="text" name="name" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
                             <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
@@ -222,7 +224,7 @@
                         </div>
                     <div class="container pt-5 table-responsive">
                     
-                        <table class="table table-responsive bg-white rounded me-5">
+                        <table class="table table-responsive bg-white rounded">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
