@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\http\controllers\productsController;
+use App\http\controllers\categorysController;
+use App\http\controllers\citysController;
+use App\http\controllers\commentsController;
+
 
 /*
 |--------------------------------------------------------------------------

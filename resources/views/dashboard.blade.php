@@ -158,14 +158,15 @@
                 
                         {{-- categorys --}}
 
-
+                        @if (Auth()->user()->can('edit All product'))
                         <div class="row items-center me-0">
                            
                             <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Categorys</h1>  
-                         
+                        
                             <form class="col" action="" method="POST" id="" data-parsley-validate>
+
                                 <div class=" d-flex">
-                                <input type="text" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                                <input type="text" name="name" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
                                 <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                                 </div>
                             </form>
@@ -203,15 +204,18 @@
                              </table> 
                             
                        </div>
+                       @endif
                        {{-- end of categorys --}}
 
                        {{-- citys --}}
+                       @if (Auth()->user()->can('edit All product'))
                        <div class="row items-center me-0">
                         <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Citys</h1>  
                          
                         <form class="col" action="" method="POST" id="" data-parsley-validate>
+
                             <div class=" d-flex">
-                            <input type="text" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                            <input type="text" name="name" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
                             <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                             </div>
                         </form>
@@ -250,6 +254,7 @@
                          </table> 
                         
                    </div>
+                   @endif
                    {{-- end of citys --}}
                     </div>
                 </div>
