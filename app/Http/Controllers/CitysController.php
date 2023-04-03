@@ -13,11 +13,12 @@ class CitysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $citys = Citys::orderBy('id')->get();
-        return view('dashboard')->with('citys', $citys);
-    }
+    // public function index()
+    // {
+    //     $categorys = Categorys::all();
+    //     $citys = Citys::all();
+    //     return view('dashboard',compact('citys', 'categorys'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -50,7 +51,7 @@ class CitysController extends Controller
     public function show(Citys $citys)
     {
         $citys->find($citys->id);
-        return view('dashboard')->with('citys', $citys);
+        return view('dashboard',compact('citys'));
     }
 
     /**
@@ -62,7 +63,7 @@ class CitysController extends Controller
     public function edit(Citys $citys)
     {
         $citys->find($citys->id);
-        return view('/edit')->with('citys', $citys);
+        return view('/edit',compact('citys'));
     }
 
     /**

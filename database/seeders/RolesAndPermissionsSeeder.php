@@ -21,18 +21,22 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'delete My product']);
 
         Permission::create(['name' => 'add city']);
+        Permission::create(['name' => 'view city']);
         Permission::create(['name' => 'edit city']);
         Permission::create(['name' => 'delete city']);
 
         Permission::create(['name' => 'add category']);
+        Permission::create(['name' => 'view category']);
         Permission::create(['name' => 'edit category']);
         Permission::create(['name' => 'delete category']);
 
         Permission::create(['name' => 'add SubCategory']);
+        Permission::create(['name' => 'view SubCategory']);
         Permission::create(['name' => 'edit SubCategory']);
         Permission::create(['name' => 'delete SubCategory']);
 
         Permission::create(['name' => 'add comment']);
+        Permission::create(['name' => 'view comment']);
         Permission::create(['name' => 'edit comment']);
         Permission::create(['name' => 'delete comment']);
 

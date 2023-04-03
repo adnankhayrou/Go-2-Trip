@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\Categorys;
+use App\Models\Citys;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 
@@ -15,9 +17,13 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $categorys = Categorys::all();
+        $citys = Citys::all();
         $products = Products::all();
-        return view('dashboard')->with('products', $products);
+        return view('dashboard', compact('products', 'citys', 'categorys'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +43,10 @@ class ProductsController extends Controller
      */
     public function store(StoreProductsRequest $request)
     {
-        Products::create($request->all() + ['user_id' => Auth()->user()->id]);
+        $data = $request->all();
+        $data['image'] = $request->file('image')->store('image','public');
+        $data = Products::create($data + ['user_id' => Auth()->user()->id]);
+
         return redirect('/dashboard');
     }
 

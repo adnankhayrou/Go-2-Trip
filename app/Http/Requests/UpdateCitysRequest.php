@@ -24,7 +24,7 @@ class UpdateCitysRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:30'
+            'nameCity' => 'required|max:30'
         ];
     }
 }

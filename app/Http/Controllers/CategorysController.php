@@ -13,11 +13,11 @@ class CategorysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $categorys = Categorys::orderBy('id')->get();
-        return view('dashboard')->with('categorys', $categorys);
-    }
+    // public function index()
+    // {
+    //     $categorys = Categorys::all();
+    //     return view('dashboard',compact('categorys'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -50,7 +50,7 @@ class CategorysController extends Controller
     public function show(Categorys $categorys)
     {
         $categorys->find($categorys->id);
-        return view('dashboard')->with('categorys', $categorys);
+        return view('dashboard',compact('categorys'));
     }
 
     /**
@@ -62,7 +62,7 @@ class CategorysController extends Controller
     public function edit(Categorys $categorys)
     {
         $categorys->find($categorys->id);
-        return view('/edit')->with('categorys', $categorys);
+        return view('dashboard',compact('categorys'));
     }
 
     /**

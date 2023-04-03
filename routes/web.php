@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\http\controllers\productsController;
-use App\http\controllers\categorysController;
-use App\http\controllers\citysController;
-use App\http\controllers\commentsController;
-
+use App\http\controllers\ProductsController;
+use App\http\controllers\CategorysController;
+use App\http\controllers\CitysController;
+use App\http\controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +24,6 @@ Route::get('landing', function () {
     return view('landing');
 });
 
-Route::get('edit', function () {
-    return view('edit');
-});
 
 Route::middleware([
     'auth:sanctum',
@@ -38,7 +34,47 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('add', function () {
-        return view('add');
+    // Route::get('addItem', function () {
+    //     return view('add');
+    // });
+    
+    Route::group(['controller' => ProductsController::class, 'prefix' => 'products'], function () {
+        Route::get('', 'index')->middleware(['permission:view product']);
+        Route::post('', 'store')->middleware(['permission:add product']);
+        Route::put('/{product}', 'update')->middleware(['permission:edit All product|edit My product']);
+        Route::delete('/{product}', 'destroy')->middleware(['permission:delete All product|delete My product']);
     });
+    Route::get('dashboard', [ProductsController::class, 'index'])->name('dashboard');
+
+    Route::group(['controller' => CategorysController::class, 'prefix' => 'categorys'], function () {
+        Route::post('', 'store')->middleware(['permission:add category']);
+        Route::get('/{category}', 'show')->middleware(['permission:view category']);
+        Route::put('/{category}', 'update')->middleware(['permission:edit category']);
+        Route::delete('/{category}', 'destroy')->middleware(['permission:delete category']);
+    });
+
+    Route::get('add', [ProductsController::class, 'addItem'])->name('add');
+
+    Route::group(['controller' => CitysController::class, 'prefix' => 'citys'], function () {
+        Route::post('', 'store')->middleware(['permission:add city']);
+        Route::get('/{city}', 'show')->middleware(['permission:view city']);
+        Route::put('/{city}', 'update')->middleware(['permission:edit city']);
+        Route::delete('/{city}', 'destroy')->middleware(['permission:delete city']);
+    });
+
+    Route::group(['controller' => CommentsController::class, 'prefix' => 'comments'], function () {
+        Route::get('', 'index')->middleware(['permission:view Comment']);
+        Route::post('', 'store')->middleware(['permission:add Comment']);
+        Route::get('/{Comment}', 'show')->middleware(['permission:view Comment']);
+        Route::put('/{Comment}', 'update')->middleware(['permission:edit Comment']);
+        Route::delete('/{Comment}', 'destroy')->middleware(['permission:delete Comment']);
+    });
+
 });
+
+Route::controller(ProductsController::class)->group(function () {
+    Route::get('/products', 'index');
+    Route::get('/products/{product}', 'show');
+});
+
+// Route::get('filter', [FilterController::class, 'filter']);

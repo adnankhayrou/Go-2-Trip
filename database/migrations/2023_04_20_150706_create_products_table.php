@@ -19,11 +19,9 @@ return new class extends Migration
             $table->string('image');
             $table->text('description');
             $table->float('prix');
-            $table->integer('telephone');
+            $table->string('telephone');
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('citys')->onDelete('cascade');
-            $table->unsignedBigInteger('comment_id')->nullable();
-            $table->foreign('comment_id')->references('id')->on('comments');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('category_id')->nullable();

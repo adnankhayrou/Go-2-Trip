@@ -30,7 +30,7 @@ class StoreProductsRequest extends FormRequest
             'description' => 'required',
             'prix' => 'required',
             'city_id' => 'required',
-            'telephpne' => 'required',
+            'telephone' => 'required',
             'category_id' => 'required',
         ];
        

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Categorys ;
 
 class Products extends Model
 {
@@ -15,8 +16,9 @@ class Products extends Model
         'description',
         'prix',
         'city_id',
-        'telephpne',
+        'telephone',
         'category_id',
+        'user_id',
     ];
 
     public function categorys()
