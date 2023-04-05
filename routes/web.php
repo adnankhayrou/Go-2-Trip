@@ -5,6 +5,8 @@ use App\http\controllers\ProductsController;
 use App\http\controllers\CategorysController;
 use App\http\controllers\CitysController;
 use App\http\controllers\CommentsController;
+use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Landing;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,12 @@ use App\http\controllers\CommentsController;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('landing', function () {
-    return view('landing');
-});
+// Route::get('landing', function () {
+//     return view('landing');
+// });
+
+Route::get('landing', [Landing::class, 'render']);
+Route::get('livewire', [Dashboard::class, 'render']);
 
 
 Route::middleware([
@@ -34,9 +39,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    // Route::get('addItem', function () {
-    //     return view('add');
-    // });
+    // category and city for add products
+    Route::get('add', [ProductsController::class, 'create'])->name('add');
     
     Route::group(['controller' => ProductsController::class, 'prefix' => 'products'], function () {
         Route::get('', 'index')->middleware(['permission:view product']);
@@ -48,12 +52,10 @@ Route::middleware([
 
     Route::group(['controller' => CategorysController::class, 'prefix' => 'categorys'], function () {
         Route::post('', 'store')->middleware(['permission:add category']);
-        Route::get('/{category}', 'show')->middleware(['permission:view category']);
-        Route::put('/{category}', 'update')->middleware(['permission:edit category']);
-        Route::delete('/{category}', 'destroy')->middleware(['permission:delete category']);
+        Route::get('/{category}', 'show')->middleware(['permission:view category'])->name('category.show');
+        Route::put('/{category}', 'update')->middleware(['permission:edit category'])->name('category.update');
+        Route::delete('/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
     });
-
-    Route::get('add', [ProductsController::class, 'addItem'])->name('add');
 
     Route::group(['controller' => CitysController::class, 'prefix' => 'citys'], function () {
         Route::post('', 'store')->middleware(['permission:add city']);

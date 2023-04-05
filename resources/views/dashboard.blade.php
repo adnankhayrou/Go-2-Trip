@@ -98,14 +98,10 @@
                 {{-- all products --}}
                 @endif
                 <div class="row items-center me-0">
-                    @if (Auth()->user()->can('edit All product'))
-                    <h1 class="col fw-bold ms-3 mt-5">All Products</h1>  
-                    @else
                     <h1 class="col fw-bold ms-3 mt-5">Your Products</h1>  
-                    @endif
-                    
                     <button class="col-4 me-3 mt-5 btn btn-dark w-auto" href="" data-bs-toggle="modal"><a href="{{ url('add') }}"><b>+ </b> Add Product</a></button>
-                    </div>
+                </div>
+            
                 <div class="container pt-5 table-responsive">
             
                             <table class="table table-responsive bg-white rounded">
@@ -127,29 +123,29 @@
                                     @php
                                     $count = 1;
                                     @endphp
-                                @foreach ($products as $product)
+                                @foreach ($products as $items)
                                     <tr>
                                     <td>{{$count}}</td>
-                                    <td>{{$product->title}}</td>
-                                    <td><img class="rounded" src="{{asset('/storage/'.$product->image)}}" width="100" height="60"></td>
-                                    <td><span class="d-inline-block text-truncate" style="max-width: 150px;">test</span></td>
-                                    <td>{{$product->nameCity}}</td>
-                                    <td>{{$product->telephone}}</td>
-                                    <td>{{$product->nameCategory}}</td>
-                                    <td>{{$product->created_at->diffForHumans(null, false, false)}}</td>
+                                    <td>{{$items->title}}</td>
+                                    <td><img class="rounded" src="{{asset('/storage/'.$items->image)}}" width="80"></td>
+                                    <td>{{$items->description}}</td>
+                                    <td>{{$items->city->nameCity}}</td>
+                                    <td>{{$items->telephone}}</td>
+                                    <td>{{$items->category->nameCategory}}</td>
+                                    <td>{{$items->created_at->diffForHumans(null, false, false)}}</td>
                                     <td><a href="{{ url('edit') }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                                     <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
                                     </tr>
-                                    
-                                    
+                                
                                     @php
                                     $count ++;
                                     @endphp
                                     @endforeach
                                 </tbody>
                                 </table> 
-                            
                         </div>
+                        {{-- all products table --}}
+                        @livewire('dashboard')  
                         {{-- end of products --}}
     
             {{-- categorys --}}
@@ -193,9 +189,9 @@
                         <tr>
                         <td>{{$count}}</td>
                         <td>{{$category->nameCategory}}</td>
+                        <td>{{$category->created_at->diffForHumans(null, false, false)}}</td>
                         <td><a href="#modal-category" data-bs-toggle="modal" onclick=" showModel('{{$category->nameCategory}}')" class="text-decoration-none text-primary fw-bold">edit</a></td>
                         <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
-                        <td>{{$category->created_at->diffForHumans(null, false, false)}}</td>
                         </tr>
                         @php
                         $count ++;
@@ -246,9 +242,9 @@
                     <tr>
                     <td>{{$count}}</td>
                     <td>{{$city->nameCity}}</td>
+                    <td>{{$city->created_at->diffForHumans(null, false, false)}}</td>
                     <td><a href="#modal-city" data-bs-toggle="modal" onclick=" showModel('{{$city->nameCity}}')" class="text-decoration-none text-primary fw-bold">edit</a></td>
                     <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
-                    <td>{{$city->created_at->diffForHumans(null, false, false)}}</td>
                     </tr>
                     @php
                     $count ++;
@@ -300,8 +296,9 @@
 	<div  class="modal fade" id="modal-category">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="categorys/{{$categorys}}" method="PUT" id="form" enctype="multipart/form-data">
+				<form action="" method="POST" id="form" enctype="multipart/form-data">
                  @csrf
+                 @method('PUT')
 					<div class="modal-header">
 						<h5 class="modal-title fw-bold">Edit item</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -392,5 +389,6 @@
 		</div>
 	</div> --}}
     {{-- end form --}}
+ {{-- @livewireScripts --}}
 <script src="{{ asset('js/script.js') }}"></script>
 </x-app-layout>

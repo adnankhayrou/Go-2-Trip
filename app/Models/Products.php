@@ -21,12 +21,12 @@ class Products extends Model
         'user_id',
     ];
 
-    public function categorys()
+    public function category()
     {
         return $this->belongsTo(Categorys::class);
     }
 
-    public function citys()
+    public function city()
     {
         return $this->belongsTo(Citys::class);
     }

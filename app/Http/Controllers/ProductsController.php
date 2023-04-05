@@ -7,6 +7,9 @@ use App\Models\Categorys;
 use App\Models\Citys;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class ProductsController extends Controller
 {
@@ -15,15 +18,14 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Products $products)
     {
         $categorys = Categorys::all();
         $citys = Citys::all();
-        $products = Products::all();
-        return view('dashboard', compact('products', 'citys', 'categorys'));
+        $products = Products::where('user_id','=',Auth::user()->id)->get();
+        // dd($products);
+        return view('dashboard', ['products' => $products, 'categorys' => $categorys, 'citys' => $citys]);
     }
-
-    
 
     /**
      * Show the form for creating a new resource.
@@ -32,7 +34,9 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        $categorys = Categorys::all();
+        $citys = Citys::all();
+        return view('add',compact('citys', 'categorys'));
     }
 
     /**

@@ -72,8 +72,9 @@ class CategorysController extends Controller
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategorysRequest $request, Categorys $categorys)
+    public function update(UpdateCategorysRequest $request, $id)
     {
+        $categorys = Categorys::find($id);
         $categorys->update($request->all());
 
         return redirect('/dashboard');

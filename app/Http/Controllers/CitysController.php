@@ -20,6 +20,13 @@ class CitysController extends Controller
     //     return view('dashboard',compact('citys', 'categorys'));
     // }
 
+    // public function addItem()
+    // {
+    //     $categorys = Categorys::all();
+    //     $citys = Citys::all();
+    //     return view('add',compact('citys', 'categorys'));
+    // }
+
     /**
      * Show the form for creating a new resource.
      *
