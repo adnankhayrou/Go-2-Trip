@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer 
-class="d-print-none text-center text-lg-start text-white pt-4"
+class="d-print-none text-center text-lg-start text-white pt-3"
 style="background-color: rgb(0, 0, 0);
 overflow-x : hidden ;"
 >
@@ -68,9 +68,6 @@ overflow-x : hidden ;"
   </p>
   <p>
     <span class="text-white">community</span>
-  </p>
-  <p>
-    <span class="text-white">Loyalty peogram </span>
   </p>
 </div>
 

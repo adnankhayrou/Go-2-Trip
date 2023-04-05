@@ -77,6 +77,7 @@ class ProductsController extends Controller
     {
         $products = Products::find($id);
         return view('/edit')->with('products', $products);
+        // return "gala";
     }
 
     /**

@@ -37,7 +37,7 @@
                 <td>{{$item->telephone}}</td>
                 <td>{{$item->category->nameCategory}}</td>
                 <td>{{$item->created_at->diffForHumans(null, false, false)}}</td>
-                <td><a href="{{ url('edit') }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                <td><a href="products/{{$item->id}}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                 <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
                 </tr>
             

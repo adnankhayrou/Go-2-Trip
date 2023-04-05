@@ -11,7 +11,9 @@ class Landing extends Component
    
     use WithPagination;
 
-    public $search = '';
+    public $searchbar = '';
+
+    protected $paginationTheme = 'bootstrap';
  
     public function updatingSearch()
     {
@@ -21,7 +23,7 @@ class Landing extends Component
     public function render()
     {
         return view('livewire.landing',[
-            'product' => Products::where('title', 'like', '%'.$this->search.'%')->paginate(5),
+            'product' => Products::where('title', 'like', '%'.$this->searchbar.'%')->paginate(4),
         ]);
     }
 }

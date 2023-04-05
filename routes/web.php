@@ -45,6 +45,8 @@ Route::middleware([
     Route::group(['controller' => ProductsController::class, 'prefix' => 'products'], function () {
         Route::get('', 'index')->middleware(['permission:view product']);
         Route::post('', 'store')->middleware(['permission:add product']);
+        // Route::get('/edit/{product}', 'edit');
+        Route::get('/{product}', 'edit')->middleware(['permission:edit All product|edit My product'])->name('product.edit');
         Route::put('/{product}', 'update')->middleware(['permission:edit All product|edit My product']);
         Route::delete('/{product}', 'destroy')->middleware(['permission:delete All product|delete My product']);
     });
@@ -74,9 +76,10 @@ Route::middleware([
 
 });
 
-Route::controller(ProductsController::class)->group(function () {
-    Route::get('/products', 'index');
-    Route::get('/products/{product}', 'show');
-});
+
+// Route::controller(ProductsController::class)->group(function () {
+//     Route::get('/products', 'index');
+//     Route::get('/products/{product}', 'show');
+// });
 
 // Route::get('filter', [FilterController::class, 'filter']);
