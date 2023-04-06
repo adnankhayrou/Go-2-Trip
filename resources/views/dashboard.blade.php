@@ -1,41 +1,51 @@
 <x-app-layout>
-    <div class="container-fluid">
+    <div class="container-fluid" id="dashboard">
         <div class="row">
             <div class="col-2 col-md-3 col-lg-2 px-sm-2 px-0 bg-light shadow">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 fixed-top mt-5">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline mb-5"></span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                        <li class="nav-item">
+                        <li class="nav-item mb-4">
                             <a href="#" class="nav-link align-middle px-0 text-dark">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <i class="bi bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                             </a>
                         </li>
                         <hr>
-                        <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                        </li>
-                        <hr>
-                        <li>
+                        <li class="mb-4">
                             <a href="{{ url('landing') }}" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">All Products</span> </a>
+                                <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">All items</span> </a>
                         </li>
                         <hr>
-                        <li>
-                            <a href="#" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                        <li class="mb-4">
+                            <a href="#dashboard" class="nav-link px-0 align-middle text-dark">
+                                <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                        </li>
+                        <hr>
+                        <li class="mb-4">
+                            <a href="#statistics" class="nav-link px-0 align-middle text-dark">
+                                <i class="bi bi-bar-chart"></i> <span class="ms-1 d-none d-sm-inline">Statistics</span></a>
+                        </li>
+                        <hr>
+                        <li class="mb-4">
+                            <a href="#your-products" class="nav-link px-0 align-middle text-dark">
+                                <i class="bi bi-box"></i> <span class="ms-1 d-none d-sm-inline">Your products Tables</span></a>
+                        </li>
+                        <hr>
+                        <li class="mb-4">
+                            <a href="#all-products" class="nav-link px-0 align-middle text-dark">
+                                <i class="bi bi-boxes"></i> <span class="ms-1 d-none d-sm-inline">All Products Table</span> </a>
+                        </li>
+                        <hr>
+                        <li class="mb-4">
+                            <a href="#categorys" class="nav-link px-0 align-middle text-dark">
+                                <i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">Categories Table</span> </a>
+                        </li>
+                        <hr>
+                        <li class="mb-4">
+                            <a href="#citys" class="nav-link px-0 align-middle text-dark">
+                                <i class="bi bi-houses"></i> <span class="ms-1 d-none d-sm-inline">Cities Table</span> </a>
                         </li>
                     </ul>
                     <hr>
@@ -43,20 +53,20 @@
                 </div>
             </div>
 
-            <div class="col-10 col-md-9 col-lg-10 py-2">
+            <div class="col-10 col-md-9 col-lg-10 py-2" >
                     @if (Auth()->user()->can('edit All product'))
                 <div class="container">
                     <!-- Minimal statistics section start -->
                 <div class="row ">
                     <div class="col-12 mt-3 mb-1">
-                    <h4 class="text-uppercase fw-bold">Statistics</h4>
+                    <h4 id="statistics" class="text-uppercase fw-bold">Statistics</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                         <div class="card row">
                             <div class="text-center">
-                                <i class="bi bi-list-ul"></i>
+                                <i class="bi bi-people"></i>
                                 <h3>{{count($products)}}{{count($user)}}</h3>
                                 <p>Users</p>
                             </div>
@@ -65,7 +75,7 @@
                     <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                         <div class="card row">
                             <div class="text-center">
-                                <i class="bi bi-list-ul"></i>
+                                <i class="bi bi-houses"></i>
                                 <h3>{{count($products)}}{{count($citys)}}</h3>
                                 <p>Cities</p>
                             </div>
@@ -74,7 +84,7 @@
                     <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                         <div class="card row">
                             <div class="text-center">
-                                <i class="bi bi-list-ul"></i>
+                                <i class="bi bi-bookmarks"></i>
                                 <h3>{{count($products)}}{{count($categorys)}}</h3>
                                 <p>Catecories</p>
                             </div>
@@ -83,7 +93,7 @@
                     <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                         <div class="card row">
                             <div class="text-center">
-                                <i class="bi bi-list-ul"></i>
+                                <i class="bi bi-chat-left-dots"></i>
                                 <h3>{{count($comments)}}</h3>
                                 <p>Comments</p>
                             </div>
@@ -92,7 +102,7 @@
                     <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                         <div class="card row">
                             <div class="text-center">
-                                <i class="bi bi-list-ul"></i>
+                                <i class="bi bi-boxes"></i>
                                 <h3>{{count($allProducts)}}</h3>
                                 <p>All Prducts</p>
                             </div>
@@ -101,7 +111,7 @@
                     <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
                         <div class="card row">
                             <div class="text-center">
-                                <i class="bi bi-list-ul"></i>
+                                <i class="bi bi-box"></i>
                                 <h3>{{count($products)}}</h3>
                                 <p>Your Products</p>
                             </div>
@@ -116,7 +126,7 @@
                 {{-- all products --}}
                 @endif
                 <div class="row items-center me-0">
-                    <h1 class="col fw-bold ms-3 mt-5">Your Products</h1>  
+                    <h1 id="your-products" class="col fw-bold ms-3 mt-5">Your Products</h1>  
                     <button class="col-4 me-3 mt-5 btn btn-dark w-auto" href="" data-bs-toggle="modal"><a href="{{ url('add') }}"><b>+ </b> Add Product</a></button>
                 </div>
             
@@ -173,7 +183,7 @@
             @if (Auth()->user()->can('edit All product'))
             <div class="row items-center me-0">
                 
-                <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Categories</h1>  
+                <h1 id="categorys" class="col-4 col-xl-8 fw-bold ms-3 mt-5">Categories</h1>  
             
                 <form class="col" action="categorys" method="POST" id="" data-parsley-validate>
                     @csrf
@@ -227,7 +237,7 @@
             {{-- citys --}}
             @if (Auth()->user()->can('edit All product'))
             <div class="row items-center me-0">
-            <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Cities</h1>  
+            <h1 id="citys" class="col-4 col-xl-8 fw-bold ms-3 mt-5">Cities</h1>  
                 
             <form class="col" action="citys" method="POST" id="" data-parsley-validate>
                 @csrf

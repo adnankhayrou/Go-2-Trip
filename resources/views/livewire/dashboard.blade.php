@@ -1,7 +1,7 @@
 <div>
     @if (Auth()->user()->can('edit All product'))
     <div class="row items-center me-0">
-        <h1 class="col fw-bold ms-3 mt-5">All Products</h1>  
+        <h1 id="all-products" class="col fw-bold ms-3 mt-5">All Products</h1>  
         <!-- Search form -->
         <input class="form-control col-4 me-2 mt-5 w-auto rounded border shadow" wire:model="search" placeholder="Search" >    
     </div>
