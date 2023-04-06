@@ -80,9 +80,13 @@ class CitysController extends Controller
      * @param  \App\Models\Citys  $citys
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCitysRequest $request, Citys $citys)
+    public function update(UpdateCitysRequest $request)
     {
-        $citys->update($request->all());
+        $data = [
+            'id' => $request->input('id'),
+            'nameCity' => $request->input('nameCity'),
+        ];
+        Citys::where('id', $request->id)->update($data);
         return redirect('/dashboard');
     }
 

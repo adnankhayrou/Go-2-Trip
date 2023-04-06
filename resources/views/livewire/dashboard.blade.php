@@ -3,7 +3,7 @@
     <div class="row items-center me-0">
         <h1 class="col fw-bold ms-3 mt-5">All Products</h1>  
         <!-- Search form -->
-        <input class="form-control col-4 me-2 mt-5 w-auto rounded border" wire:model="search" placeholder="Search" >    
+        <input class="form-control col-4 me-2 mt-5 w-auto rounded border shadow" wire:model="search" placeholder="Search" >    
     </div>
     {{-- Do your work, then step back. --}}
     <div class="container pt-3 table-responsive">
@@ -11,7 +11,7 @@
         <table class="table table-responsive bg-white rounded">
             <thead>
                 <tr>
-                <th scope="col">#</th>
+                <th scope="col">#{{count($products)}}</th>
                 <th scope="col">Name</th>
                 <th scope="col">Image</th>
                 <th scope="col">Descriptio</th>
@@ -37,8 +37,8 @@
                 <td>{{$item->telephone}}</td>
                 <td>{{$item->category->nameCategory}}</td>
                 <td>{{$item->created_at->diffForHumans(null, false, false)}}</td>
-                <td><a href="products/{{$item->id}}" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                <td><a href="{{ route('product.edit', $item->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                <td><a href="{{ route('product.destroy', $item->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
                 </tr>
             
                 @php

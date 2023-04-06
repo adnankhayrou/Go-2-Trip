@@ -7,6 +7,8 @@ use App\Models\Categorys;
 use App\Models\Citys;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
+use App\Models\Comments;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -22,8 +24,11 @@ class ProductsController extends Controller
     {
         $categorys = Categorys::all();
         $citys = Citys::all();
+        $comments = Comments::all();
         $products = Products::where('user_id','=',Auth::user()->id)->get();
-        return view('dashboard', ['products' => $products, 'categorys' => $categorys, 'citys' => $citys]);
+        $allProducts = Products::all();
+        $user = User::all();
+        return view('dashboard', ['products' => $products, 'categorys' => $categorys, 'citys' => $citys, 'comments' => $comments, 'allProducts' => $allProducts, 'user' => $user]);
     }
 
     /**

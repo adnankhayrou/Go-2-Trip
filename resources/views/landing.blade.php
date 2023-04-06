@@ -72,7 +72,6 @@
         <div class="col py-3">
           content
           @livewire('landing')
-          
 
 
 

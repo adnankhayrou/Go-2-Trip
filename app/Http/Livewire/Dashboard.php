@@ -21,6 +21,7 @@ class Dashboard extends Component
     {
         return view('livewire.dashboard',[
             'product' => Products::where('title', 'like', '%'.$this->search.'%')->paginate(5),
+            'products' => Products::all(),
         ]);
     }
 

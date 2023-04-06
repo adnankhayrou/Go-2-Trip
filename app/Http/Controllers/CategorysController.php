@@ -72,11 +72,13 @@ class CategorysController extends Controller
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategorysRequest $request, $id)
+    public function update(UpdateCategorysRequest $request)
     {
-        $categorys = Categorys::find($id);
-        $categorys->update($request->all());
-
+        $data = [
+            'id' => $request->input('id'),
+            'nameCategory' => $request->input('nameCategory'),
+        ];
+        Categorys::where('id', $request->id)->update($data);
         return redirect('/dashboard');
     }
 

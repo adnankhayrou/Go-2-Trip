@@ -26,11 +26,11 @@ use App\Http\Livewire\Landing;
 Route::get('/', function () {
     return view('home');
 });
-// Route::get('landing', function () {
-//     return view('landing');
-// });
+Route::get('landing', function () {
+    return view('landing');
+});
 
-Route::get('landing', [Landing::class, 'render']);
+// Route::get('landing', [Landing::class, 'render']);
 Route::get('livewire', [Dashboard::class, 'render']);
 
 
@@ -58,14 +58,14 @@ Route::middleware([
     Route::group(['controller' => CategorysController::class, 'prefix' => 'categorys'], function () {
         Route::post('', 'store')->middleware(['permission:add category']);
         Route::get('/{category}', 'show')->middleware(['permission:view category'])->name('category.show');
-        Route::put('/{category}', 'update')->middleware(['permission:edit category'])->name('category.update');
+        Route::put('/update', 'update')->middleware(['permission:edit category'])->name('category.update');
         Route::get('/delete/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
     });
 
     Route::group(['controller' => CitysController::class, 'prefix' => 'citys'], function () {
         Route::post('', 'store')->middleware(['permission:add city']);
         Route::get('/{city}', 'show')->middleware(['permission:view city'])->name('city.show');
-        Route::put('/{city}', 'update')->middleware(['permission:edit city'])->name('city.update');
+        Route::put('/update', 'update')->middleware(['permission:edit city'])->name('city.update');
         Route::get('/delete/{city}', 'destroy')->middleware(['permission:delete city'])->name('city.destroy');
     });
 
@@ -73,7 +73,7 @@ Route::middleware([
         Route::get('', 'index')->middleware(['permission:view Comment']);
         Route::post('', 'store')->middleware(['permission:add Comment']);
         Route::get('/{Comment}', 'show')->middleware(['permission:view Comment'])->name('comment.show');
-        Route::put('/{Comment}', 'update')->middleware(['permission:edit Comment'])->name('comment.update');
+        Route::put('/update', 'update')->middleware(['permission:edit Comment'])->name('comment.update');
         Route::get('/delete/{Comment}', 'destroy')->middleware(['permission:delete Comment'])->name('comment.destroy');
     });
 

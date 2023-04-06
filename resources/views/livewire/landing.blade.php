@@ -39,7 +39,7 @@
         
 
             <div class="container items-center">
-                <input class="mx-auto form-control form-control-borderless me-1 w-50" wire:model="searchbar" type="search" placeholder="Search here">
+                <input class="mx-auto form-control form-control-borderless shadow me-1 mb-2" wire:model="searchbar" type="search" placeholder="Search here" style="width: 48.3%">
             </div>
 
             {{-- <div class="col mt-2">
@@ -59,7 +59,7 @@
                    <p class="card-text text-success"><i class="bi bi-phone"></i> : {{$item->telephone}}</p>
                    <hr class="my-1" />
                    <p class="fw-bold text-light">Available on : </p>
-                   <p class="text-light"><span class="fw-bold text-light">Time : </span>{{$item->created_at->diffForHumans(null, false, false)}}</p>
+                   <p class="text-light"><span class="fw-bold text-light">Listed : </span>{{$item->created_at->diffForHumans(null, false, false)}}</p>
                  </div>    
                </div>
              </div>

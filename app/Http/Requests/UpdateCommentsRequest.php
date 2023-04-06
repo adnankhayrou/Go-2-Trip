@@ -24,6 +24,7 @@ class UpdateCommentsRequest extends FormRequest
     public function rules()
     {
         return [
+            'id',
             'nameComment' => 'required|max:30'
         ];
     }

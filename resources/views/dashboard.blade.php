@@ -49,7 +49,7 @@
                     <!-- Minimal statistics section start -->
                 <div class="row ">
                     <div class="col-12 mt-3 mb-1">
-                    <h4 class="text-uppercase">Statistics</h4>
+                    <h4 class="text-uppercase fw-bold">Statistics</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -57,7 +57,34 @@
                         <div class="card row">
                             <div class="text-center">
                                 <i class="bi bi-list-ul"></i>
-                                <h3>156</h3>
+                                <h3>{{count($products)}}{{count($user)}}</h3>
+                                <p>Users</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row">
+                            <div class="text-center">
+                                <i class="bi bi-list-ul"></i>
+                                <h3>{{count($products)}}{{count($citys)}}</h3>
+                                <p>Cities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row">
+                            <div class="text-center">
+                                <i class="bi bi-list-ul"></i>
+                                <h3>{{count($products)}}{{count($categorys)}}</h3>
+                                <p>Catecories</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row">
+                            <div class="text-center">
+                                <i class="bi bi-list-ul"></i>
+                                <h3>{{count($comments)}}</h3>
                                 <p>Comments</p>
                             </div>
                         </div>
@@ -66,8 +93,8 @@
                         <div class="card row">
                             <div class="text-center">
                                 <i class="bi bi-list-ul"></i>
-                                <h3>156</h3>
-                                <p>Comments</p>
+                                <h3>{{count($allProducts)}}</h3>
+                                <p>All Prducts</p>
                             </div>
                         </div>
                     </div>
@@ -75,17 +102,8 @@
                         <div class="card row">
                             <div class="text-center">
                                 <i class="bi bi-list-ul"></i>
-                                <h3>156</h3>
-                                <p>Comments</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
-                        <div class="card row">
-                            <div class="text-center">
-                                <i class="bi bi-list-ul"></i>
-                                <h3>156</h3>
-                                <p>Comments</p>
+                                <h3>{{count($products)}}</h3>
+                                <p>Your Products</p>
                             </div>
                         </div>
                     </div>
@@ -105,14 +123,18 @@
                 <div class="container pt-5 table-responsive">
             
                             <table class="table table-responsive bg-white rounded">
+                                    @php
+                                    $count = 1;
+                                    @endphp
                                 <thead>
                                     <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">#{{count($products)}}</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Descriptio</th>
                                     <th scope="col">City</th>
                                     <th scope="col">telephone</th>
+                                    <th scope="col">price</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Time</th>
                                     <th scope="col">Edit</th>
@@ -120,9 +142,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                    $count = 1;
-                                    @endphp
                                 @foreach ($products as $items)
                                     <tr>
                                     <td>{{$count}}</td>
@@ -131,10 +150,11 @@
                                     <td>{{$items->description}}</td>
                                     <td>{{$items->city->nameCity}}</td>
                                     <td>{{$items->telephone}}</td>
+                                    <td>{{$items->prix}}{{$items->prix < 100 ? '.00dh' : 'dh'}}</td>
                                     <td>{{$items->category->nameCategory}}</td>
                                     <td>{{$items->created_at->diffForHumans(null, false, false)}}</td>
                                     <td><a href="{{ route('product.edit', $items->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                                    <td><a href="{{ route('product.destroy', $items->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                                    <td><a href="{{ route('product.destroy', $items->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                                     </tr>
                                 
                                     @php
@@ -153,7 +173,7 @@
             @if (Auth()->user()->can('edit All product'))
             <div class="row items-center me-0">
                 
-                <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Categorys</h1>  
+                <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Categories</h1>  
             
                 <form class="col" action="categorys" method="POST" id="" data-parsley-validate>
                     @csrf
@@ -174,11 +194,11 @@
                 <table class="table table-responsive bg-white rounded items-center">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">#{{count($categorys)}}</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Time</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
-                        <th scope="col">Time</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -190,8 +210,8 @@
                         <td>{{$count}}</td>
                         <td>{{$category->nameCategory}}</td>
                         <td>{{$category->created_at->diffForHumans(null, false, false)}}</td>
-                        <td><a href="#modal-category" data-bs-toggle="modal" onclick=" showModel('{{$category->nameCategory}}')" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                        <td><a href="{{ route('category.destroy', $category->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                        <td><a href="#modal-category" data-bs-toggle="modal" onclick="showModel('{{$category->nameCategory}}', {{$category->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                        <td><a href="{{ route('category.destroy', $category->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                         </tr>
                         @php
                         $count ++;
@@ -207,7 +227,7 @@
             {{-- citys --}}
             @if (Auth()->user()->can('edit All product'))
             <div class="row items-center me-0">
-            <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Citys</h1>  
+            <h1 class="col-4 col-xl-8 fw-bold ms-3 mt-5">Cities</h1>  
                 
             <form class="col" action="citys" method="POST" id="" data-parsley-validate>
                 @csrf
@@ -225,26 +245,26 @@
         <div class="container pt-3 table-responsive">
         
             <table class="table table-responsive bg-white rounded">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Time</th>
-                    </tr>
-                </thead>
-                <tbody>
                     @php
                     $count = 1;
                     @endphp
+                <thead>
+                    <tr>
+                    <th scope="col">#{{count($citys)}}</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
                 @foreach ($citys as $city)
                     <tr>
                     <td>{{$count}}</td>
                     <td>{{$city->nameCity}}</td>
                     <td>{{$city->created_at->diffForHumans(null, false, false)}}</td>
-                    <td><a href="#modal-city" data-bs-toggle="modal" onclick=" showModel('{{$city->nameCity}}')" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                    <td><a href="{{ route('city.destroy', $city->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                    <td><a href="#modal-city" data-bs-toggle="modal" onclick=" showModel('{{$city->nameCity}}', {{$city->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                    <td><a href="{{ route('city.destroy', $city->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                     </tr>
                     @php
                     $count ++;
@@ -264,14 +284,15 @@
 	<div  class="modal fade" id="modal-city">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="citys/{{$citys}}" method="PUT" id="form" enctype="multipart/form-data">
+				<form action="{{ route('city.update') }}" method="post" id="form" enctype="multipart/form-data">
                  @csrf
+                 @method('PUT')
 					<div class="modal-header">
 						<h5 class="modal-title fw-bold">Edit City</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
 					</div>
 					<div class="modal-body">
-                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="id" id="cityId" value="">
 							<div class="mb-3">
 								<label class="form-label">City</label>
 								<input type="text" name="nameCity" class="form-control rounded" id="city" value=""/>
@@ -297,7 +318,7 @@
 	<div  class="modal fade" id="modal-category">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="" method="POST" id="form" enctype="multipart/form-data">
+				<form action="{{ route('category.update') }}" method="POST" id="form" enctype="multipart/form-data">
                  @csrf
                  @method('PUT')
 					<div class="modal-header">
@@ -306,7 +327,7 @@
 					</div>
 					<div class="modal-body">
 			
-							<input type="hidden" name="id" value="">
+							<input type="hidden" name="id" id="categoryId" value="">
 							<div class="mb-3">
 								<label class="form-label">Category</label>
 								<input type="text" name="nameCategory" class="form-control rounded" id="category"/>
