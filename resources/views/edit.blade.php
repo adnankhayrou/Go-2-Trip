@@ -1,12 +1,13 @@
 <x-app-layout>
     <div class="container items-center">
-        <h1 class="col fw-bold mt-3 mb-2 text-center fs-2">Add Your item</h1>
+        <h1 class="col fw-bold mt-3 mb-2 text-center fs-2">Edit Your item</h1>
         </div>
     <!-- edit meal form -->
     <div class="container pt-3 w-75 bg-white rounded">
-        <form action="{{ route('product.update', $products) }}" method="POST" id="form" class=" pb-2" enctype="multipart/form-data">
-            @csrf
-            {{-- @method('PUT')  --}}
+        <form action="{{ route('product.update',$products) }}" method="POST" id="form" class=" pb-2" enctype="multipart/form-data">
+
+            {{ csrf_field() }}
+            @method('PUT') 
             <div class=" row modal-body">
             <div class="col-12 mb-3">
                 <label class="form-label">Name</label>
@@ -16,12 +17,13 @@
                     {{ $message }}
                 @enderror</small>
             </div>
-
-            <img class="rounded" src="{{asset('/storage/'.$products->image)}}" width="20" height="10">
+            <div class="rounded">
+                <img class="rounded" src="{{asset('/storage/'.$products->image)}}" style="width: 7em;">
+            </div>
 
            <div class="col-12 mb-5">
              <label for="image" class="col-form-label" id="image">Image</label>
-             <input type="file" class="form-control border rounded" id="images" name="image" >
+             <input type="file" class="form-control border rounded" id="images" name="image" value="{{$products->image}}">
              <small class="text-danger">
                 @error('image')
                 {{ $message }}
@@ -32,7 +34,7 @@
             <select class="form-select rounded border" name="city_id" aria-label="Default select example">
                 <option selected>select your city</option>
                 @foreach ($citys as $city)
-                <option value="{{$city->id}}">{{$city->nameCity}}</option>
+                <option value="{{$city->id}}" {{$products->city_id == $city->id ? 'selected' : ''}}>{{$city->nameCity}}</option>
                 @endforeach
               </select>
             <small class="text-danger">
@@ -45,7 +47,7 @@
             <select class="form-select rounded border" name="category_id" aria-label="Default select example">
                 <option selected>select your category</option>
                 @foreach ($categorys as $category)
-                <option value="{{$category->id}}">{{$category->nameCategory}}</option>
+                <option value="{{$category->id}}" {{$products->category_id == $category->id ? 'selected' : ''}}>{{$category->nameCategory}}</option>
                 @endforeach
               </select>
             <small class="text-danger">

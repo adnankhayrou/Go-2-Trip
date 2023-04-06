@@ -8,6 +8,10 @@ use App\http\controllers\CommentsController;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Landing;
 
+
+// Route::put('/products/{products}', [ProductsController::class, 'update']);
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,8 +50,8 @@ Route::middleware([
         Route::get('', 'index')->middleware(['permission:view product']);
         Route::post('', 'store')->middleware(['permission:add product']);
         Route::get('/{product}', 'edit')->middleware(['permission:edit All product|edit My product'])->name('product.edit');
-        Route::put('/{product}', 'update')->middleware(['permission:edit All product|edit My product'])->name('product.update');
-        Route::delete('/{product}', 'destroy')->middleware(['permission:delete All product|delete My product'])->name('product.destroy');
+        Route::put('/update/{product}', 'update')->middleware(['permission:edit All product|edit My product'])->name('product.update');
+        Route::get('/delete/{product}', 'destroy')->middleware(['permission:delete All product|delete My product'])->name('product.destroy');
     });
     Route::get('dashboard', [ProductsController::class, 'index'])->name('dashboard');
 
@@ -55,22 +59,22 @@ Route::middleware([
         Route::post('', 'store')->middleware(['permission:add category']);
         Route::get('/{category}', 'show')->middleware(['permission:view category'])->name('category.show');
         Route::put('/{category}', 'update')->middleware(['permission:edit category'])->name('category.update');
-        Route::delete('/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
+        Route::get('/delete/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
     });
 
     Route::group(['controller' => CitysController::class, 'prefix' => 'citys'], function () {
         Route::post('', 'store')->middleware(['permission:add city']);
-        Route::get('/{city}', 'show')->middleware(['permission:view city']);
-        Route::put('/{city}', 'update')->middleware(['permission:edit city']);
-        Route::delete('/{city}', 'destroy')->middleware(['permission:delete city']);
+        Route::get('/{city}', 'show')->middleware(['permission:view city'])->name('city.show');
+        Route::put('/{city}', 'update')->middleware(['permission:edit city'])->name('city.update');
+        Route::get('/delete/{city}', 'destroy')->middleware(['permission:delete city'])->name('city.destroy');
     });
 
     Route::group(['controller' => CommentsController::class, 'prefix' => 'comments'], function () {
         Route::get('', 'index')->middleware(['permission:view Comment']);
         Route::post('', 'store')->middleware(['permission:add Comment']);
-        Route::get('/{Comment}', 'show')->middleware(['permission:view Comment']);
-        Route::put('/{Comment}', 'update')->middleware(['permission:edit Comment']);
-        Route::delete('/{Comment}', 'destroy')->middleware(['permission:delete Comment']);
+        Route::get('/{Comment}', 'show')->middleware(['permission:view Comment'])->name('comment.show');
+        Route::put('/{Comment}', 'update')->middleware(['permission:edit Comment'])->name('comment.update');
+        Route::get('/delete/{Comment}', 'destroy')->middleware(['permission:delete Comment'])->name('comment.destroy');
     });
 
 });

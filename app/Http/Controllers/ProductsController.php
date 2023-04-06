@@ -23,7 +23,6 @@ class ProductsController extends Controller
         $categorys = Categorys::all();
         $citys = Citys::all();
         $products = Products::where('user_id','=',Auth::user()->id)->get();
-        // dd($products);
         return view('dashboard', ['products' => $products, 'categorys' => $categorys, 'citys' => $citys]);
     }
 
@@ -78,7 +77,6 @@ class ProductsController extends Controller
         $categorys = Categorys::all();
         $citys = Citys::all();
         $products = Products::find($id);
-        // dd($products);
         return view('/edit', ['products' => $products, 'categorys' => $categorys, 'citys' => $citys]);
         
     }
@@ -90,15 +88,48 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductsRequest $request, Products $products)
+    public function update(UpdateProductsRequest $request, $id)
     {
        
         // $data = $request->all();
-        // $data['image'] = $request->file('image') ? $request->file('image')->store('image','public') : $data['image'];
+        // $data['image'] = $request->file('image') ? $request->file('image')->store('image','public') : $products->image;
         // $products->update($data);
-
         // return redirect('/dashboard');
-        return "dd";
+
+        // $products->title = $request->title;
+        // $products->image = $request->file('image') ? $request->file('image')->store('image','public') : $products->image;
+        // $products->description = $request->description;
+        // $products->prix = $request->prix;
+        // $products->city_id = $request->city_id;
+        // $products->telephone = $request->telephone;
+        // $products->category_id = $request->category_id;
+        // $products->save();
+
+        // return redirect('dashboard');
+
+        $data = [
+            'title' => $request->input('title'),
+            'image' => $request->file('image') ? $request->file('image')->store('image','public') :  $request->image,
+            'description' => $request->input('description'),
+            'prix' => $request->input('prix'),
+            'city_id' => $request->input('city_id'),
+            'telephone' => $request->input('telephone'),
+            'category_id' => $request->input('category_id'),
+        ];
+        Products::where('id', $id)->update($data);
+        return redirect('/dashboard');
+
+
+        // $products->title = $request->title;
+        // $products->image = $request->file('image') ? $request->file('image')->store('image','public') : $products->image;
+        // $products->description = $request->description;
+        // $products->prix = $request->prix;
+        // $products->city_id = $request->city_id;
+        // $products->telephone = $request->telephone;
+        // $products->category_id = $request->category_id;
+
+        // Products::where('id', $products->id)->update();
+        // return redirect('/dashboard');
 
     }
 
@@ -108,17 +139,11 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy($id)
     {
-        // $user = Auth()->user();
-        // if (!$user->can('delete All product')  && $user->id != $products->user_id) {
-        //     return response([
-        //         'status' => false,
-        //         'message' => "You don't have permission to delete this product!",
-        //     ], 200);
-        // }else 
-        $products->delete();
-
+        $product = Products::find($id);
+        $product->delete();
         return redirect('/dashboard');
+        
     }
 }

@@ -92,8 +92,10 @@ class CitysController extends Controller
      * @param  \App\Models\Citys  $citys
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Citys $citys)
+    public function destroy($id)
     {
-        $citys->delete();
+        $city = Citys::find($id);
+        $city->delete();
+        return redirect('/dashboard');
     }
 }

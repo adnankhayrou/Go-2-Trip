@@ -24,13 +24,13 @@ class UpdateProductsRequest extends FormRequest
     public function rules()
     {
         return [
-
+            
             'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:11000',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:11000',
             'description' => 'required',
             'prix' => 'required',
             'city_id' => 'required',
-            'telephpne' => 'required',
+            'telephone' => 'required',
             'category_id' => 'required',
         ];
     }

@@ -134,7 +134,7 @@
                                     <td>{{$items->category->nameCategory}}</td>
                                     <td>{{$items->created_at->diffForHumans(null, false, false)}}</td>
                                     <td><a href="{{ route('product.edit', $items->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                                    <td><a href="{{ route('product.destroy', $items) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                                    <td><a href="{{ route('product.destroy', $items->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
                                     </tr>
                                 
                                     @php
@@ -191,7 +191,7 @@
                         <td>{{$category->nameCategory}}</td>
                         <td>{{$category->created_at->diffForHumans(null, false, false)}}</td>
                         <td><a href="#modal-category" data-bs-toggle="modal" onclick=" showModel('{{$category->nameCategory}}')" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                        <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                        <td><a href="{{ route('category.destroy', $category->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
                         </tr>
                         @php
                         $count ++;
@@ -244,7 +244,7 @@
                     <td>{{$city->nameCity}}</td>
                     <td>{{$city->created_at->diffForHumans(null, false, false)}}</td>
                     <td><a href="#modal-city" data-bs-toggle="modal" onclick=" showModel('{{$city->nameCity}}')" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                    <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                    <td><a href="{{ route('city.destroy', $city->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
                     </tr>
                     @php
                     $count ++;
@@ -267,10 +267,11 @@
 				<form action="citys/{{$citys}}" method="PUT" id="form" enctype="multipart/form-data">
                  @csrf
 					<div class="modal-header">
-						<h5 class="modal-title fw-bold">Edit item</h5>
+						<h5 class="modal-title fw-bold">Edit City</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
 					</div>
 					<div class="modal-body">
+                        <input type="hidden" name="id" value="">
 							<div class="mb-3">
 								<label class="form-label">City</label>
 								<input type="text" name="nameCity" class="form-control rounded" id="city" value=""/>
@@ -300,12 +301,12 @@
                  @csrf
                  @method('PUT')
 					<div class="modal-header">
-						<h5 class="modal-title fw-bold">Edit item</h5>
+						<h5 class="modal-title fw-bold">Edit Category</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
 					</div>
 					<div class="modal-body">
 			
-							<input type="hidden" name="id" >
+							<input type="hidden" name="id" value="">
 							<div class="mb-3">
 								<label class="form-label">Category</label>
 								<input type="text" name="nameCategory" class="form-control rounded" id="category"/>
