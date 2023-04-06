@@ -45,10 +45,9 @@ Route::middleware([
     Route::group(['controller' => ProductsController::class, 'prefix' => 'products'], function () {
         Route::get('', 'index')->middleware(['permission:view product']);
         Route::post('', 'store')->middleware(['permission:add product']);
-        // Route::get('/edit/{product}', 'edit');
         Route::get('/{product}', 'edit')->middleware(['permission:edit All product|edit My product'])->name('product.edit');
-        Route::put('/{product}', 'update')->middleware(['permission:edit All product|edit My product']);
-        Route::delete('/{product}', 'destroy')->middleware(['permission:delete All product|delete My product']);
+        Route::put('/{product}', 'update')->middleware(['permission:edit All product|edit My product'])->name('product.update');
+        Route::delete('/{product}', 'destroy')->middleware(['permission:delete All product|delete My product'])->name('product.destroy');
     });
     Route::get('dashboard', [ProductsController::class, 'index'])->name('dashboard');
 

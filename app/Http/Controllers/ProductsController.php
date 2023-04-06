@@ -75,9 +75,12 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
+        $categorys = Categorys::all();
+        $citys = Citys::all();
         $products = Products::find($id);
-        return view('/edit')->with('products', $products);
-        // return "gala";
+        // dd($products);
+        return view('/edit', ['products' => $products, 'categorys' => $categorys, 'citys' => $citys]);
+        
     }
 
     /**
@@ -89,15 +92,13 @@ class ProductsController extends Controller
      */
     public function update(UpdateProductsRequest $request, Products $products)
     {
-        $user = Auth()->user();
-        if (!$user->can('edit All product')  && $user->id != $products->user_id) {
-            return response([
-                'status' => false,
-                'message' => "You don't have permission to edit this product!",
-            ], 200);
-        }else $products->update($request->all());
+       
+        // $data = $request->all();
+        // $data['image'] = $request->file('image') ? $request->file('image')->store('image','public') : $data['image'];
+        // $products->update($data);
 
-        return redirect('/dashboard');
+        // return redirect('/dashboard');
+        return "dd";
 
     }
 
@@ -109,13 +110,14 @@ class ProductsController extends Controller
      */
     public function destroy(Products $products)
     {
-        $user = Auth()->user();
-        if (!$user->can('delete All product')  && $user->id != $products->user_id) {
-            return response([
-                'status' => false,
-                'message' => "You don't have permission to delete this product!",
-            ], 200);
-        }else $products->delete();
+        // $user = Auth()->user();
+        // if (!$user->can('delete All product')  && $user->id != $products->user_id) {
+        //     return response([
+        //         'status' => false,
+        //         'message' => "You don't have permission to delete this product!",
+        //     ], 200);
+        // }else 
+        $products->delete();
 
         return redirect('/dashboard');
     }

@@ -134,7 +134,7 @@
                                     <td>{{$items->category->nameCategory}}</td>
                                     <td>{{$items->created_at->diffForHumans(null, false, false)}}</td>
                                     <td><a href="{{ route('product.edit', $items->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                                    <td><a href="" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                                    <td><a href="{{ route('product.destroy', $items) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
                                     </tr>
                                 
                                     @php
