@@ -23,14 +23,14 @@
 
            <div class="col-12 mb-5">
              <label for="image" class="col-form-label" id="image">Image</label>
-             <input type="file" class="form-control border rounded" id="images" name="image" >
+             <input type="file" class="form-control border rounded" id="images" name="image" accept="image/jpeg, image/png, image/jpg">
              <small class="text-danger">
                 @error('image')
                 {{ $message }}
             @enderror</small>
            </div>
 
-           <div class="col-6 mb-3">
+           {{-- <div class="col-6 mb-3">
             <select class="form-select rounded border" name="city_id" aria-label="Default select example">
                 <option selected>select your city</option>
                 @foreach ($citys as $city)
@@ -41,7 +41,7 @@
                 @error('city_id')
                 {{ $message }}
             @enderror</small>
-        </div>
+        </div> --}}
 
         <div class="col-6 mb-3">
             <select class="form-select rounded border" name="category_id" aria-label="Default select example">
@@ -52,6 +52,19 @@
               </select>
             <small class="text-danger">
                 @error('category_id')
+                {{ $message }}
+            @enderror</small>
+        </div>
+
+        <div class="col-xl-6 col-md-6 col-12 mb-3">
+            <select class="selectpicker rounded border" name="city_id" data-live-search="true">
+                <option selected>select your city</option>
+                @foreach ($citys as $city)
+                <option value="{{$city->id}}">{{$city->nameCity}}</option>
+                @endforeach 
+            </select>
+            <small class="text-danger">
+                @error('city_id')
                 {{ $message }}
             @enderror</small>
         </div>
@@ -92,6 +105,11 @@
 
            </div>
         </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>       
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 	
 </x-app-layout>

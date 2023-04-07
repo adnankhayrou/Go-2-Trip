@@ -49,17 +49,31 @@
         
            <div class="row mx-auto">
            @foreach ($product as $item)
-           {{-- @for($i=0;$i<8;$i++) --}}
-             <div class="col-md-6 col-lg-3 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-                 <div class="card border-dark bg-dark  shadow-lg  rounded">
+             <div class="col-md-6 col-lg-3 p-2 col-12">
+                 <div class="card border bg-white shadow-lg rounded">
                    <img src="{{asset('/storage/'.$item->image)}}" class="card-img-top" with="100"  height="100">
-                 <div class="card-body text-center">
-                   <h5 class="card-title fw-bold text-light">{{$item->title}}</h5>
-                   <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : {{$item->city->nameCity}}</p>
-                   <p class="card-text text-success"><i class="bi bi-phone"></i> : {{$item->telephone}}</p>
+                 <div class="card-body ">
+
+                   <h5 class="card-title fw-bold text-black text-truncate">{{$item->title}}</h5>
                    <hr class="my-1" />
-                   <p class="fw-bold text-light">Available on : </p>
-                   <p class="text-light"><span class="fw-bold text-light">Listed : </span>{{$item->created_at->diffForHumans(null, false, false)}}</p>
+
+                  <div class="row text-light items-start mt-2">
+                    <div class="col">
+                     <p class="mb-2 items-center text-black text-center" ><i class="bi bi-geo-alt text-black"></i><br>{{$item->city->nameCity}}</p>
+                    </div>
+                    <div class="col">
+                     <p class="text-dark items-center text-center text-truncate"><i class="bi bi-clock-history text-black"></i><br>{{$item->created_at->diffForHumans(null, false, false)}}</p>
+                   </div>
+                 </div>
+
+                 <div class="text-center">
+                   <p class="card-text text-success"><i class="bi bi-phone"></i><br>{{$item->telephone}}</p>
+                 </div>
+                   
+                   <div class="text-center mt-3">
+                    <a href="#" class="btn btn-dark">See Details</a>
+                  </div>
+
                  </div>    
                </div>
              </div>
@@ -71,7 +85,6 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div> --}}
-            {{-- @endfor --}}
            @endforeach
          </div> 
          <div class="container text-dark">

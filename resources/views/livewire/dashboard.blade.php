@@ -36,7 +36,7 @@
                 <td>{{$item->city->nameCity}}</td>
                 <td>{{$item->telephone}}</td>
                 <td>{{$item->category->nameCategory}}</td>
-                <td>{{$item->created_at->diffForHumans(null, false, false)}}</td>
+                <td><i class="bi bi-clock-history"></i> {{$item->created_at->diffForHumans(null, false, false)}}</td>
                 <td><a href="{{ route('product.edit', $item->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                 <td><a href="{{ route('product.destroy', $item->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
                 </tr>
@@ -47,8 +47,8 @@
                 @endforeach
             </tbody>
             </table> 
-            {{$product->links()}}
-    </div>
+        </div>
+        {{$product->links()}}
     {{-- end of products --}}
     @endif
     @livewireScripts

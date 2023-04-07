@@ -2,7 +2,7 @@
     <div class="container-fluid" id="dashboard">
         <div class="row">
             <div class="col-2 col-md-3 col-lg-2 px-sm-2 px-0 bg-light shadow">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 fixed-top mt-5">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100  position-fixed ">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline mb-5"></span>
                     </a>
@@ -63,8 +63,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
-                        <div class="card row">
+                    <div class="col-md-4 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-people"></i>
                                 <h3>{{count($products)}}{{count($user)}}</h3>
@@ -72,8 +72,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
-                        <div class="card row">
+                    <div class="col-md-4 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-houses"></i>
                                 <h3>{{count($products)}}{{count($citys)}}</h3>
@@ -81,8 +81,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
-                        <div class="card row">
+                    <div class="col-md-4 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-bookmarks"></i>
                                 <h3>{{count($products)}}{{count($categorys)}}</h3>
@@ -90,8 +90,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
-                        <div class="card row">
+                    <div class="col-md-4 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-chat-left-dots"></i>
                                 <h3>{{count($comments)}}</h3>
@@ -99,17 +99,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
-                        <div class="card row">
+                    <div class="col-md-4 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-boxes"></i>
                                 <h3>{{count($allProducts)}}</h3>
-                                <p>All Prducts</p>
+                                <p>All Products</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xl-3 col-sm-10 col-12 mb-2 p-0">
-                        <div class="card row">
+                    <div class="col-md-4 col-xl-3 col-sm-10 col-12 mb-2 p-0">
+                        <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-box"></i>
                                 <h3>{{count($products)}}</h3>
@@ -162,7 +162,7 @@
                                     <td>{{$items->telephone}}</td>
                                     <td>{{$items->prix}}{{$items->prix < 100 ? '.00dh' : 'dh'}}</td>
                                     <td>{{$items->category->nameCategory}}</td>
-                                    <td>{{$items->created_at->diffForHumans(null, false, false)}}</td>
+                                    <td><i class="bi bi-clock-history"></i> {{$items->created_at->diffForHumans(null, false, false)}}</td>
                                     <td><a href="{{ route('product.edit', $items->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                                     <td><a href="{{ route('product.destroy', $items->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                                     </tr>
@@ -219,10 +219,69 @@
                         <tr>
                         <td>{{$count}}</td>
                         <td>{{$category->nameCategory}}</td>
-                        <td>{{$category->created_at->diffForHumans(null, false, false)}}</td>
+                        <td><i class="bi bi-clock-history"></i> {{$category->created_at->diffForHumans(null, false, false)}}</td>
                         <td><a href="#modal-category" data-bs-toggle="modal" onclick="showModel('{{$category->nameCategory}}', {{$category->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
                         <td><a href="{{ route('category.destroy', $category->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                         </tr>
+                        @php
+                        $count ++;
+                        @endphp
+                        @endforeach
+                    </tbody>
+                    </table> 
+                
+            </div>
+            @endif
+            {{-- end of categorys --}}
+
+            {{-- categorys --}}
+
+            @if (Auth()->user()->can('edit All product'))
+            <div class="row items-center me-0">
+                
+                <h1 id="categorys" class="col-4 col-xl-8 fw-bold ms-3 mt-5">SubCategories</h1>  
+            
+                <form class="col" action="subCategorys" method="POST" id="" data-parsley-validate>
+                    @csrf
+                    <div class=" d-flex">
+                    <input type="text" name="nameSubCategory" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                    
+                    <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
+                    </div>
+                    <small class="text-danger">
+                        @error('nameSubCategory')
+                        {{ $message }}
+                    @enderror</small>
+                </form>
+                {{-- <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button> --}}
+                </div>
+            <div class="container pt-3 table-responsive">
+            
+                <table class="table table-responsive bg-white rounded items-center">
+                    <thead>
+                        <tr>
+                        <th scope="col">#{{count($categorys)}}</th>
+                        <th scope="col">Parent</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $count = 1;
+                        @endphp
+                    @foreach ($categorys as $category)
+                        <tr>
+                        <td>{{$count}}</td>
+                        <td>{{$category->nameCategory}}</td>
+                        <td>{{$category->nameCategory}}</td>
+                        <td><i class="bi bi-clock-history"></i> {{$category->created_at->diffForHumans(null, false, false)}}</td>
+                        <td><a href="#modal-subCategory" data-bs-toggle="modal" onclick="showModel('{{$category->nameCategory}}', {{$category->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                        <td><a href="" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                        </tr>
+                        {{-- {{ route('subCategory.destroy', $category->id) }} --}}
                         @php
                         $count ++;
                         @endphp
@@ -262,7 +321,7 @@
                     <tr>
                     <th scope="col">#{{count($citys)}}</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Time</th>
+                    {{-- <th scope="col">Time</th> --}}
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                     </tr>
@@ -272,7 +331,7 @@
                     <tr>
                     <td>{{$count}}</td>
                     <td>{{$city->nameCity}}</td>
-                    <td>{{$city->created_at->diffForHumans(null, false, false)}}</td>
+                    {{-- <td><i class="bi bi-clock-history"></i> {{$city->created_at->diffForHumans(null, false, false)}}</td> --}}
                     <td><a href="#modal-city" data-bs-toggle="modal" onclick=" showModel('{{$city->nameCity}}', {{$city->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
                     <td><a href="{{ route('city.destroy', $city->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                     </tr>
@@ -343,6 +402,42 @@
 								<input type="text" name="nameCategory" class="form-control rounded" id="category"/>
                                 <small class="text-danger">
                                     @error('nameCategory')
+                                    {{ $message }}
+                                @enderror
+                               </small>
+							</div>
+                
+					</div>
+					<div class="modal-footer">
+						<a href="/dashboard" class="btn btn-white border" >Cancel</a>
+						<button type="submit" class="btn btn-dark text-light bg-dark">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {{-- end form --}}
+
+    <!-- edit sub category form -->
+	<div  class="modal fade" id="modal-subCategory">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="" method="POST" id="form" enctype="multipart/form-data">
+                 @csrf
+                 {{-- {{ route('subCategory.update') }} --}}
+                 @method('PUT')
+					<div class="modal-header">
+						<h5 class="modal-title fw-bold">Edit subCategory</h5>
+						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+					</div>
+					<div class="modal-body">
+			
+							<input type="hidden" name="id" id="categoryId" value="">
+							<div class="mb-3">
+								<label class="form-label">subCategory</label>
+								<input type="text" name="nameSubCategory" class="form-control rounded" id="category"/>
+                                <small class="text-danger">
+                                    @error('nameSubCategory')
                                     {{ $message }}
                                 @enderror
                                </small>
