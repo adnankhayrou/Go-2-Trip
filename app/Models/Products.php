@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Categorys ;
+// use App\Models\SubCategorys ;
 
 class Products extends Model
 {
@@ -17,13 +17,14 @@ class Products extends Model
         'prix',
         'city_id',
         'telephone',
-        'category_id',
+        'Category_id',
+        'subCategory_id',
         'user_id',
     ];
 
-    public function category()
+    public function sub_category()
     {
-        return $this->belongsTo(Categorys::class);
+        return $this->belongsTo(SubCategorys::class);
     }
 
     public function city()
@@ -31,7 +32,7 @@ class Products extends Model
         return $this->belongsTo(Citys::class);
     }
 
-    public function comments()
+    public function comment()
     {
         return $this->belongsTo(comments::class);
     }

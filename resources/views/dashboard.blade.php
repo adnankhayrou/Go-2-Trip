@@ -67,7 +67,7 @@
                         <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-people"></i>
-                                <h3>{{count($products)}}{{count($user)}}</h3>
+                                <h3>{{count($user)}}</h3>
                                 <p>Users</p>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                         <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-houses"></i>
-                                <h3>{{count($products)}}{{count($citys)}}</h3>
+                                <h3>{{count($citys)}}</h3>
                                 <p>Cities</p>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         <div class="card row border rounded">
                             <div class="text-center">
                                 <i class="bi bi-bookmarks"></i>
-                                <h3>{{count($products)}}{{count($categorys)}}</h3>
+                                <h3>{{count($categorys)}}</h3>
                                 <p>Catecories</p>
                             </div>
                         </div>
@@ -239,14 +239,25 @@
             @if (Auth()->user()->can('edit All product'))
             <div class="row items-center me-0">
                 
-                <h1 id="categorys" class="col-4 col-xl-8 fw-bold ms-3 mt-5">SubCategories</h1>  
+                <h1 id="categorys" class="col-12 col-md-4 col-xl-8 fw-bold ms-3 mt-5 mb-4">SubCategories</h1>  
             
                 <form class="col" action="subCategorys" method="POST" id="" data-parsley-validate>
                     @csrf
-                    <div class=" d-flex">
-                    <input type="text" name="nameSubCategory" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
-                    
-                    <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
+                    <div class="d-flex">
+                        <div class="col">
+                            <select class="form-select rounded border" name="category_id" aria-label="Default select example">
+                                <option selected>Parent category</option>
+                                @foreach ($categorys as $category)
+                                <option value="{{$category->id}}">{{$category->nameCategory}}</option>
+                                @endforeach
+                              </select>
+                            <small class="text-danger">
+                                @error('category_id')
+                                {{ $message }}
+                            @enderror</small>
+                        </div>
+                    <input type="text" name="nameSubCategory" class="col ms-2 form-control rounded" data-parsley-minlength="3" data-parsley-required/>
+                    <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2  " id="category-add-btn">Add</button>
                     </div>
                     <small class="text-danger">
                         @error('nameSubCategory')
@@ -255,7 +266,7 @@
                 </form>
                 {{-- <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button> --}}
                 </div>
-            <div class="container pt-3 table-responsive">
+            <div class="container pt-2 table-responsive">
             
                 <table class="table table-responsive bg-white rounded items-center">
                     <thead>

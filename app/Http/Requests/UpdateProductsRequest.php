@@ -32,6 +32,7 @@ class UpdateProductsRequest extends FormRequest
             'city_id' => 'required',
             'telephone' => 'required',
             'category_id' => 'required',
+            'subCategory_id' => 'required',
         ];
     }
 }

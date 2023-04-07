@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Products ;
+// use App\Models\Products ;
 
 
 class Categorys extends Model
@@ -15,8 +15,8 @@ class Categorys extends Model
         'nameCategory'
     ];
 
-    public function products()
-    {
-        return $this->hasMany(Products::class);
-    }
+    // public function products()
+    // {
+    //     return $this->hasMany(Products::class);
+    // }
 }
