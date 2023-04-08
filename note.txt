@@ -1,0 +1,5 @@
+$nadir = "adnane" ;
+$adnane = "Hello" ;
+
+echo $$nadir ==> $adnane 
+

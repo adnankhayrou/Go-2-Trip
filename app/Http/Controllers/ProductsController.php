@@ -8,13 +8,20 @@ use App\Models\Citys;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 use App\Models\Comments;
+use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
-
 class ProductsController extends Controller
 {
+
+
+    public function loadSubCategories($id){
+        $subCategory = SubCategory::with('category')->where('category_id', $id)->get();
+        return response()->json($subCategory);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,12 +30,14 @@ class ProductsController extends Controller
     public function index(Products $products)
     {
         $categorys = Categorys::all();
+        $subCategory = SubCategory::all();
         $citys = Citys::all();
         $comments = Comments::all();
         $products = Products::where('user_id','=',Auth::user()->id)->get();
+        // dd($products);
         $allProducts = Products::all();
         $user = User::all();
-        return view('dashboard', ['products' => $products, 'categorys' => $categorys, 'citys' => $citys, 'comments' => $comments, 'allProducts' => $allProducts, 'user' => $user]);
+        return view('dashboard', ['products' => $products, 'categorys' => $categorys, 'subCategory' => $subCategory, 'citys' => $citys, 'comments' => $comments, 'allProducts' => $allProducts, 'user' => $user]);
     }
 
     /**
@@ -39,8 +48,9 @@ class ProductsController extends Controller
     public function create()
     {
         $categorys = Categorys::all();
+        $subCategory = SubCategory::all();
         $citys = Citys::all();
-        return view('add',compact('citys', 'categorys'));
+        return view('add',compact('citys', 'categorys', 'subCategory'));
     }
 
     /**
@@ -64,11 +74,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show($id)
     {
-        $user = Auth()->user();
-        $products = Products::find($user->id == $products->user_id);
-        return view('dashboard')->with('products', $products);
+        $products = Products::find($id);
+        return view('/show', ['products' => $products]);
     }
 
     /**

@@ -36,7 +36,8 @@ class SubCategoryController extends Controller
      */
     public function store(StoreSubCategoryRequest $request)
     {
-        //
+        SubCategory::create($request->all());
+        return redirect('/dashboard');
     }
 
     /**
@@ -47,7 +48,8 @@ class SubCategoryController extends Controller
      */
     public function show(SubCategory $subCategory)
     {
-        //
+        $subCategory->find($subCategory->id);
+        return view('dashboard',compact('subCategory'));
     }
 
     /**
@@ -58,7 +60,8 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subCategory)
     {
-        //
+        $subCategory->find($subCategory->id);
+        return view('dashboard',compact('subCategory'));
     }
 
     /**
@@ -68,9 +71,15 @@ class SubCategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSubCategoryRequest $request, SubCategory $subCategory)
+    public function update(UpdateSubCategoryRequest $request)
     {
-        //
+        $data = [
+            'id' => $request->input('id'),
+            'nameSubCategory' => $request->input('nameSubCategory'),
+            'category_id' => $request->input('category_id'),
+        ];
+        SubCategory::where('id', $request->id)->update($data);
+        return redirect('/dashboard');
     }
 
     /**
@@ -79,8 +88,10 @@ class SubCategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubCategory $subCategory)
+    public function destroy($id)
     {
-        //
+        $subCategory = SubCategory::find($id);
+        $subCategory->delete();
+        return redirect('/dashboard');
     }
 }

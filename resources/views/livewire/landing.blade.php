@@ -54,7 +54,7 @@
                    <img src="{{asset('/storage/'.$item->image)}}" class="card-img-top" with="100"  height="100">
                  <div class="card-body ">
 
-                   <h5 class="card-title fw-bold text-black text-truncate">{{$item->title}}</h5>
+                   <h5 class="card-title fw-bold text-center text-black text-truncate">{{$item->title}}</h5>
                    <hr class="my-1" />
 
                   <div class="row text-light items-start mt-2">
@@ -71,7 +71,7 @@
                  </div>
                    
                    <div class="text-center mt-3">
-                    <a href="#" class="btn btn-dark">See Details</a>
+                    <a href="{{ route('product.show', $item->id) }}" class="btn btn-dark">See Details</a>
                   </div>
 
                  </div>    

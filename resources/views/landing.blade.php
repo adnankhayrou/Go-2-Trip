@@ -76,3 +76,33 @@ if (window.scrollY === 0) {
   }
 })
 </script> --}}
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href=" #" data-bs-toggle="dropdown"
+        data-bs-auto-close="outside">Categories</a>
+    <ul class="sub-menu dropdown-menu drop-style shadow">
+        {{-- @foreach ($category as $nav) --}}
+        <li class="dropend">
+            <a href="" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"></a>
+            <ul class="dropdown-menu shadow drop-style">
+                <li><a class="dropdown-item"
+                        href=""></a>
+                </li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                {{-- @foreach ($nav->subcategories as $subcategory) --}}
+                <li><a class="dropdown-item"
+                        href=""></a>
+                </li>
+                {{-- @endforeach --}}
+            </ul>
+        </li>
+        {{-- @endforeach --}}
+        <li>
+            <hr class="dropdown-divider">
+        </li>
+    </ul>
+</li>

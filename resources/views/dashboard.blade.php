@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout >
     <div class="container-fluid" id="dashboard">
         <div class="row">
             <div class="col-2 col-md-3 col-lg-2 px-sm-2 px-0 bg-light shadow">
@@ -146,6 +146,7 @@
                                     <th scope="col">telephone</th>
                                     <th scope="col">price</th>
                                     <th scope="col">Category</th>
+                                    {{-- <th scope="col">SubCategory</th> --}}
                                     <th scope="col">Time</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
@@ -162,6 +163,7 @@
                                     <td>{{$items->telephone}}</td>
                                     <td>{{$items->prix}}{{$items->prix < 100 ? '.00dh' : 'dh'}}</td>
                                     <td>{{$items->category->nameCategory}}</td>
+                                    {{-- <td>{{$items->category->subCategory->nameSubCategory}}</td> --}}
                                     <td><i class="bi bi-clock-history"></i> {{$items->created_at->diffForHumans(null, false, false)}}</td>
                                     <td><a href="{{ route('product.edit', $items->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                                     <td><a href="{{ route('product.destroy', $items->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
@@ -188,7 +190,7 @@
                 <form class="col" action="categorys" method="POST" id="" data-parsley-validate>
                     @csrf
                     <div class=" d-flex">
-                    <input type="text" name="nameCategory" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                    <input type="text" name="nameCategory" class="col ms-2 form-control mb-2 mt-5 rounded @error('nameCategory') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
                     
                     <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                     </div>
@@ -234,29 +236,29 @@
             @endif
             {{-- end of categorys --}}
 
-            {{-- categorys --}}
+            {{-- subcategorys --}}
 
             @if (Auth()->user()->can('edit All product'))
             <div class="row items-center me-0">
                 
                 <h1 id="categorys" class="col-12 col-md-4 col-xl-8 fw-bold ms-3 mt-5 mb-4">SubCategories</h1>  
             
-                <form class="col" action="subCategorys" method="POST" id="" data-parsley-validate>
+                <form class="col" action="subCategory" method="POST" id="" data-parsley-validate>
                     @csrf
                     <div class="d-flex">
                         <div class="col">
-                            <select class="form-select rounded border" name="category_id" aria-label="Default select example">
-                                <option selected>Parent category</option>
+                            <select class="form-select rounded border @error('category_id') is-invalid @enderror" name="category_id" aria-label="Default select example">
+                                <option value="">Parent category</option>
                                 @foreach ($categorys as $category)
                                 <option value="{{$category->id}}">{{$category->nameCategory}}</option>
                                 @endforeach
                               </select>
-                            <small class="text-danger">
+                            {{-- <small class="text-danger">
                                 @error('category_id')
                                 {{ $message }}
-                            @enderror</small>
+                            @enderror</small> --}}
                         </div>
-                    <input type="text" name="nameSubCategory" class="col ms-2 form-control rounded" data-parsley-minlength="3" data-parsley-required/>
+                    <input type="text" name="nameSubCategory" class="col ms-2 form-control rounded @error('nameSubCategory') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
                     <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2  " id="category-add-btn">Add</button>
                     </div>
                     <small class="text-danger">
@@ -283,16 +285,16 @@
                         @php
                         $count = 1;
                         @endphp
-                    @foreach ($categorys as $category)
+                    @foreach ($subCategory as $sub)
                         <tr>
                         <td>{{$count}}</td>
-                        <td>{{$category->nameCategory}}</td>
-                        <td>{{$category->nameCategory}}</td>
-                        <td><i class="bi bi-clock-history"></i> {{$category->created_at->diffForHumans(null, false, false)}}</td>
-                        <td><a href="#modal-subCategory" data-bs-toggle="modal" onclick="showModel('{{$category->nameCategory}}', {{$category->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                        <td><a href="" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                        <td>{{$sub->category->nameCategory}}</td>
+                        <td>{{$sub->nameSubCategory}}</td>
+                        <td><i class="bi bi-clock-history"></i> {{$sub->created_at->diffForHumans(null, false, false)}}</td>
+                        <td><a href="#modal-subCategory" data-bs-toggle="modal" onclick="showSubModel('{{$sub->nameSubCategory}}', {{$sub->id}}, '{{$sub->category->nameCategory}}', {{$sub->category->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
+                        <td><a href="{{ route('subCategory.destroy', $category->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                         </tr>
-                        {{-- {{ route('subCategory.destroy', $category->id) }} --}}
+        
                         @php
                         $count ++;
                         @endphp
@@ -302,7 +304,7 @@
                 
             </div>
             @endif
-            {{-- end of categorys --}}
+            {{-- end of subcategorys --}}
 
             {{-- citys --}}
             @if (Auth()->user()->can('edit All product'))
@@ -312,7 +314,7 @@
             <form class="col" action="citys" method="POST" id="" data-parsley-validate>
                 @csrf
                 <div class=" d-flex">
-                <input type="text" name="nameCity" class="col ms-2 form-control mb-2 mt-5 rounded" data-parsley-minlength="3" data-parsley-required/>
+                <input type="text" name="nameCity" class="col ms-2 form-control mb-2 mt-5 rounded @error('nameCity') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
                 
                 <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                 </div>
@@ -332,7 +334,6 @@
                     <tr>
                     <th scope="col">#{{count($citys)}}</th>
                     <th scope="col">Name</th>
-                    {{-- <th scope="col">Time</th> --}}
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                     </tr>
@@ -342,7 +343,6 @@
                     <tr>
                     <td>{{$count}}</td>
                     <td>{{$city->nameCity}}</td>
-                    {{-- <td><i class="bi bi-clock-history"></i> {{$city->created_at->diffForHumans(null, false, false)}}</td> --}}
                     <td><a href="#modal-city" data-bs-toggle="modal" onclick=" showModel('{{$city->nameCity}}', {{$city->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
                     <td><a href="{{ route('city.destroy', $city->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                     </tr>
@@ -375,7 +375,7 @@
                         <input type="hidden" name="id" id="cityId" value="">
 							<div class="mb-3">
 								<label class="form-label">City</label>
-								<input type="text" name="nameCity" class="form-control rounded" id="city" value=""/>
+								<input type="text" name="nameCity" class="form-control rounded @error('nameCity') is-invalid @enderror" id="city" value=""/>
                                 <small class="text-danger">
                                     @error('nameCity')
                                     {{ $message }}
@@ -410,7 +410,7 @@
 							<input type="hidden" name="id" id="categoryId" value="">
 							<div class="mb-3">
 								<label class="form-label">Category</label>
-								<input type="text" name="nameCategory" class="form-control rounded" id="category"/>
+								<input type="text" name="nameCategory" class="form-control rounded @error('nameCategory') is-invalid @enderror" id="category"/>
                                 <small class="text-danger">
                                     @error('nameCategory')
                                     {{ $message }}
@@ -433,9 +433,8 @@
 	<div  class="modal fade" id="modal-subCategory">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="" method="POST" id="form" enctype="multipart/form-data">
+				<form action="{{ route('subCategory.update') }}" method="POST" id="form" enctype="multipart/form-data">
                  @csrf
-                 {{-- {{ route('subCategory.update') }} --}}
                  @method('PUT')
 					<div class="modal-header">
 						<h5 class="modal-title fw-bold">Edit subCategory</h5>
@@ -443,16 +442,28 @@
 					</div>
 					<div class="modal-body">
 			
-							<input type="hidden" name="id" id="categoryId" value="">
+							<input type="hidden" name="id" id="subCategoryId" value="">
 							<div class="mb-3">
 								<label class="form-label">subCategory</label>
-								<input type="text" name="nameSubCategory" class="form-control rounded" id="category"/>
+								<input type="text" name="nameSubCategory" class="form-control rounded @error('nameSubCategory') is-invalid @enderror" id="subCategory"/>
                                 <small class="text-danger">
                                     @error('nameSubCategory')
                                     {{ $message }}
                                 @enderror
                                </small>
 							</div>
+                            <div class="">
+                                <select class="form-select rounded border @error('category_id') is-invalid @enderror" name="category_id" aria-label="Default select example">
+                                    <option id="catId" value=""></option>
+                                    @foreach ($categorys as $category)
+                                    <option value="{{$category->id}}">{{$category->nameCategory}}</option>
+                                    @endforeach
+                                  </select>
+                                <small class="text-danger">
+                                    @error('category_id')
+                                    {{ $message }}
+                                @enderror</small>
+                            </div>
                 
 					</div>
 					<div class="modal-footer">

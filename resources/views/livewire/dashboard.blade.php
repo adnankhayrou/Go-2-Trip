@@ -16,7 +16,8 @@
                 <th scope="col">Image</th>
                 <th scope="col">Descriptio</th>
                 <th scope="col">City</th>
-                <th scope="col">telephone</th>
+                <th scope="col">Telephone</th>
+                <th scope="col">Price</th>
                 <th scope="col">Category</th>
                 <th scope="col">Time</th>
                 <th scope="col">Edit</th>
@@ -35,6 +36,7 @@
                 <td>{{$item->description}}</td>
                 <td>{{$item->city->nameCity}}</td>
                 <td>{{$item->telephone}}</td>
+                <td>{{$item->prix}}{{$item->prix < 100 ? '.00dh' : 'dh'}}</td>
                 <td>{{$item->category->nameCategory}}</td>
                 <td><i class="bi bi-clock-history"></i> {{$item->created_at->diffForHumans(null, false, false)}}</td>
                 <td><a href="{{ route('product.edit', $item->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>

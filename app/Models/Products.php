@@ -17,14 +17,19 @@ class Products extends Model
         'prix',
         'city_id',
         'telephone',
-        'Category_id',
+        'category_id',
         'subCategory_id',
         'user_id',
     ];
 
-    public function sub_category()
+    public function category()
     {
-        return $this->belongsTo(SubCategorys::class);
+        return $this->belongsTo(Categorys::class);
+    }
+
+    public function subCategory()
+    {
+        return $this->belongsTo(SubCategory::class);
     }
 
     public function city()

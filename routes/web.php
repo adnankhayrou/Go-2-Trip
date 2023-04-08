@@ -5,9 +5,9 @@ use App\http\controllers\ProductsController;
 use App\http\controllers\CategorysController;
 use App\http\controllers\CitysController;
 use App\http\controllers\CommentsController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Landing;
-
 
 // Route::put('/products/{products}', [ProductsController::class, 'update']);
 
@@ -22,6 +22,7 @@ use App\Http\Livewire\Landing;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('subcatories/{id}', [ProductsController::class, 'loadSubCategories']);
 
 Route::get('/', function () {
     return view('home');
@@ -44,6 +45,7 @@ Route::middleware([
     })->name('dashboard');
 
     // category and city for add products
+    Route::get('show/{id}', [ProductsController::class, 'show'])->name('product.show');
     Route::get('add', [ProductsController::class, 'create'])->name('add');
     
     Route::group(['controller' => ProductsController::class, 'prefix' => 'products'], function () {
@@ -60,6 +62,13 @@ Route::middleware([
         Route::get('/{category}', 'show')->middleware(['permission:view category'])->name('category.show');
         Route::put('/update', 'update')->middleware(['permission:edit category'])->name('category.update');
         Route::get('/delete/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
+    });
+
+    Route::group(['controller' => SubCategoryController::class, 'prefix' => 'subCategory'], function () {
+        Route::post('', 'store')->middleware(['permission:add category']);
+        Route::get('/{category}', 'show')->middleware(['permission:view category'])->name('subCategory.show');
+        Route::put('/update', 'update')->middleware(['permission:edit category'])->name('subCategory.update');
+        Route::get('/delete/{category}', 'destroy')->middleware(['permission:delete category'])->name('subCategory.destroy');
     });
 
     Route::group(['controller' => CitysController::class, 'prefix' => 'citys'], function () {
