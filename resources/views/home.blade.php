@@ -190,7 +190,7 @@
    {{-- @endforeach --}}
  </div> 
  <div class="text-end mb-5 mt-3 me-4">
-    <button class="btn btn-dark"><a href="{{ url('landing') }}" class="text-decoration-none text-light">Find more <b> >></b></a></button>
+    <button class="btn btn-dark"><a href="{{ url('landing') }}" class="text-decoration-none text-light">Find more <i class="fa-solid fa-arrow-right fa-beat"></i></a></button>
  </div>
 </div>
 @stop

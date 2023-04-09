@@ -33,7 +33,7 @@
             </div>
             
             <div class="text-center mt-3">
-             <h1 class="fw_bold text-dark ">Find Best Products For Your Trip</h1>
+             <h1 class="fw_bold text-dark "><b>Find Best Products For Your Trip</b></h1>
             </div>
 
         
@@ -50,21 +50,37 @@
            <div class="row mx-auto">
            @foreach ($product as $item)
              <div class="col-md-6 col-lg-3 p-2 col-12">
-                 <div class="card border bg-white shadow-lg rounded">
-                   <img src="{{asset('/storage/'.$item->image)}}" class="card-img-top" with="100"  height="100">
+              
+            
+                 <div class="card border bg-white shadow-lg rounded" >
+                  <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
+                    background-size: cover;
+                        height:10em">
+                                <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
+                  </div>
+                   {{-- <img src="{{asset('/storage/'.$item->image)}}" class="card-img-top" with="100"  height="100"> --}}
                  <div class="card-body ">
 
-                   <h5 class="card-title fw-bold text-center text-black text-truncate">{{$item->title}}</h5>
+                   <h5 class="card-title fw-bold text-center text-black text-truncate" title="{{$item->title}}">{{$item->title}}</h5>
                    <hr class="my-1" />
 
                   <div class="row text-light items-start mt-2">
-                    <div class="col">
-                     <p class="mb-2 items-center text-black text-center" ><i class="bi bi-geo-alt text-black"></i><br>{{$item->city->nameCity}}</p>
+                    <div class="col text-truncate">
+                     <p class="mb-2 items-center text-black text-center" title="{{$item->city->nameCity}}" ><i class="bi bi-geo-alt text-black"></i><br>{{$item->city->nameCity}}</p>
                     </div>
                     <div class="col">
-                     <p class="text-dark items-center text-center text-truncate"><i class="bi bi-clock-history text-black"></i><br>{{$item->created_at->diffForHumans(null, false, false)}}</p>
+                     <p class="text-dark items-center text-center text-truncate" title="{{$item->created_at->diffForHumans(null, false, false)}}"><i class="bi bi-clock-history text-black"></i><br>{{$item->created_at->diffForHumans(null, false, false)}}</p>
                    </div>
                  </div>
+
+                 {{-- <div class="row text-light items-center mt-2">
+                  <div class="col-8 text-center">
+                    <p class="card-text text-success"><i class="bi bi-phone"></i><br>{{$item->telephone}}</p>                  
+                  </div>
+                  <div class="col-4">
+                   <p class="text-dark items-center text-center">{{$item->prix}}</p>
+                 </div>
+               </div> --}}
 
                  <div class="text-center">
                    <p class="card-text text-success"><i class="bi bi-phone"></i><br>{{$item->telephone}}</p>

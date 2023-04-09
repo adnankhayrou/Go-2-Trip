@@ -74,11 +74,11 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $products = Products::find($id);
-        return view('/show', ['products' => $products]);
-    }
+    // public function show($id)
+    // {
+    //     $products = Products::find($id);
+    //     return view('/show', ['products' => $products]);
+    // }
 
     /**
      * Show the form for editing the specified resource.

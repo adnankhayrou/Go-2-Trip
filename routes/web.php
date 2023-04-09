@@ -7,6 +7,7 @@ use App\http\controllers\CitysController;
 use App\http\controllers\CommentsController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Comment;
 use App\Http\Livewire\Landing;
 
 // Route::put('/products/{products}', [ProductsController::class, 'update']);
@@ -33,6 +34,7 @@ Route::get('landing', function () {
 
 // Route::get('landing', [Landing::class, 'render']);
 Route::get('livewire', [Dashboard::class, 'render']);
+Route::get('show/{id}', [Comment::class, 'render'])->name('product.show');
 
 
 Route::middleware([
@@ -45,7 +47,7 @@ Route::middleware([
     })->name('dashboard');
 
     // category and city for add products
-    Route::get('show/{id}', [ProductsController::class, 'show'])->name('product.show');
+    // Route::get('show/{id}', [ProductsController::class, 'show'])->name('product.show');
     Route::get('add', [ProductsController::class, 'create'])->name('add');
     
     Route::group(['controller' => ProductsController::class, 'prefix' => 'products'], function () {
