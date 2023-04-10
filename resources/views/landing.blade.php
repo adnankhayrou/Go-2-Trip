@@ -36,13 +36,34 @@
                             <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">Items</span></a>
                     </li>
                     <hr>
-                    <li>
+                    {{-- <li>
                         <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">categorys</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                             <li class="w-100">
                                 <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Product</span> 1</a>
                             </li>
+                        </ul>
+                    </li> --}}
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle p-0 text-dark" href="" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside"><i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">Categories</span></a>
+                        <ul class="sub-menu dropdown-menu drop-style shadow">
+                            @foreach ($categorys as $cat)
+                            <li class="dropend">
+                                <a href="" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside">{{$cat->nameCategory}}</a>
+                                <ul class="dropdown-menu shadow drop-style">
+                                    @foreach ($cat->subcategory as $subcat)
+                                    <li><a class="dropdown-item"
+                                            href="">
+                                            {{$subcat->nameSubCategory}}
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
                     <hr>
@@ -63,6 +84,7 @@
         <div class="col py-3">
           content
           @livewire('landing')
+        </div>
 
 
 
@@ -78,31 +100,22 @@ if (window.scrollY === 0) {
 </script> --}}
 
 
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href=" #" data-bs-toggle="dropdown"
+{{-- <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
         data-bs-auto-close="outside">Categories</a>
     <ul class="sub-menu dropdown-menu drop-style shadow">
-        {{-- @foreach ($category as $nav) --}}
+        @foreach ($categorys as $cat)
         <li class="dropend">
             <a href="" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"></a>
+                data-bs-auto-close="outside">{{$cat->nameCategory}}</a>
             <ul class="dropdown-menu shadow drop-style">
+                @foreach ($cat->subcategory as $subcat)
                 <li><a class="dropdown-item"
-                        href=""></a>
+                        href="">{{$subcat->nameSubCategory}}</a>
                 </li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                {{-- @foreach ($nav->subcategories as $subcategory) --}}
-                <li><a class="dropdown-item"
-                        href=""></a>
-                </li>
-                {{-- @endforeach --}}
+                @endforeach
             </ul>
         </li>
-        {{-- @endforeach --}}
-        <li>
-            <hr class="dropdown-divider">
-        </li>
+        @endforeach
     </ul>
-</li>
+</li> --}}

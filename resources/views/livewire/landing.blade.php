@@ -49,7 +49,7 @@
         
            <div class="row mx-auto">
            @foreach ($product as $item)
-             <div class="col-md-6 col-lg-3 p-2 col-12">
+             <div class="col-md-6 col-lg-4 col-xl-3 p-2 col-12">
               
             
                  <div class="card border bg-white shadow-lg rounded" >

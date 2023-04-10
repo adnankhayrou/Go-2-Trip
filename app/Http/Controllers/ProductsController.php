@@ -53,6 +53,15 @@ class ProductsController extends Controller
         return view('add',compact('citys', 'categorys', 'subCategory'));
     }
 
+    public function get()
+    {
+        $allProducts = Products::all();
+        $categorys = Categorys::all();
+        $subCategory = SubCategory::all();
+        $citys = Citys::all();
+        return view('landing',compact('allProducts', 'citys', 'categorys', 'subCategory'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

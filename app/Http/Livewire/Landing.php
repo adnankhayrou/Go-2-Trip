@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Products;
+use App\Models\Categorys;
 
 class Landing extends Component
 {
@@ -26,4 +27,5 @@ class Landing extends Component
             'product' => Products::where('title', 'like', '%'.$this->searchbar.'%')->paginate(24),
         ]);
     }
+
 }

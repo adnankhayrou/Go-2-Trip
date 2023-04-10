@@ -50,7 +50,9 @@
             </tbody>
             </table> 
         </div>
-        {{$product->links()}}
+        <div class="container">
+            {{$product->links()}}
+        </div>
     {{-- end of products --}}
     @endif
     @livewireScripts

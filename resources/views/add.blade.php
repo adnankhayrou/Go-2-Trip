@@ -73,15 +73,15 @@
                         </span>
                     @enderror
 
-                    {{-- <label>Subcategory</label>
+                    <label>Subcategory</label>
                     <select id="subcategoryList" class="form-control @error('subcategory') is-invalid @enderror"
                         name="subCategory_id" required>
 
                         <option value=""> </option>
 
-                    </select> --}}
+                    </select>
 
-                    <label>Subcategory</label>
+                    {{-- <label>Subcategory</label>
                     <select id="subcategoryList" class="form-control @error('subcategory') is-invalid @enderror"
                         name="subCategory_id" required>
                        
@@ -89,7 +89,7 @@
                                   <option value="{{ $category->id }}">
                                                 {{ $category->nameSubCategory }} </option>
                                                 @endforeach
-                    </select>
+                    </select> --}}
                 </div>
 
                 <div class="col-xl-6 col-md-6 col-12 mb-3">
@@ -150,7 +150,7 @@
     </div>
     </div>
 
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         $("document").ready(function() {
             $('select[name="category_id"]').on('change', function() {
@@ -161,16 +161,19 @@
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
-                            console.log(data[0]);
                             $('select[name="subCategory_id"]').empty();
                             for(i =0 ; i < data.length ; i++){ 
-                            $.each(data[i], function(key, value) {
-                                if (key == data[i].id) {
+                            // $.each(data[i], function(key, value) {
+                            //     if (key == data[i].id) {
+                            //         $('select[name="subCategory_id"]').append(
+                            //             '<option value=" ' + key + '">' + value +
+                            //             '</option>');
+                            //     }
+                            // })
                                     $('select[name="subCategory_id"]').append(
-                                        '<option value=" ' + key + '">' + value +
+                                        '<option value="' + data[i].id + '">' + data[i].nameSubCategory +
                                         '</option>');
-                                }
-                            })
+
                         }
                         }
 
@@ -182,7 +185,7 @@
 
 
         });
-    </script> --}}
+    </script>
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />

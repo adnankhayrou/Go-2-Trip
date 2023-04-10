@@ -146,7 +146,7 @@
                                     <th scope="col">telephone</th>
                                     <th scope="col">price</th>
                                     <th scope="col">Category</th>
-                                    {{-- <th scope="col">SubCategory</th> --}}
+                                    <th scope="col">SubCategory</th>
                                     <th scope="col">Time</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
@@ -163,7 +163,10 @@
                                     <td>{{$items->telephone}}</td>
                                     <td>{{$items->prix}}{{$items->prix < 100 ? '.00dh' : 'dh'}}</td>
                                     <td>{{$items->category->nameCategory}}</td>
-                                    {{-- <td>{{$items->category->subCategory->nameSubCategory}}</td> --}}
+                                    <td>{{$items->subCategory->nameSubCategory}}</td>
+                                    {{-- @foreach ($items->category->subcategory as $item)
+                                        {{$item->nameSubCategory}}
+                                    @endforeach --}}
                                     <td><i class="bi bi-clock-history"></i> {{$items->created_at->diffForHumans(null, false, false)}}</td>
                                     <td><a href="{{ route('product.edit', $items->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                                     <td><a href="{{ route('product.destroy', $items->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>

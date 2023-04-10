@@ -1,5 +1,5 @@
 <x-app-layout>
-    {{-- @livewireStyles --}}
+   
     <div class="container w-75 items-center">
         <button class=" col mt-3 mb-2 btn btn-dark"><a href="{{ url('landing') }}" class="text-decoration-none  text-light"><i class="fa-solid fa-arrow-left fa-beat"></i> Back</a></button>
     </div>
@@ -40,7 +40,7 @@
                 <div>
                     <hr class="my-2">
                 </div>
-                <div class="col-12 mb-3">
+                <div class="col-12 mb-5">
                     <p class=" me-2"><b>Description</b></p>
                     
                     {{$products->description}}
@@ -58,27 +58,34 @@
                 on an element with set width and height dimensions. By design, this content will vertically scroll.<br>
                 on an element with set width and height dimensions. By design, this content will vertically scroll.<br>
             </div> --}}
-            <div wire:poll.5s>
-                @livewireStyles
-                <div class="container">
-                    <div class="">
+            <div class="pb-3" wire:poll.5s>
+                {{-- @livewireStyles --}}
+                <div class="container border p-3 rounded ">
+
+                    <div class="col-12 mb-3">
+                        <p class=" me-2"><b>Add your comment</b></p>
+                    </div>
+
+                    <div class="overflow-auto mb-3 p-3 bg-wihte"style="max-width: 100%; max-height: 20em;">
                         @foreach ($comments as $comment)
                         @if($products->id == $comment->product_id)
             
                             @if ($comment->user->name == auth()->user()->name)
-                                <div style="margin-left: 10em;" class="text-end">
-                                    <div class="border rounded bg-info-subtle ">
-                                        <p class="mt-2 me-2">{{ $comment->nameComment }}</p>
+                            <p class="text-end"><i class="fa-solid fa-user-large"></i> <b>your comment</b></p>
+                                <div style="margin-left: 8em; max-width: ;" class="text-end">
+                                    <div class="border rounded bg-light">
+                                        <p class="my-2 me-2">{{ $comment->nameComment }}</p>
                                     </div>
                                     <div class="time_date">{{ $comment->created_at->diffForHumans(null, false, false) }}</div>
                                 </div>
-            
+
                             @else
             
                                 <div class="incoming_msg">
-                                    {{ $comment->user->name }}
+                                    <i class="fa-solid fa-user-large"></i> <b>{{ $comment->user->name }}</b>
                                     <div class="received_msg">
-                                        <div class="border rounded bg-primary-subtle w-75">
+                                        <div class="border rounded bg-light w-75">
+                                            {{-- primary-subtle --}}
                                             <p class="mt-2 ms-2">{{ $comment->nameComment }}</p>
                                         </div>
                                         <div class="time_date">{{ $comment->created_at->diffForHumans(null, false, false) }}</div>
@@ -93,16 +100,16 @@
             
                     </div>
             
-                    <div >
-                        <hr>
+                    <hr class="my-3">
+                    <div class="container ">
                         <form class="row" wire:submit.prevent="sendText({{$products->id}})">
-                            <input wire:model="commentText" type="text" class="col form-control" placeholder="your message" />
-                            <button class="col-2 ms-2 btn btn-success bg-success" type="submit">send</button>
+                            <input wire:model="commentText" type="text" class="col form-control" placeholder="your comment" />
+                            <button class="col-2 ms-2 btn btn-dark bg-dark text-light" type="submit"><i class="bi bi-send"></i></button>
                         </form>
                     </div>
                                 
                 </div>
-                @livewireScripts
+                {{-- @livewireScripts --}}
             </div>
             
         </div>

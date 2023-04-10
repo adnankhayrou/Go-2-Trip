@@ -28,11 +28,12 @@ Route::get('subcatories/{id}', [ProductsController::class, 'loadSubCategories'])
 Route::get('/', function () {
     return view('home');
 });
-Route::get('landing', function () {
-    return view('landing');
-});
+// Route::get('landing', function () {
+//     return view('landing');
+// });
 
 // Route::get('landing', [Landing::class, 'render']);
+Route::get('landing', [ProductsController::class, 'get']);
 Route::get('livewire', [Dashboard::class, 'render']);
 Route::get('show/{id}', [Comment::class, 'render'])->name('product.show');
 
