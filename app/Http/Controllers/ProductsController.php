@@ -62,6 +62,17 @@ class ProductsController extends Controller
         return view('landing',compact('allProducts', 'citys', 'categorys', 'subCategory'));
     }
 
+    public function home()
+    {
+        $product1 = Products::take(4)->get();
+        $product2 = Products::skip(4)->take(4)->get();
+        $product3 = Products::skip(8)->take(4)->get();
+        $category = Categorys::all();   
+        $subCategory = SubCategory::all();
+        $city = Citys::all();
+        return view('home',compact('product1', 'product2', 'product3', 'city', 'category', 'subCategory'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

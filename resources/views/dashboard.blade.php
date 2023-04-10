@@ -30,7 +30,7 @@
                         <hr>
                         <li class="mb-4">
                             <a href="#your-products" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-box"></i> <span class="ms-1 d-none d-sm-inline">Your products Tables</span></a>
+                                <i class="bi bi-box"></i> <span class="ms-1 d-none d-sm-inline">Your products Table</span></a>
                         </li>
                         <hr>
                         <li class="mb-4">

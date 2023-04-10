@@ -3,7 +3,7 @@
 <div class="container">
 
   <div class="text-center mt-4 mb-3">
-    <h1 class="fw_bold text-dark ">Find Best Products For Your Trip</h1>
+    <h1 class="fw_bold text-dark "><b>Find Best Products For Your Trip</b></h1>
    </div>
 
   <div class="top_catagory_area section-padding-80 ">
@@ -38,140 +38,128 @@
 </div>
 
 <div class="text-center mt-5">
-  <h1 class="fw_bold text-dark ">Find Best Products For Your Trip</h1>
+  <h1 class="fw_bold text-dark "><b>Latest Items Listed</b></h1>
  </div>
 
    <div class="container row mx-auto">
-   {{-- @foreach ($meals as $meal) --}}
-     {{-- <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-         <div class="card border-dark bg-dark  shadow-lg  rounded">
-           <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-         <div class="card-body text-center">
-           <h5 class="card-title fw-bold text-light">test</h5>
-           <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-           <p class="card-text text-success">test</p>
-           <hr class="my-1" />
-           <p class="fw-bold text-light">Available on :</p>
-           <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-         </div>    
-       </div>
-     </div>
-
-     <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-        <div class="card border-dark bg-dark  shadow-lg  rounded">
-          <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-bold text-light">test</h5>
-          <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-          <p class="card-text text-success">test</p>
-          <hr class="my-1" />
-          <p class="fw-bold text-light">Available on :</p>
-          <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-        </div>    
-      </div>
-    </div>
-
-    <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-        <div class="card border-dark bg-dark  shadow-lg  rounded">
-          <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-bold text-light">test</h5>
-          <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-          <p class="card-text text-success">test</p>
-          <hr class="my-1" />
-          <p class="fw-bold text-light">Available on :</p>
-          <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-        </div>    
-      </div>
-    </div>
-
-    <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-        <div class="card border-dark bg-dark  shadow-lg  rounded">
-          <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-        <div class="card-body text-center">
-          <h5 class="card-title fw-bold text-light">test</h5>
-          <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-          <p class="card-text text-success">test</p>
-          <hr class="my-1" />
-          <p class="fw-bold text-light">Available on :</p>
-          <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-        </div>    
-      </div>
-    </div> --}}
-
+  
     <div id="carouselExample" class="carousel slide">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <div class="cards-wrapper">
-            {{-- @for($i=0;$i<3;$i++) --}}
-            <div class="card bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            {{-- @endfor --}}
+          <div class="cards">
+            <div class="row mx-auto">
+              @foreach ($product1 as $item)
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2 col-12">
+                    <div class="card border bg-white shadow-lg rounded" >
+                     <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
+                       background-size: cover;
+                           height:10em">
+                                   <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
+                     </div>
+                    <div class="card-body ">
+   
+                      <h5 class="card-title fw-bold text-center text-black text-truncate" title="{{$item->title}}">{{$item->title}}</h5>
+                      <hr class="my-1" />
+   
+                     <div class="row text-light items-start mt-2">
+                       <div class="col text-truncate">
+                        <p class="mb-2 items-center text-black text-center" title="{{$item->city->nameCity}}" ><i class="bi bi-geo-alt text-black"></i><br>{{$item->city->nameCity}}</p>
+                       </div>
+                       <div class="col">
+                        <p class="text-dark items-center text-center text-truncate" title="{{$item->created_at->diffForHumans(null, false, false)}}"><i class="bi bi-clock-history text-black"></i><br>{{$item->created_at->diffForHumans(null, false, false)}}</p>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <p class="card-text text-success"><i class="bi bi-phone"></i><br>{{$item->telephone}}</p>
+                    </div>
+                      
+                      <div class="text-center mt-3">
+                       <a href="{{ route('product.show', $item->id) }}" class="btn btn-dark">See Details</a>
+                     </div>
+   
+                    </div>    
+                  </div>
+                </div>
+              @endforeach
+            </div> 
         </div>
         </div>
         <div class="carousel-item">
-          <div class="cards-wrapper">
-            {{-- @for($i=0;$i<3;$i++) --}}
-            <div class="card bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            {{-- @endfor --}}
+          <div class="cards">
+            <div class="row mx-auto">
+              @foreach ($product2 as $item)
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2 col-12">
+                    <div class="card border bg-white shadow-lg rounded" >
+                     <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
+                       background-size: cover;
+                           height:10em">
+                                   <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
+                     </div>
+                    <div class="card-body ">
+   
+                      <h5 class="card-title fw-bold text-center text-black text-truncate" title="{{$item->title}}">{{$item->title}}</h5>
+                      <hr class="my-1" />
+   
+                     <div class="row text-light items-start mt-2">
+                       <div class="col text-truncate">
+                        <p class="mb-2 items-center text-black text-center" title="{{$item->city->nameCity}}" ><i class="bi bi-geo-alt text-black"></i><br>{{$item->city->nameCity}}</p>
+                       </div>
+                       <div class="col">
+                        <p class="text-dark items-center text-center text-truncate" title="{{$item->created_at->diffForHumans(null, false, false)}}"><i class="bi bi-clock-history text-black"></i><br>{{$item->created_at->diffForHumans(null, false, false)}}</p>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <p class="card-text text-success"><i class="bi bi-phone"></i><br>{{$item->telephone}}</p>
+                    </div>
+                      
+                      <div class="text-center mt-3">
+                       <a href="{{ route('product.show', $item->id) }}" class="btn btn-dark">See Details</a>
+                     </div>
+   
+                    </div>    
+                  </div>
+                </div>
+              @endforeach
+            </div> 
           </div>
         </div>
         <div class="carousel-item">
-          <div class="cards-wrapper">
-            
-            {{-- <div class="col-md-4 col-lg-3 p-3 col-12" href="#modal-meal" data-bs-toggle="modal" onclick="showModel()">
-              <div class="card border-dark bg-dark  shadow-lg  rounded">
-                <img src="{{asset('/images/22.svg')}}" class="card-img-top" with="100"  height="200">
-              <div class="card-body text-center">
-                <h5 class="card-title fw-bold text-light">test</h5>
-                <p class="mb-2 items-center text-light" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-                <p class="card-text text-success">test</p>
-                <hr class="my-1" />
-                <p class="fw-bold text-light">Available on :</p>
-                <p class="text-light"><span class="fw-bold text-light">Date :</span> 12:03:2022</p>
-              </div>    
-            </div>
-          </div> --}}
-          {{-- @for($i=0;$i<3;$i++) --}}
-            <div class="card bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            
-            {{-- @endfor --}}
+          <div class="cards">
+            <div class="row mx-auto">
+              @foreach ($product3 as $item)
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2 col-12">
+                    <div class="card border bg-white shadow-lg rounded" >
+                     <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
+                       background-size: cover;
+                           height:10em">
+                                   <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
+                     </div>
+                    <div class="card-body ">
+   
+                      <h5 class="card-title fw-bold text-center text-black text-truncate" title="{{$item->title}}">{{$item->title}}</h5>
+                      <hr class="my-1" />
+   
+                     <div class="row text-light items-start mt-2">
+                       <div class="col text-truncate">
+                        <p class="mb-2 items-center text-black text-center" title="{{$item->city->nameCity}}" ><i class="bi bi-geo-alt text-black"></i><br>{{$item->city->nameCity}}</p>
+                       </div>
+                       <div class="col">
+                        <p class="text-dark items-center text-center text-truncate" title="{{$item->created_at->diffForHumans(null, false, false)}}"><i class="bi bi-clock-history text-black"></i><br>{{$item->created_at->diffForHumans(null, false, false)}}</p>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <p class="card-text text-success"><i class="bi bi-phone"></i><br>{{$item->telephone}}</p>
+                    </div>
+                      
+                      <div class="text-center mt-3">
+                       <a href="{{ route('product.show', $item->id) }}" class="btn btn-dark">See Details</a>
+                     </div>
+   
+                    </div>    
+                  </div>
+                </div>
+              @endforeach
+            </div> 
 
           </div>
         </div>

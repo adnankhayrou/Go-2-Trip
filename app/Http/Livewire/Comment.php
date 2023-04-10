@@ -18,7 +18,7 @@ class Comment extends Component
         $products = Products::find($id);
         $comments = Comments::all();
 
-        return view('/show', ['products' => $products, 'comments' => $comments]);
+        return view('livewire.comment', ['products' => $products, 'comments' => $comments]);
     }
 
     // public function mount($productId){
@@ -27,7 +27,7 @@ class Comment extends Component
 
     public function sendText($id)
     {
-        // dd("test") ;
+        dd("test") ;
         Comments::create([
             'user_id' => auth()->user()->id,
             'nameComment' => $this->commentText,

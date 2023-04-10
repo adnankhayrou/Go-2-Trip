@@ -66,15 +66,31 @@
                             @endforeach
                         </ul>
                     </li>
+
+                    <hr>
+
+                                                
+                    <li class=" overflow-auto bg-wihte" style="max-width: 100%; max-height: 20em;">
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
+                            <i class="bi bi-houses"></i> <span class="ms-1 d-none d-sm-inline">Cities</span> </a>
+                            <ul class="collapse nav flex-column ms-1 " id="submenu3" data-bs-parent="#menu">
+                                @foreach ($citys as $city)
+                                 <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none bg-light d-sm-inline text-dark text-decoration-none">{{$city->nameCity}}</span></a>
+                                </li>
+                                @endforeach
+                        </ul>
+                    </li>
+
                     <hr>
                     <li>
                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+                            <i class="bi bi-info-square"></i> <span class="ms-1 d-none d-sm-inline">About us</span></a>
                     </li>
                     <hr>
                     <li>
                         <a href="#" class="nav-link px-0 align-middle text-dark">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                            <i class="fa-regular fa-address-card"></i> <span class="ms-1 d-none d-sm-inline">Contact us</span> </a>
                     </li>
                 </ul>
                 <hr>
@@ -119,3 +135,9 @@ if (window.scrollY === 0) {
         @endforeach
     </ul>
 </li> --}}
+
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>

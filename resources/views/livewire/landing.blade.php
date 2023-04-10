@@ -33,35 +33,37 @@
             </div>
             
             <div class="text-center mt-3">
-             <h1 class="fw_bold text-dark "><b>Find Best Products For Your Trip</b></h1>
+             <h3 class="fw_bold text-dark "><b>Find Best Products For Your Trip</b></h3>
             </div>
 
         
 
-            <div class="container items-center">
-                <input class="mx-auto form-control form-control-borderless shadow me-1 mb-2" wire:model="searchbar" type="search" placeholder="Search here" style="width: 48.3%">
+            <div class=" row">
+              <div class="container col-2 text-dark">
+              {{$product->links()}} 
+            </div>
+            <div class="container col-8">
+              <input class="mx-auto form-control form-control-borderless shadow me-1 mb-2" wire:model="searchbar" type="search" placeholder="Search here" style="width: 48.3%">
+            </div>
             </div>
 
             {{-- <div class="col mt-2">
                 <img src="{{asset('images/22.svg')}}" class="w-100 h-25 border-bold rounded">
             </div> --}}
-            <div class="container text-dark">
-              {{$product->links()}}
-          </div>
+           
+              
+          
 
         
            <div class="row mx-auto">
            @foreach ($product as $item)
              <div class="col-md-6 col-lg-4 col-xl-3 p-2 col-12">
-              
-            
                  <div class="card border bg-white shadow-lg rounded" >
                   <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
                     background-size: cover;
                         height:10em">
                                 <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
                   </div>
-                   {{-- <img src="{{asset('/storage/'.$item->image)}}" class="card-img-top" with="100"  height="100"> --}}
                  <div class="card-body ">
 
                    <h5 class="card-title fw-bold text-center text-black text-truncate" title="{{$item->title}}">{{$item->title}}</h5>
@@ -75,16 +77,6 @@
                      <p class="text-dark items-center text-center text-truncate" title="{{$item->created_at->diffForHumans(null, false, false)}}"><i class="bi bi-clock-history text-black"></i><br>{{$item->created_at->diffForHumans(null, false, false)}}</p>
                    </div>
                  </div>
-
-                 {{-- <div class="row text-light items-center mt-2">
-                  <div class="col-8 text-center">
-                    <p class="card-text text-success"><i class="bi bi-phone"></i><br>{{$item->telephone}}</p>                  
-                  </div>
-                  <div class="col-4">
-                   <p class="text-dark items-center text-center">{{$item->prix}}</p>
-                 </div>
-               </div> --}}
-
                  <div class="text-center">
                    <p class="card-text text-success"><i class="bi bi-phone"></i><br>{{$item->telephone}}</p>
                  </div>
@@ -96,14 +88,6 @@
                  </div>    
                </div>
              </div>
-             {{-- <div class="col-md-4 col-lg-3 p-2 col-12 card bg-dark rounded">
-              <img src="{{asset('/images/22.svg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light">Card title</h5>
-                <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div> --}}
            @endforeach
          </div> 
          <div class="container text-dark">
