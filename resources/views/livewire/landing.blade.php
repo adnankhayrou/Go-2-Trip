@@ -13,13 +13,13 @@
             <div id="carouselExampleAutoplaying" class="carousel slide rounded" data-bs-ride="carousel">
                 <div class="carousel-inner rounded">
                     <div class="carousel-item active">
-                        <img src="{{asset('images/22.svg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('images/22.svg')}}" class="d-block w-100">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('images/23.svg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('images/23.svg')}}" class="d-block w-100">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('images/24.svg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('images/24.svg')}}" class="d-block w-100">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -38,11 +38,16 @@
 
         
 
-            <div class=" row">
-              <div class="container col-2 text-dark">
-              {{$product->links()}} 
-            </div>
-            <div class="container col-8">
+            <div class="container">
+              {{-- <div class="container">
+                <select wire:model="filter">
+                  <option value="">All items</option>
+                  @foreach($category as $category)
+                  <option value="{{$category->id}}">{{$category->nameCategory}}</option>
+                  @endforeach
+                 </select>
+            </div> --}}
+            <div class="">
               <input class="mx-auto form-control form-control-borderless shadow me-1 mb-2" wire:model="searchbar" type="search" placeholder="Search here" style="width: 48.3%">
             </div>
             </div>
@@ -62,7 +67,7 @@
                   <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
                     background-size: cover;
                         height:10em">
-                                <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
+                        <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
                   </div>
                  <div class="card-body ">
 

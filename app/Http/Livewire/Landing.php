@@ -13,6 +13,7 @@ class Landing extends Component
     use WithPagination;
 
     public $searchbar = '';
+    public $filter = '';
 
     protected $paginationTheme = 'bootstrap';
  
@@ -25,7 +26,15 @@ class Landing extends Component
     {
         return view('livewire.landing',[
             'product' => Products::where('title', 'like', '%'.$this->searchbar.'%')->paginate(12),
+            'category' => Categorys::all(),
         ]);
     }
+
+    // public function filter()
+    // {
+    //     return view('livewire.landing',[
+    //         'product' => Products::where('subCategory_id', 'like', '%'.$this->filter.'%')->paginate(8),
+    //     ]);
+    // }
 
 }

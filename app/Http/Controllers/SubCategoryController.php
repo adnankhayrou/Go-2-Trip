@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\SubCategory;
 use App\Http\Requests\StoreSubCategoryRequest;
 use App\Http\Requests\UpdateSubCategoryRequest;
+use App\Models\Categorys;
+use App\Models\Citys;
+use App\Models\Products;
 
 class SubCategoryController extends Controller
 {
@@ -23,9 +26,14 @@ class SubCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function filter($id)
     {
-        //
+        return view('filter',[
+            'product' => Products::where('subCategory_id', $id)->get(),
+            'categorys' => Categorys::all(),
+            'citys' => Citys::all(),
+        ]);
+        // dd($products)
     }
 
     /**

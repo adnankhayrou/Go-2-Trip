@@ -9,6 +9,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Comment;
 use App\Http\Livewire\Landing;
+use App\Models\Categorys;
 
 // Route::put('/products/{products}', [ProductsController::class, 'update']);
 
@@ -33,6 +34,7 @@ Route::get('subcatories/{id}', [ProductsController::class, 'loadSubCategories'])
 // });
 
 // Route::get('landing', [Landing::class, 'render']);
+Route::get('filter/{subcategory}', [SubCategoryController::class, 'filter'])->name('subcat.filter');
 Route::get('/', [ProductsController::class, 'home']);
 Route::get('landing', [ProductsController::class, 'get']);
 Route::get('livewire', [Dashboard::class, 'render']);
