@@ -24,7 +24,7 @@ class Landing extends Component
     public function render()
     {
         return view('livewire.landing',[
-            'product' => Products::where('title', 'like', '%'.$this->searchbar.'%')->paginate(24),
+            'product' => Products::where('title', 'like', '%'.$this->searchbar.'%')->paginate(12),
         ]);
     }
 

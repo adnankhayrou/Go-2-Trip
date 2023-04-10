@@ -98,9 +98,10 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $categorys = Categorys::all();
+        $subcategory = SubCategory::all();
         $citys = Citys::all();
         $products = Products::find($id);
-        return view('/edit', ['products' => $products, 'categorys' => $categorys, 'citys' => $citys]);
+        return view('/edit', ['products' => $products, 'subcategory' => $subcategory, 'categorys' => $categorys, 'citys' => $citys]);
         
     }
 

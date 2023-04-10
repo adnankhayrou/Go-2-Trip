@@ -164,9 +164,6 @@
                                     <td>{{$items->prix}}{{$items->prix < 100 ? '.00dh' : 'dh'}}</td>
                                     <td>{{$items->category->nameCategory}}</td>
                                     <td>{{$items->subCategory->nameSubCategory}}</td>
-                                    {{-- @foreach ($items->category->subcategory as $item)
-                                        {{$item->nameSubCategory}}
-                                    @endforeach --}}
                                     <td><i class="bi bi-clock-history"></i> {{$items->created_at->diffForHumans(null, false, false)}}</td>
                                     <td><a href="{{ route('product.edit', $items->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                                     <td><a href="{{ route('product.destroy', $items->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
@@ -262,7 +259,7 @@
                             @enderror</small> --}}
                         </div>
                     <input type="text" name="nameSubCategory" class="col ms-2 form-control rounded @error('nameSubCategory') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
-                    <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2  " id="category-add-btn">Add</button>
+                    <button type="submit" class="col-3 ms-2 rounded text-light bg-black " id="category-add-btn">Add</button>
                     </div>
                     <small class="text-danger">
                         @error('nameSubCategory')

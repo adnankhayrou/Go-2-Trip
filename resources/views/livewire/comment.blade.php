@@ -44,7 +44,12 @@
 </div>
 @livewireScripts --}}
 
-
+{{-- <div wire:poll.5s>
+    <form class="row" wire:submit.prevent="sendText">
+        <input wire:model="commentText" type="text" class="col form-control" placeholder="your comment" />
+        <button class="col-2 ms-2 btn btn-dark bg-dark text-light" type="submit"><i class="bi bi-send"></i></button>
+    </form>
+</div> --}}
 
 
 

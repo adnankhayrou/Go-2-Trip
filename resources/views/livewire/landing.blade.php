@@ -45,6 +45,9 @@
             {{-- <div class="col mt-2">
                 <img src="{{asset('images/22.svg')}}" class="w-100 h-25 border-bold rounded">
             </div> --}}
+            <div class="container text-dark">
+              {{$product->links()}}
+          </div>
 
         
            <div class="row mx-auto">

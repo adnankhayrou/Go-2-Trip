@@ -11,6 +11,7 @@ use Livewire\Component;
 class Comment extends Component
 {
     public $commentText;
+    // public $productId;
     
     public function render($id)
     {
@@ -19,6 +20,10 @@ class Comment extends Component
 
         return view('/show', ['products' => $products, 'comments' => $comments]);
     }
+
+    // public function mount($productId){
+    //     $this->productId = $productId;
+    // }
 
     public function sendText($id)
     {
