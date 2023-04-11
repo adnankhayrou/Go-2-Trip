@@ -40,7 +40,7 @@ Route::get('filterCategory/{category}', [CategorysController::class, 'filterCate
 Route::get('/', [ProductsController::class, 'home']);
 Route::get('landing', [ProductsController::class, 'get']);
 Route::get('livewire', [Dashboard::class, 'render']);
-Route::get('show/{id}', [Comment::class, 'render'])->name('product.show');
+// Route::get('delete/{id}', [Comment::class, 'destroy'])->name('delete.destroy');
 
 
 Route::middleware([
@@ -59,6 +59,7 @@ Route::middleware([
     Route::group(['controller' => ProductsController::class, 'prefix' => 'products'], function () {
         Route::get('', 'index')->middleware(['permission:view product']);
         Route::post('', 'store')->middleware(['permission:add product']);
+        Route::get('show/{id}','display')->name('product.show');
         Route::get('/{product}', 'edit')->middleware(['permission:edit All product|edit My product'])->name('product.edit');
         Route::put('/update/{product}', 'update')->middleware(['permission:edit All product|edit My product'])->name('product.update');
         Route::get('/delete/{product}', 'destroy')->middleware(['permission:delete All product|delete My product'])->name('product.destroy');

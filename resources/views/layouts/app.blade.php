@@ -51,7 +51,13 @@
         </div>
 
         @stack('modals')
-
+        {{-- <script>
+            document.addEventListener('livewire:load', function () {
+                Livewire.on('commentAdded', () => {
+                    window.location.reload();
+                });
+            });
+        </script> --}}
         @livewireScripts
     </body>
 </html>

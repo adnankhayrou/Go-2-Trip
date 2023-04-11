@@ -73,6 +73,14 @@ class ProductsController extends Controller
         return view('home',compact('product1', 'product2', 'product3', 'city', 'category', 'subCategory'));
     }
 
+
+    public function display($id)
+    {
+        $products = Products::find($id);
+        $comments = Comments::all();
+        return view('/show',compact('products','comments'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
