@@ -2,13 +2,13 @@
     <div class="container-fluid" id="dashboard">
         <div class="row">
             <div class="col-2 col-md-3 col-lg-2 px-sm-2 px-0 bg-light shadow">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100  position-fixed ">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt- text-white min-vh-100  position-fixed ">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="fs-5 d-none d-sm-inline mb-5"></span>
+                        <span class="fs-5 d-none d-sm-inline mb-3"></span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item mb-4">
-                            <a href="#" class="nav-link align-middle px-0 text-dark">
+                            <a href="/" class="nav-link align-middle px-0 text-dark">
                                 <i class="bi bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                             </a>
                         </li>
@@ -40,7 +40,12 @@
                         <hr>
                         <li class="mb-4">
                             <a href="#categorys" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">Categories Table</span> </a>
+                                <i class="bi bi-bookmark"></i> <span class="ms-1 d-none d-sm-inline">Categories Table</span> </a>
+                        </li>
+                        <hr>
+                        <li class="mb-4">
+                            <a href="#subcategory" class="nav-link px-0 align-middle text-dark">
+                                <i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">SubCategories Table</span> </a>
                         </li>
                         <hr>
                         <li class="mb-4">
@@ -241,7 +246,7 @@
             @if (Auth()->user()->can('edit All product'))
             <div class="row items-center me-0">
                 
-                <h1 id="categorys" class="col-12 col-md-4 col-xl-8 fw-bold ms-3 mt-5 mb-4">SubCategories</h1>  
+                <h1 id="subcategory" class="col-12 col-md-4 col-xl-8 fw-bold ms-3 mt-5 mb-4">SubCategories</h1>  
             
                 <form class="col" action="subCategory" method="POST" id="" data-parsley-validate>
                     @csrf

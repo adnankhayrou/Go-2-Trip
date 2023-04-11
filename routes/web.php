@@ -35,6 +35,8 @@ Route::get('subcatories/{id}', [ProductsController::class, 'loadSubCategories'])
 
 // Route::get('landing', [Landing::class, 'render']);
 Route::get('filter/{subcategory}', [SubCategoryController::class, 'filter'])->name('subcat.filter');
+Route::get('filterCity/{city}', [SubCategoryController::class, 'filterCity'])->name('city.filterCity');
+Route::get('filterCategory/{category}', [CategorysController::class, 'filterCategory'])->name('category.filterCategory');
 Route::get('/', [ProductsController::class, 'home']);
 Route::get('landing', [ProductsController::class, 'get']);
 Route::get('livewire', [Dashboard::class, 'render']);

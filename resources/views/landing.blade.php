@@ -18,7 +18,7 @@
                   </li> --}}
                   <hr>
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                        <a href="/" class="nav-link align-middle px-0 text-dark">
                             <i class="bi bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
@@ -32,7 +32,7 @@
                     </li>
                     <hr>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                        <a href="#items" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">Items</span></a>
                     </li>
                     <hr>
@@ -97,7 +97,7 @@
                 
             </div>
         </div>
-        <div class="col py-3">
+        <div class="col py-3" id="items">
           content
           @livewire('landing')
         </div>

@@ -36,6 +36,16 @@ class SubCategoryController extends Controller
         // dd($products)
     }
 
+    public function filterCity($id)
+    {
+        return view('filter',[
+            'product' => Products::where('city_id', $id)->get(),
+            'categorys' => Categorys::all(),
+            'citys' => Citys::all(),
+        ]);
+        // dd($products)
+    }
+
     /**
      * Store a newly created resource in storage.
      *

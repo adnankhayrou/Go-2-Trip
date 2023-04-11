@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Categorys;
 use App\Http\Requests\StoreCategorysRequest;
 use App\Http\Requests\UpdateCategorysRequest;
+use App\Models\Citys;
+use App\Models\Products;
 
 class CategorysController extends Controller
 {
@@ -25,9 +27,14 @@ class CategorysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function filterCategory($id)
     {
-        //
+        return view('filter',[
+            'product' => Products::where('category_id', $id)->get(),
+            'categorys' => Categorys::all(),
+            'citys' => Citys::all(),
+        ]);
+    
     }
 
     /**

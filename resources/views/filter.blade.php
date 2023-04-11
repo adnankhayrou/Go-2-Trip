@@ -18,7 +18,7 @@
                   </li> --}}
                   <hr>
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-dark">
+                        <a href="/" class="nav-link align-middle px-0 text-dark">
                             <i class="bi bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
@@ -36,15 +36,7 @@
                             <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">Items</span></a>
                     </li>
                     <hr>
-                    {{-- <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
-                            <i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">categorys</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Product</span> 1</a>
-                            </li>
-                        </ul>
-                    </li> --}}
+                    
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle p-0 text-dark" href="" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside"><i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">Categories</span></a>
@@ -76,7 +68,7 @@
                             <ul class="collapse nav flex-column ms-1 " id="submenu3" data-bs-parent="#menu">
                                 @foreach ($citys as $city)
                                  <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none bg-light d-sm-inline text-dark text-decoration-none">{{$city->nameCity}}</span></a>
+                                <a href="{{route('city.filterCity', $city->id)}}" class="nav-link px-0"> <span class="d-none bg-light d-sm-inline text-dark text-decoration-none">{{$city->nameCity}}</span></a>
                                 </li>
                                 @endforeach
                         </ul>
@@ -100,14 +92,14 @@
         <div class="col py-3">
           content
           <div class="text-center mt-5">
-            <h3><b>Results</b></h3>
+            <h2><b>Results : {{count($product)}}</b></h2>
             
           </div>
           <div class="row mx-auto mt-3">
             @foreach ($product as $item)
               <div class="col-md-6 col-lg-4 col-xl-3 p-2 col-12">
                   <div class="card border bg-white shadow-lg rounded" >
-                   <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
+                   <div class="rounded-top text-end" style="background-image:url({{'/storage/'.$item->image}}); background-position: center;
                      background-size: cover;
                          height:10em">
                          <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
@@ -143,37 +135,12 @@
 
 
 
-{{-- @include('footer') --}}
-{{-- <script>
-    window.addEventListener("scroll", ()=>{
-    document.querySelector("#nav").style.background = "whitesmoke"
-
-if (window.scrollY === 0) {
-    document.querySelector("#nav").style.backgroundColor = "transparent";
-  }
-})
-</script> --}}
 
 
-{{-- <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
-        data-bs-auto-close="outside">Categories</a>
-    <ul class="sub-menu dropdown-menu drop-style shadow">
-        @foreach ($categorys as $cat)
-        <li class="dropend">
-            <a href="" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside">{{$cat->nameCategory}}</a>
-            <ul class="dropdown-menu shadow drop-style">
-                @foreach ($cat->subcategory as $subcat)
-                <li><a class="dropdown-item"
-                        href="">{{$subcat->nameSubCategory}}</a>
-                </li>
-                @endforeach
-            </ul>
-        </li>
-        @endforeach
-    </ul>
-</li> --}}
+
+
+
+
 
 <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
