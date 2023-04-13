@@ -16,11 +16,14 @@ class Comment extends Component
     public $updateComment;
     public $commentId;
     public $editingCommentId;
-    public $editedComment='';
+    public $editedComment=[];
 
     
     public function sendText()
     {
+        if($this->commentText == null){
+          return  session()->flash('alert', 'Comment text is requered!');
+        }
         Comments::create(
             [
             'user_id' => auth()->user()->id,
@@ -44,13 +47,18 @@ class Comment extends Component
 
     public function edit($id){
         $this->editingCommentId = $id;
-        $this->editedComment = Comments::find($id)->nameComment;
+        $this->editedComment[$id] = Comments::find($id)->nameComment;
     }
 
-    public function update(){
-        $comment = Comments::find($this->commentId);
-        $comment->nameComment->$this->updateComment;
-        $comment->save();
+    public function update($id){
+        $comment = Comments::find($id);
+        $comment->update(
+            [
+            'user_id' => auth()->user()->id,
+            'nameComment' => $this->updateComment,
+            'product_id' => $this->productId,
+        ]);
+        $this->editingCommentId = null;
     }
 
     

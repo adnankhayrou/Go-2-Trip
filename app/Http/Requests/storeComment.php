@@ -25,7 +25,7 @@ class storeComment extends FormRequest
     {
         return [
             'user_id' => 'required|max:30',
-            'nameComment' => 'required|max:30',
+            'nameComment' => 'required',
             'product_id' => 'required|max:30',
         ];
     }

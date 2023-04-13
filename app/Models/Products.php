@@ -34,11 +34,6 @@ class Products extends Model
         return $this->belongsTo(SubCategory::class, 'subCategory_id');
     }
 
-    // public function subcat() : HasOneThrough
-    // {
-    //     return $this->hasOneThrough(Categorys::class,'subCategory_id', 'id');
-    // }
-
     public function city()
     {
         return $this->belongsTo(Citys::class);
@@ -46,6 +41,6 @@ class Products extends Model
 
     public function comment()
     {
-        return $this->belongsTo(comments::class);
+        return $this->hasMany(Comments::class, 'product_id', 'id');
     }
 }

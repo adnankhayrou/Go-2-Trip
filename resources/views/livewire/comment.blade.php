@@ -28,9 +28,10 @@
                           {{-- edit form --}}
                           @if ($editingCommentId === $comment->id)
                                     
-                          <form wire:submit.prevent="update('{{ $comment->id }}')">
+                          <form wire:submit.prevent="update({{$comment->id}})">
                               <p>
-                                  <input type="text" wire:model="updateComment" class="p-1 coment-content-input rounded border">
+                                {{-- <textarea wire:model.defer="updateComment">{{$comment->nameComment}}</textarea> --}}
+                                  <input type="text" wire:model.defer="updateComment.{{$comment->id}}" class="p-1 coment-content-input rounded border" >
                                   <button class="edit-btn-dark" type="submit"><b class="text-secondary" style="font-size: .8em">Save</b></button>
                               </p>
                           </form>
@@ -69,16 +70,19 @@
         @endforeach
 
     </div>
-    @if (!Route::has('login'))
+    {{-- @if (!Route::has('login')) --}}
+    @auth
     <hr class="my-3">
     <div class="container ">
         <form class="row" wire:submit.prevent="sendText">
             <input wire:model="commentText" type="text" class="col form-control" placeholder="your comment" />
-           
             <button onclick="scrollToTop()" class="col-2 ms-2 btn btn-dark bg-dark text-light" type="submit"><i class="bi bi-send"></i></button>
-          
         </form>
     </div>  
+    @if (session('alert'))
+    <small class="ms-1 text-danger">{{session('alert')}}</small>
+    @endif
+
     @else
     <hr class="my-3">
     <div class="container ">
@@ -86,8 +90,9 @@
             <input type="text" class="col form-control" placeholder="your comment" />
             <button href="#modal-comment" data-bs-toggle="modal" class="col-2 ms-2 btn btn-dark bg-dark text-light"><i class="bi bi-send"></i></button>
         </div>
-    </div>  
-    @endif         
+    </div> 
+    @endauth
+    {{-- @endif          --}}
 </div>
 
 
@@ -97,18 +102,15 @@
         <div class="modal-content text-center w-75">
             <form >
             
-                {{-- <div class="mb-1">
-                    <h5 class="modal-title fw-bold mt-4"><b>login first</b></h5>
-                </div> --}}
                 <div class="modal-body">
         
-                        <div class="mb-4">
-                            <i class="bi bi-exclamation-circle" style="font-size: 3.5em;"></i>
-                        </div>
-                        <div class="mb-3">
-                            <button class="btn btn-dark"><a href="{{ route('login') }}" class="text-light text-decoration-none fs-bold">login first</a></button>
+                    <div class="mb-4">
+                        <i class="bi bi-exclamation-circle" style="font-size: 3.5em;"></i>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-dark"><a href="{{ route('login') }}" class="text-light text-decoration-none fs-bold">login first</a></button>
 
-                        </div>
+                    </div>
             
                 </div>
             </form>
