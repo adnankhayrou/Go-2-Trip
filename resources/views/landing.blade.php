@@ -32,7 +32,7 @@
                     </li>
                     <hr>
                     <li>
-                        <a href="#items" class="nav-link px-0 align-middle text-dark">
+                        <a href="{{ url('landing') }}" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">Items</span></a>
                     </li>
                     <hr>
@@ -69,14 +69,13 @@
 
                     <hr>
 
-                                                
                     <li class=" overflow-auto bg-wihte" style="max-width: 100%; max-height: 20em;">
                         <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-houses"></i> <span class="ms-1 d-none d-sm-inline">Cities</span> </a>
                             <ul class="collapse nav flex-column ms-1 " id="submenu3" data-bs-parent="#menu">
                                 @foreach ($citys as $city)
                                  <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none bg-light d-sm-inline text-dark text-decoration-none">{{$city->nameCity}}</span></a>
+                                <a href="{{route('city.filterCity', $city->id)}}" class="nav-link px-0"> <span class="d-none bg-light d-sm-inline text-dark text-decoration-none">{{$city->nameCity}}</span></a>
                                 </li>
                                 @endforeach
                         </ul>

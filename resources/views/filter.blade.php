@@ -32,7 +32,7 @@
                     </li>
                     <hr>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                        <a href="{{ url('landing') }}" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">Items</span></a>
                     </li>
                     <hr>

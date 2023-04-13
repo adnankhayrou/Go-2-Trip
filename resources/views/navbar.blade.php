@@ -20,8 +20,8 @@
                     {{-- </div> --}}
                    
                 @endauth
-            </div>
-         @endif
+                </div>
+                @endif
              
             </div>
           </nav>

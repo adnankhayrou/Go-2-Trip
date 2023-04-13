@@ -85,20 +85,6 @@
                    @enderror</small>
                </div>
        
-               {{-- <div class="col-6 mb-3">
-                   <select class="form-select rounded border" name="category_id" aria-label="Default select example">
-                       <option selected>select your category</option>
-                       @foreach ($categorys as $category)
-                       <option value="{{$category->id}}" {{$products->category_id == $category->id ? 'selected' : ''}}>{{$category->nameCategory}}</option>
-                       @endforeach
-                     </select>
-                   <small class="text-danger">
-                       @error('category_id')
-                       {{ $message }}
-                   @enderror</small>
-               </div> --}}
-       
-       
        
                    <div class="col-12 col-md-6 col-lg-6 mb-3">
                        <label class="form-label">Price</label>
@@ -132,6 +118,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
+
         $("document").ready(function() {
             $('select[name="category_id"]').on('change', function() {
                 var catId = $(this).val();

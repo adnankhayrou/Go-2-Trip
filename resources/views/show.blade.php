@@ -34,7 +34,8 @@
                      
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3 text-end">
-                    <p class="text-light btn btn-success "><i class="bi bi-phone"></i><a href="tel:{{$products->telephone}}">{{$products->telephone}}</a> </p>
+                    <p class="text-light btn btn-dark "><i class="bi bi-phone"></i><a href="tel:{{$products->telephone}}">{{$products->telephone}}</a> </p>
+                    <p class="text-light btn btn-success "><i class="bi bi-whatsapp"></i> <a href="https://wa.me/+212637898770"> <b>Contact Seller</b></a> </p>
                 </div>
 
                 <div>
