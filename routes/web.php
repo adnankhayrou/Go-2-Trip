@@ -19,7 +19,7 @@ Route::get('filterCategory/{category}', [CategorysController::class, 'filterCate
 Route::get('/', [ProductsController::class, 'home']);
 Route::get('landing', [ProductsController::class, 'get']);
 Route::get('livewire', [Dashboard::class, 'render']);
-Route::get('products/{id}', [ProductsController::class,'display'])->name('product.show');
+Route::get('product/{id}', [ProductsController::class,'display'])->name('product.show');
 
 
 /*

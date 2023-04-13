@@ -10,7 +10,11 @@
                 @if (Route::has('login'))
             {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
                 @auth
+                @if (Auth()->user()->can('edit All product'))
                 <button class="ms-2 btn btn-dark me-2 "><a href="{{ url('/dashboard') }}" class="text-light text-decoration-none fs-bold">Dashboard</a></button>
+                @else
+                <button class="ms-2 btn btn-dark me-2 "><a href="{{ url('/dashboard') }}" class="text-light text-decoration-none fs-bold">Your items</a></button>
+                @endif
                 @else
                 <button class="ms-2 btn btn-dark"><a href="{{ route('login') }}" class="text-light text-decoration-none fs-bold">Log in</a></button>
                    

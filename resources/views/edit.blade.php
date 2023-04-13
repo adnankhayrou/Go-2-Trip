@@ -2,12 +2,13 @@
     <div class="container items-center">
         <h1 class="col fw-bold mt-3 mb-2 text-center fs-2">Edit Your item</h1>
         </div>
-    <!-- edit meal form -->
+    <!-- edit item form -->
     <div class="container pt-3 w-75 bg-white rounded">
         <form action="{{ route('product.update',$products) }}" method="POST" id="form" class=" pb-2" enctype="multipart/form-data">
 
             {{ csrf_field() }}
             @method('PUT') 
+
             <div class=" row modal-body">
             <div class="col-12 mb-3">
                 <label class="form-label">Name</label>
@@ -17,13 +18,14 @@
                     {{ $message }}
                 @enderror</small>
             </div>
-            <div class="rounded">
-                <img class="rounded" src="{{asset('/storage/'.$products->image)}}" style="width: 7em;">
+
+           <div class="rounded">
+                <img id="preview-image" src="{{asset('/storage/'.$products->image)}}" alt="Preview image" class="rounded" style="width: 7em;">
             </div>
 
            <div class="col-xl-6 col-md-6 col-12 mb-3">
              <label for="image" class="col-form-label" id="image">Image</label>
-             <input type="file" class="form-control border rounded" id="images" name="image" value="{{$products->image}}">
+             <input type="file" class="form-control border rounded" id="images" name="image" >
              <small class="text-danger">
                 @error('image')
                 {{ $message }}
@@ -47,7 +49,6 @@
             </small>
         </div>
 
-           {{-- <div class="row form-group mb-3"> --}}
             <div class="col-xl-6 col-md-6 col-12 mb-3">
                 <label class="form-label">Category</label>
                 <select id="categoryList" class="form-control @error('category_id') is-invalid @enderror"
@@ -71,7 +72,6 @@
                     <option value=""> </option>
                 </select>
             </div>
-        {{-- </div> --}}
 
 
         <div class="col-xl-6 col-md-6 col-12 mb-3">
@@ -83,20 +83,6 @@
             @enderror</small>
         </div>
 
-        {{-- <div class="col-6 mb-3">
-            <select class="form-select rounded border" name="category_id" aria-label="Default select example">
-                <option selected>select your category</option>
-                @foreach ($categorys as $category)
-                <option value="{{$category->id}}" {{$products->category_id == $category->id ? 'selected' : ''}}>{{$category->nameCategory}}</option>
-                @endforeach
-              </select>
-            <small class="text-danger">
-                @error('category_id')
-                {{ $message }}
-            @enderror</small>
-        </div> --}}
-
-
 
             <div class="col-12 col-md-6 col-lg-6 mb-3">
                 <label class="form-label">Price</label>
@@ -107,7 +93,6 @@
                 @enderror</small>
             </div>
 
-            
 
             <div class="col-12 mb-0">
                 <label class="form-label">Description</label>
@@ -128,34 +113,51 @@
            </div>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $("document").ready(function() {
-            $('select[name="category_id"]').on('change', function() {
-                var catId = $(this).val();
-                if (catId) {
-                $.ajax({
-                    url: '/subcatories/' + catId,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                    $('select[name="subCategory_id"]').empty();
-                    for(i =0 ; i < data.length ; i++){ 
-                        $('select[name="subCategory_id"]').append(
-                            '<option value="' + data[i].id + '">' + data[i].nameSubCategory +
-                            '</option>');
-                    }
-                    }
-                })
-                } else {
-                    $('select[name="subCategory_id"]').empty();
-                }
-            });
-
-
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#images').on('change', function() {
+        var input = $(this)[0];
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            $('#preview-image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
         });
+    });
     </script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("document").ready(function() {
+                $('select[name="category_id"]').on('change', function() {
+                    var catId = $(this).val();
+                    if (catId) {
+                    $.ajax({
+                        url: '/subcatories/' + catId,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                        $('select[name="subCategory_id"]').empty();
+                        for(i =0 ; i < data.length ; i++){ 
+                            $('select[name="subCategory_id"]').append(
+                                '<option value="' + data[i].id + '">' + data[i].nameSubCategory +
+                                '</option>');
+                        }
+                        }
+                    })
+                    } else {
+                        $('select[name="subCategory_id"]').empty();
+                    }
+                });
+
+
+            });
+        </script>
+        
+        
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -15,18 +15,27 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                   
                     <x-nav-link href="{{ url('/') }}" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
                     <x-nav-link href="{{ url('landing') }}" :active="request()->routeIs('landing')">
                         {{ __('Items') }}
                     </x-nav-link>
+                    @auth
+                    @if (Auth()->user()->can('edit All product'))
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @else
+                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Your items') }}
+                    </x-nav-link>
+                    @endif
                     <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         {{ __('profile') }}
                     </x-nav-link>
+                    @endauth
 
                 </div>
             </div>
@@ -215,12 +224,24 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
+                @if (Route::has('login'))
+                @auth
                 <x-responsive-nav-link href="{{ url('/') }}" :active="request()->routeIs('home')">
                     {{ __('Home') }}
                 </x-responsive-nav-link>
+                @if (Auth()->user()->can('edit All product'))
                 <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
+                @else
+                <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Your items') }}
+                </x-responsive-nav-link>
+                @endif
+                {{-- <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link> --}}
+
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
@@ -239,6 +260,19 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+                @else
+                <x-dropdown-link href="{{ route('login') }}">
+                   {{ __('login') }}
+               </x-dropdown-link>
+                  
+               @if (Route::has('register'))
+               <x-dropdown-link href="{{ route('register') }}">
+                   {{ __('register') }}
+               </x-dropdown-link>
+               @endif
+                  
+               @endauth
+               @endif
 
                 <!-- Team Management -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())

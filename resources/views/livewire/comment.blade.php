@@ -85,16 +85,16 @@
 <div  class="modal fade mt-5" id="modal-comment">
     <div class="modal-dialog">
         <div class="modal-content text-center w-75">
-            <form >
+            <form action="{{ route('login') }}">
             
                 <div class="modal-body">
         
-                    <div class="mb-4">
-                        <i class="bi bi-exclamation-circle" style="font-size: 3.5em;"></i>
+                    <div class="mb-2">
+                        <i class="bi bi-exclamation-circle text-warning" style="font-size: 3.5em;"></i>
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-dark"><a href="{{ route('login') }}" class="text-light text-decoration-none fs-bold">login first</a></button>
-
+                        <p class="mb-3"><b>login first</b></p>
+                        <button type="submit" class="btn btn-dark bg-dark">login</button>
                     </div>
             
                 </div>

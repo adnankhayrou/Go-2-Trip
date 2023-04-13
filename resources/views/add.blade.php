@@ -9,7 +9,6 @@
 
             <div class=" row modal-body">
 
-                {{-- <input type="hidden" name="id" > --}}
                 <div class="col-12 mb-3">
                     <label class="form-label">Name</label>
                     <input type="text" name="title"
@@ -21,7 +20,9 @@
                     </small>
                 </div>
 
-                {{-- <img class="rounded" src="" width="100" height="50"> --}}
+                <div class="rounded">
+                    <img id="preview-image" src="http://via.placeholder.com/640x360" alt="Preview image" class="rounded" style="width: 7em;">
+                  </div>
 
                 <div class="col-xl-6 col-md-6 col-12 mb-3">
                     <label for="image" class="col-form-label" id="image">Image</label>
@@ -31,7 +32,6 @@
                        {{ $message }}
                    @enderror</small>
                   </div>
-       
        
                   <div class="col-xl-6 col-md-6 col-12 mb-3 mt-1">
                    <label class="form-label">Cities</label><br>
@@ -49,7 +49,6 @@
                    </small>
                </div>
        
-                  {{-- <div class="row form-group mb-3"> --}}
                    <div class="col-xl-6 col-md-6 col-12 mb-3">
                        <label class="form-label">Category</label>
                        <select id="categoryList" class="form-control @error('category_id') is-invalid @enderror"
@@ -73,7 +72,6 @@
                            <option value=""> </option>
                        </select>
                    </div>
-               {{-- </div> --}}
        
        
                <div class="col-xl-6 col-md-6 col-12 mb-3">
@@ -115,6 +113,22 @@
 
     </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#images').on('change', function() {
+        var input = $(this)[0];
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            $('#preview-image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        });
+    });
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">

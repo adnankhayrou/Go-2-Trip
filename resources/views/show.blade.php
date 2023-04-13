@@ -30,12 +30,12 @@
                     <hr class="my-3" />
                 </div>
                 <div class="col-lg-6 col-md-5 col-12">
-                    <p class="me-2"><b>Category > {{$products->category->nameCategory}} > {{$products->subCategory->nameSubCategory}}</b></p>
+                    <p class="me-2 mb-2"><b>Category > {{$products->category->nameCategory}} > {{$products->subCategory->nameSubCategory}}</b></p>
                      
                 </div>
-                <div class="col-12 col-md-6 col-lg-6 mb-3 text-end">
-                    <p class="text-light btn btn-dark "><i class="bi bi-phone"></i><a href="tel:{{$products->telephone}}">{{$products->telephone}}</a> </p>
-                    <p class="text-light btn btn-success "><i class="bi bi-whatsapp"></i> <a href="https://wa.me/+212637898770"> <b>Contact Seller</b></a> </p>
+                <div class="col-12 col-md-6 col-lg-6 mb-3 text-end mx-auto">
+                    <p class="col-12 col-md-8 col-lg-4 text-light btn btn-dark mb-2"><i class="bi bi-phone"></i><a href="tel:{{$products->telephone}}">{{$products->telephone}}</a> </p>
+                    <p class="col-12 col-md-8 col-lg-4 text-light btn btn-success mb-2"><i class="bi bi-whatsapp"></i> <a href="https://wa.me/{{$products->telephone}}"> <b>Contact Seller</b></a> </p>
                 </div>
 
                 <div>

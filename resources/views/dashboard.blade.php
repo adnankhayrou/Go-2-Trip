@@ -23,6 +23,7 @@
                             <a href="#dashboard" class="nav-link px-0 align-middle text-dark">
                                 <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                         </li>
+                        @if (Auth()->user()->can('edit All product'))
                         <hr>
                         <li class="mb-4">
                             <a href="#statistics" class="nav-link px-0 align-middle text-dark">
@@ -55,7 +56,7 @@
                         </li>
                     </ul>
                     <hr>
-                    
+                    @endif  
                 </div>
             </div>
 

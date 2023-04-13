@@ -3,11 +3,38 @@
             
         <h3 class="col fw-bold ms-3 mt-5">All items</h3>  
        
-        @if (Route::has('login'))
+        @auth
           <button class="col-4 btn btn-dark w-auto mt-5 me-2" href="" data-bs-toggle="modal"><a href="{{ url('add') }}" class="text-decoration-none text-light
             "><b>+ </b> Add an item</a></button>
-              @endif            
+            @else
+            <button class="col-4 btn btn-dark w-auto mt-5 me-2" href="#modal-login" data-bs-toggle="modal"><a class="text-decoration-none text-light
+              "><b>+ </b> Add an item</a></button>
+              @endauth           
             </div>
+
+
+            <!-- alert login form -->
+            <div  class="modal fade mt-5" id="modal-login">
+              <div class="modal-dialog">
+                  <div class="modal-content text-center w-75">
+                      <form action="{{ route('login') }}">
+                      
+                          <div class="modal-body">
+                  
+                              <div class="mb-2">
+                                  <i class="bi bi-exclamation-circle text-warning" style="font-size: 3.5em;"></i>
+                              </div>
+                              <div class="mb-3">
+                                  <p class="mb-3"><b>login first</b></p>
+                                  <button type="submit" class="btn btn-dark bg-dark">login</button>
+                              </div>
+                      
+                          </div>
+                      </form>
+                  </div>
+              </div>
+            </div>
+            {{-- end form --}}
        
             
             <div id="carouselExampleAutoplaying" class="carousel slide rounded" data-bs-ride="carousel">
@@ -95,7 +122,7 @@
              </div>
            @endforeach
          </div> 
-         <div class="container text-dark">
+         <div id="pageTop" class="container text-dark">
              {{$product->links()}}
          </div>
        </div>
@@ -103,6 +130,5 @@
   </div>
 </div>
     @livewireScripts
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 </div>
 
