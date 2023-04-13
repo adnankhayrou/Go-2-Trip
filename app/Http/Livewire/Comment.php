@@ -45,10 +45,10 @@ class Comment extends Component
         $comment->delete();
     }
 
-    public function edit($id){
-        $this->editingCommentId = $id;
-        $this->editedComment[$id] = Comments::find($id)->nameComment;
-    }
+    // public function edit($id){
+    //     $this->editingCommentId = $id;
+    //     $this->editedComment[$id] = Comments::find($id)->nameComment;
+    // }
 
     public function update($id){
         $comment = Comments::find($id);
