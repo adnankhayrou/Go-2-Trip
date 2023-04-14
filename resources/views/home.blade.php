@@ -3,7 +3,7 @@
 <div class="container">
 
   <div class="text-center mt-4 mb-3">
-    <h1 class="fw_bold text-dark "><b>Find Best Products For Your Trip</b></h1>
+    <h1 class="fw_bold text-dark "><b>Find items faster with categories</b></h1>
    </div>
 
   <div class="top_catagory_area section-padding-80 ">
@@ -11,30 +11,14 @@
         <div class="row justify-content-center">
             <!-- Single Catagory -->
             @foreach($category as $category)
-            <div class="col-12 col-sm-6 col-md-4 mb-4">
-              <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(/images/22.svg); height: 10rem;">
-                  <div class="catagory-content ">
-                      <a href="{{route('category.filterCategory', $category->id)}}" class="text-decoration-none text-light"><h1>{{$category->nameCategory}}</h1></a>
+            <div class="col-12 col-sm-6 col-md-4 mb-2">
+            <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(https://picsum.photos/640/36{{$category->id}}); height: 10rem;">
+                  <div class="catagory-content">
+                      <a href="{{route('category.filterCategory', $category->id)}}" class="text-decoration-none text-light"><h1>{{$category->nameCategory}}</h1></a> 
                   </div>
               </div>
           </div>
           @endforeach
-            {{-- <!-- Single Catagory -->
-            <div class="col-12 col-sm-6 col-md-4 mb-2">
-                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(/images/23.svg); height: 10rem;">
-                    <div class="catagory-content">
-                        <a href="" class="text-decoration-none text-light"><h1>Shoes</h1></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Single Catagory -->
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(/images/24.svg); height: 10rem;">
-                    <div class="catagory-content">
-                        <a href="" class="text-decoration-none text-light"><h1>Shoes</h1></a>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
 </div>
@@ -94,7 +78,7 @@
                     <div class="card border bg-white shadow-lg rounded" >
                      <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
                        background-size: cover;
-                           height:10em">
+                          height:10em">
                                    <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>
                      </div>
                     <div class="card-body ">

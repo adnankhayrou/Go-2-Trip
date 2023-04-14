@@ -40,7 +40,7 @@
                 <td>{{$item->category->nameCategory}}</td>
                 <td><i class="bi bi-clock-history"></i> {{$item->created_at->diffForHumans(null, false, false)}}</td>
                 <td><a href="{{ route('product.edit', $item->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                <td><a href="{{ route('product.destroy', $item->id) }}" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                <td><a href="{{ route('product.destroy', $item->id) }}" class="text-decoration-none text-danger fw-bold" onclick="return confirm('Are you sure?')">delete</a></td>
                 </tr>
             
                 @php

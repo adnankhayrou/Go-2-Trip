@@ -1,7 +1,8 @@
 <x-app-layout >
+        
     <div class="container-fluid" id="dashboard">
         <div class="row">
-            <div class="col-2 col-md-3 col-lg-2 px-sm-2 px-0 bg-light shadow">
+            <div class="col-2 col-md-3 col-lg-2 px-sm-2 px-0 bg-light shadow " style="min-height: 52rem">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt- text-white min-vh-100  position-fixed ">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline mb-3"></span>
@@ -22,6 +23,7 @@
                             <a href="#dashboard" class="nav-link px-0 align-middle text-dark">
                                 <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                         </li>
+                        @if (Auth()->user()->can('edit All product'))
                         <hr>
                         <li class="mb-4">
                             <a href="#statistics" class="nav-link px-0 align-middle text-dark">
@@ -30,31 +32,31 @@
                         <hr>
                         <li class="mb-4">
                             <a href="#your-products" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-box"></i> <span class="ms-1 d-none d-sm-inline">Your products Table</span></a>
+                                <i class="bi bi-box"></i> <span class="ms-1 d-none d-sm-inline">Your products</span></a>
                         </li>
                         <hr>
                         <li class="mb-4">
                             <a href="#all-products" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-boxes"></i> <span class="ms-1 d-none d-sm-inline">All Products Table</span> </a>
+                                <i class="bi bi-boxes"></i> <span class="ms-1 d-none d-sm-inline">All Products</span> </a>
                         </li>
                         <hr>
                         <li class="mb-4">
                             <a href="#categorys" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-bookmark"></i> <span class="ms-1 d-none d-sm-inline">Categories Table</span> </a>
+                                <i class="bi bi-bookmark"></i> <span class="ms-1 d-none d-sm-inline">Categories</span> </a>
                         </li>
                         <hr>
                         <li class="mb-4">
                             <a href="#subcategory" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">SubCategories Table</span> </a>
+                                <i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">SubCategories</span> </a>
                         </li>
                         <hr>
                         <li class="mb-4">
                             <a href="#citys" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-houses"></i> <span class="ms-1 d-none d-sm-inline">Cities Table</span> </a>
+                                <i class="bi bi-houses"></i> <span class="ms-1 d-none d-sm-inline">Cities</span> </a>
                         </li>
                     </ul>
                     <hr>
-                    
+                    @endif  
                 </div>
             </div>
 
@@ -357,14 +359,12 @@
                     @endforeach
                 </tbody>
                 </table> 
-            
-        </div>
-        @endif
-        {{-- end of citys --}}
+            </div>
+            @endif
+            {{-- end of citys --}}
         </div>
     </div>
- </div>
-
+</div>
  <!-- edit city form -->
 	<div  class="modal fade" id="modal-city">
 		<div class="modal-dialog">

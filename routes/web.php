@@ -12,6 +12,14 @@ use App\Http\Livewire\Landing;
 use App\Models\Categorys;
 
 // Route::put('/products/{products}', [ProductsController::class, 'update']);
+Route::get('subcatories/{id}', [ProductsController::class, 'loadSubCategories']);
+Route::get('filter/{subcategory}', [SubCategoryController::class, 'filter'])->name('subcat.filter');
+Route::get('filterCity/{city}', [SubCategoryController::class, 'filterCity'])->name('city.filterCity');
+Route::get('filterCategory/{category}', [CategorysController::class, 'filterCategory'])->name('category.filterCategory');
+Route::get('/', [ProductsController::class, 'home']);
+Route::get('landing', [ProductsController::class, 'get']);
+Route::get('livewire', [Dashboard::class, 'render']);
+Route::get('product/{id}', [ProductsController::class,'display'])->name('product.show');
 
 
 /*
@@ -24,23 +32,6 @@ use App\Models\Categorys;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('subcatories/{id}', [ProductsController::class, 'loadSubCategories']);
-
-// Route::get('/', function () {
-//     return view('home');
-// });
-// Route::get('landing', function () {
-//     return view('landing');
-// });
-
-// Route::get('landing', [Landing::class, 'render']);
-Route::get('filter/{subcategory}', [SubCategoryController::class, 'filter'])->name('subcat.filter');
-Route::get('filterCity/{city}', [SubCategoryController::class, 'filterCity'])->name('city.filterCity');
-Route::get('filterCategory/{category}', [CategorysController::class, 'filterCategory'])->name('category.filterCategory');
-Route::get('/', [ProductsController::class, 'home']);
-Route::get('landing', [ProductsController::class, 'get']);
-Route::get('livewire', [Dashboard::class, 'render']);
-// Route::get('delete/{id}', [Comment::class, 'destroy'])->name('delete.destroy');
 
 
 Route::middleware([
@@ -59,7 +50,7 @@ Route::middleware([
     Route::group(['controller' => ProductsController::class, 'prefix' => 'products'], function () {
         Route::get('', 'index')->middleware(['permission:view product']);
         Route::post('', 'store')->middleware(['permission:add product']);
-        Route::get('show/{id}','display')->name('product.show');
+        // Route::get('/{id}','display')->name('product.show');
         Route::get('/{product}', 'edit')->middleware(['permission:edit All product|edit My product'])->name('product.edit');
         Route::put('/update/{product}', 'update')->middleware(['permission:edit All product|edit My product'])->name('product.update');
         Route::get('/delete/{product}', 'destroy')->middleware(['permission:delete All product|delete My product'])->name('product.destroy');
@@ -98,9 +89,4 @@ Route::middleware([
 });
 
 
-// Route::controller(ProductsController::class)->group(function () {
-//     Route::get('/products', 'index');
-//     Route::get('/products/{product}', 'show');
-// });
 
-// Route::get('filter', [FilterController::class, 'filter']);

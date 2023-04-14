@@ -8,14 +8,6 @@
                     <span class="fs-5 d-none d-sm-inline mb-5"></span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-5" id="menu">
-                  {{-- <li>
-                    @if (Route::has('login'))
-                    <a href="{{ url('/add') }}" class="nav-link px-0 align-middle text-dark">
-                      <i class="fs-4 bi-plus"></i> <span class="ms-1 d-none d-sm-inline">Add an item</span> </a>
-                      <button class="col-4 btn btn-dark w-auto" href="" data-bs-toggle="modal"><a href="{{ url('add') }}" class="text-decoration-none text-light
-                        "><b>+ </b> Add an item</a></button>
-                          @endif
-                  </li> --}}
                   <hr>
                     <li class="nav-item">
                         <a href="/" class="nav-link align-middle px-0 text-dark">
@@ -23,28 +15,19 @@
                         </a>
                     </li>
                     <hr>
+                    @auth
                     <li>
-                      @if (Route::has('login'))
-                          {{-- <button class="ms-2 btn btn-dark me-2 "><a href="{{ url('/dashboard') }}" class="text-light text-decoration-none fs-bold">Dashboard</a></button> --}}
                         <a href="{{ url('/dashboard') }}" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                            @endif
-                    </li>
-                    <hr>
+                        </li>
+                        <hr>
+                        @endauth
                     <li>
                         <a href="{{ url('landing') }}" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">Items</span></a>
                     </li>
                     <hr>
-                    {{-- <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
-                            <i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">categorys</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Product</span> 1</a>
-                            </li>
-                        </ul>
-                    </li> --}}
+                   
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle p-0 text-dark" href="" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside"><i class="bi bi-bookmarks"></i> <span class="ms-1 d-none d-sm-inline">Categories</span></a>
@@ -55,7 +38,7 @@
                                     data-bs-auto-close="outside">{{$cat->nameCategory}}</a>
                                 <ul class="dropdown-menu shadow drop-style">
                                     @foreach ($cat->subcategory as $subcat)
-                                    <li><a class="dropdown-item"
+                                    <li><a class="dropdown-item "
                                             href="{{route('subcat.filter', $subcat->id)}}">
                                             {{$subcat->nameSubCategory}}
                                         </a>
@@ -68,17 +51,22 @@
                     </li>
 
                     <hr>
-
-                                                
-                    <li class=" overflow-auto bg-wihte" style="max-width: 100%; max-height: 20em;">
+                    <li class="overflow-auto bg-wihte" style="max-width: 100%; max-height: 20em;">
                         <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
-                            <i class="bi bi-houses"></i> <span class="ms-1 d-none d-sm-inline">Cities</span> </a>
-                            <ul class="collapse nav flex-column ms-1 " id="submenu3" data-bs-parent="#menu">
-                                @foreach ($citys as $city)
-                                 <li>
-                                <a href="{{route('city.filterCity', $city->id)}}" class="nav-link px-0"> <span class="d-none bg-light d-sm-inline text-dark text-decoration-none">{{$city->nameCity}}</span></a>
-                                </li>
-                                @endforeach
+                            <i class="bi bi-houses"></i> <span class="ms-1 d-none d-sm-inline">Cities</span>
+                        </a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li>
+                                <input type="text" id="searchBar" class="form-control" placeholder="Search cities...">
+                            </li>
+                            @foreach ($citys as $city)
+                            <li>
+                                <a href="{{route('city.filterCity', $city->id)}}" class="nav-link px-0">
+                                    <span class="d-none bg-light d-sm-inline text-dark text-decoration-none">{{$city->nameCity}}</span>
+                                    <span class="d-inline d-sm-none text-dark">{{$city->nameCity}}</span> <!-- Display city name for small screens -->
+                                </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
 
@@ -105,36 +93,28 @@
 
 
 @include('footer')
-{{-- <script>
-    window.addEventListener("scroll", ()=>{
-    document.querySelector("#nav").style.background = "whitesmoke"
-
-if (window.scrollY === 0) {
-    document.querySelector("#nav").style.backgroundColor = "transparent";
-  }
-})
-</script> --}}
 
 
-{{-- <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
-        data-bs-auto-close="outside">Categories</a>
-    <ul class="sub-menu dropdown-menu drop-style shadow">
-        @foreach ($categorys as $cat)
-        <li class="dropend">
-            <a href="" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside">{{$cat->nameCategory}}</a>
-            <ul class="dropdown-menu shadow drop-style">
-                @foreach ($cat->subcategory as $subcat)
-                <li><a class="dropdown-item"
-                        href="">{{$subcat->nameSubCategory}}</a>
-                </li>
-                @endforeach
-            </ul>
-        </li>
-        @endforeach
-    </ul>
-</li> --}}
+<!-- Add the JavaScript code to handle the search functionality -->
+<script>
+    // Function to handle search functionality
+    function searchCities() {
+        var input = document.getElementById("searchBar").value;
+        var cities = document.querySelectorAll("#submenu3 li:not(:first-child)");
+        for (var i = 0; i < cities.length; i++) {
+            var city = cities[i];
+            var cityName = city.textContent || city.innerText;
+            if (cityName.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+                city.style.display = "";
+            } else {
+                city.style.display = "none";
+            }
+        }
+    }
+
+    // Add event listener to input element
+    document.getElementById("searchBar").addEventListener("input", searchCities);
+</script>
 
 <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />

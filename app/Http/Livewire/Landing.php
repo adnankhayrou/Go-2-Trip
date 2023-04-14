@@ -13,7 +13,7 @@ class Landing extends Component
     use WithPagination;
 
     public $searchbar = '';
-    public $filter = '';
+    // public $filter = '';
 
     protected $paginationTheme = 'bootstrap';
  
