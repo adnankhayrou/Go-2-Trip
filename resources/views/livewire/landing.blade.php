@@ -64,7 +64,7 @@
            @foreach ($product as $item)
              <div class="col-md-6 col-lg-4 col-xl-3 p-2 col-12">
                  <div class="card border bg-white shadow-lg rounded" >
-                  <div class="rounded-top text-end" style="background-image:url({{"storage/".$item->image}}); background-position: center;
+                  <div class="rounded-top text-end" style="background-image:url({{'/storage/'.$item->image}}); background-position: center;
                     background-size: cover;
                         height:10em">
                         <button class="btn btn-light m-2">{{$item->prix}} {{$item->prix < 100 ? '.00dh' : '00'}}</button>

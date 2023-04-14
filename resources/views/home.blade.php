@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <!-- Single Catagory -->
             @foreach($category as $category)
-            <div class="col-12 col-sm-6 col-md-4 mb-2">
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
               <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(/images/22.svg); height: 10rem;">
                   <div class="catagory-content ">
                       <a href="{{route('category.filterCategory', $category->id)}}" class="text-decoration-none text-light"><h1>{{$category->nameCategory}}</h1></a>

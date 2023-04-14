@@ -32,7 +32,7 @@
                     </li>
                     <hr>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-dark">
+                        <a href="{{ url('landing') }}" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">Items</span></a>
                     </li>
                     <hr>
@@ -76,7 +76,7 @@
 
                     <hr>
                     <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
+                        <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-info-square"></i> <span class="ms-1 d-none d-sm-inline">About us</span></a>
                     </li>
                     <hr>
