@@ -17,7 +17,7 @@
                     <div class="received_msg mt-1" style="overflow-wrap: break-word;">
 
                           <form id="form-{{$comment->id}}" class="d-none"  wire:submit.prevent="update({{$comment->id}})">
-                              <p>                                  
+                              <p>                                 
                                   <input id="cmt-input-{{$comment->id}}" type="text" wire:model.defer="updateComment" class="p-1 coment-content-input rounded border" value="">
                                   <button onclick="showComment('', 0)" class="edit-btn-dark" type="submit"><b class="text-secondary" style="font-size: .8em">Save</b></button>
                               </p>
@@ -32,9 +32,6 @@
                             @endif
                             <span><button wire:click="destroy({{$comment->id}})" onclick="return confirm('Are you sure?')" class="text-secondary " style="font-size: .8em;"><b>delete</b></button></span></span>
                     </div>
-                    {{-- form update --}}
-                    
-                    {{-- end of form --}}
 
                 </div>
 

@@ -2,10 +2,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Comments;
-use App\Models\Products;
 use Livewire\Component;
-use App\Http\Requests\storeComment;
-use App\Http\Requests\updateComment;
 
 
 
@@ -16,8 +13,6 @@ class Comment extends Component
     public $updateComment;
     public $commentId;
     public $editingCommentId;
-    public $editedComment=[];
-
     
     public function sendText()
     {
@@ -47,6 +42,13 @@ class Comment extends Component
 
 
     public function update($id){
+
+        if($this->updateComment == null){
+            $comment = Comments::find($id);
+            $comment->delete();
+            return;
+          }
+
         $comment = Comments::find($id);
         $comment->update(
             [
@@ -54,7 +56,6 @@ class Comment extends Component
             'nameComment' => $this->updateComment,
             'product_id' => $this->productId,
         ]);
-        $this->editingCommentId = null;
     }
 
     
