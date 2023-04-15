@@ -66,27 +66,11 @@
         
 
             <div class="container">
-              {{-- <div class="container">
-                <select wire:model="filter">
-                  <option value="">All items</option>
-                  @foreach($category as $category)
-                  <option value="{{$category->id}}">{{$category->nameCategory}}</option>
-                  @endforeach
-                 </select>
-            </div> --}}
             <div class="">
               <input class="mx-auto form-control form-control-borderless shadow me-1 mb-2" wire:model="searchbar" type="search" placeholder="Search here" style="width: 48.3%">
             </div>
             </div>
 
-            {{-- <div class="col mt-2">
-                <img src="{{asset('images/22.svg')}}" class="w-100 h-25 border-bold rounded">
-            </div> --}}
-           
-              
-          
-
-        
            <div class="row mx-auto">
            @foreach ($product as $item)
              <div class="col-md-6 col-lg-4 col-xl-3 p-2 col-12">

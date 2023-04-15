@@ -139,7 +139,7 @@
             
                 <div class="container pt-5 table-responsive">
             
-                            <table class="table table-responsive bg-white rounded">
+                            <table class="table table-responsive bg-white rounded text-center">
                                     @php
                                     $count = 1;
                                     @endphp
@@ -155,6 +155,7 @@
                                     <th scope="col">Category</th>
                                     <th scope="col">SubCategory</th>
                                     <th scope="col">Time</th>
+                                    <th scope="col">View</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
                                     </tr>
@@ -172,6 +173,7 @@
                                     <td>{{$items->category->nameCategory}}</td>
                                     <td>{{$items->subCategory->nameSubCategory}}</td>
                                     <td><i class="bi bi-clock-history"></i> {{$items->created_at->diffForHumans(null, false, false)}}</td>
+                                    <td><a href="{{ route('product.show', $items->id) }}" class="text-decoration-none text-success fw-bold">view</a></td>
                                     <td><a href="{{ route('product.edit', $items->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                                     <td><a href="{{ route('product.destroy', $items->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                                     </tr>
@@ -210,7 +212,7 @@
                 </div>
             <div class="container pt-3 table-responsive">
             
-                <table class="table table-responsive bg-white rounded items-center">
+                <table class="table table-responsive bg-white rounded text-center">
                     <thead>
                         <tr>
                         <th scope="col">#{{count($categorys)}}</th>
@@ -277,7 +279,7 @@
                 </div>
             <div class="container pt-2 table-responsive">
             
-                <table class="table table-responsive bg-white rounded items-center">
+                <table class="table table-responsive bg-white rounded text-center">
                     <thead>
                         <tr>
                         <th scope="col">#{{count($categorys)}}</th>
@@ -333,7 +335,7 @@
                 </div>
         <div class="container pt-3 table-responsive">
         
-            <table class="table table-responsive bg-white rounded">
+            <table class="table table-responsive bg-white rounded text-center">
                     @php
                     $count = 1;
                     @endphp
@@ -390,7 +392,7 @@
                 
 					</div>
 					<div class="modal-footer">
-						<a href="/dashboard" class="btn btn-white border" >Cancel</a>
+						<a href="#" data-bs-dismiss="modal" class="btn btn-white border" >Cancel</a>
 						<button type="submit" class="btn btn-dark text-light bg-dark">Save</button>
 					</div>
 				</form>
@@ -425,7 +427,7 @@
                 
 					</div>
 					<div class="modal-footer">
-						<a href="/dashboard" class="btn btn-white border" >Cancel</a>
+						<a href="#" data-bs-dismiss="modal" class="btn btn-white border" >Cancel</a>
 						<button type="submit" class="btn btn-dark text-light bg-dark">Save</button>
 					</div>
 				</form>
@@ -472,7 +474,7 @@
                 
 					</div>
 					<div class="modal-footer">
-						<a href="/dashboard" class="btn btn-white border" >Cancel</a>
+						<a href="#" data-bs-dismiss="modal" class="btn btn-white border" >Cancel</a>
 						<button type="submit" class="btn btn-dark text-light bg-dark">Save</button>
 					</div>
 				</form>

@@ -154,6 +154,30 @@
                 });
 
 
+                    var catId = $("#categoryList").val();
+                    if (catId) {
+                        $.ajax({
+                            url: '/subcatories/' + catId,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                $('select[name="subCategory_id"]').empty();
+                                for (i = 0; i < data.length; i++) {
+                                    var selected = '';
+                                    if ({{$products->subCategory_id}} == data[i].id) {
+                                        selected = 'selected';
+                                    }
+                                    $('select[name="subCategory_id"]').append(
+                                        '<option value="' + data[i].id + '" ' + selected + '>' + data[i].nameSubCategory +
+                                        '</option>');
+                                }
+                            }
+                        });
+                    } else {
+                        $('select[name="subCategory_id"]').empty();
+                    }
+
+
             });
         </script>
         

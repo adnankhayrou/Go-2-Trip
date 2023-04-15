@@ -20,7 +20,7 @@ class Dashboard extends Component
     public function render()
     {
         return view('livewire.dashboard',[
-            'product' => Products::where('title', 'like', '%'.$this->search.'%')->paginate(5),
+            'product' => Products::where('title', 'like', '%'.$this->search.'%')->latest()->paginate(5),
             'products' => Products::all(),
         ]);
     }

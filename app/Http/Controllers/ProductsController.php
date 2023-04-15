@@ -64,9 +64,9 @@ class ProductsController extends Controller
 
     public function home()
     {
-        $product1 = Products::take(4)->get();
-        $product2 = Products::skip(4)->take(4)->get();
-        $product3 = Products::skip(8)->take(4)->get();
+        $product1 = Products::take(4)->latest()->get();
+        $product2 = Products::skip(4)->take(4)->latest()->get();
+        $product3 = Products::skip(8)->take(4)->latest()->get();
         $category = Categorys::all();   
         $subCategory = SubCategory::all();
         $city = Citys::all();
@@ -120,6 +120,7 @@ class ProductsController extends Controller
         $subcategory = SubCategory::all();
         $citys = Citys::all();
         $products = Products::find($id);
+        
         return view('/edit', ['products' => $products, 'subcategory' => $subcategory, 'categorys' => $categorys, 'citys' => $citys]);
         
     }
@@ -158,6 +159,7 @@ class ProductsController extends Controller
             'city_id' => $request->input('city_id'),
             'telephone' => $request->input('telephone'),
             'category_id' => $request->input('category_id'),
+            'subCategory_id' => $request->input('subCategory_id'),
         ];
         Products::where('id', $id)->update($data);
         return redirect('/dashboard');

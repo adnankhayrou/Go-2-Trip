@@ -8,7 +8,7 @@
     {{-- Do your work, then step back. --}}
     <div class="container pt-3 table-responsive">
             
-        <table class="table table-responsive bg-white rounded">
+        <table class="table table-responsive bg-white rounded text-center">
             <thead>
                 <tr>
                 <th scope="col">#{{count($products)}}</th>
@@ -19,7 +19,9 @@
                 <th scope="col">Telephone</th>
                 <th scope="col">Price</th>
                 <th scope="col">Category</th>
+                <th scope="col">SubCategory</th>
                 <th scope="col">Time</th>
+                <th scope="col">View</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
                 </tr>
@@ -38,7 +40,9 @@
                 <td>{{$item->telephone}}</td>
                 <td>{{$item->prix}}{{$item->prix < 100 ? '.00dh' : 'dh'}}</td>
                 <td>{{$item->category->nameCategory}}</td>
+                <td>{{$item->subCategory->nameSubCategory}}</td>
                 <td><i class="bi bi-clock-history"></i> {{$item->created_at->diffForHumans(null, false, false)}}</td>
+                <td><a href="{{ route('product.show', $item->id) }}" class="text-decoration-none text-success fw-bold">view</a></td>
                 <td><a href="{{ route('product.edit', $item->id) }}" class="text-decoration-none text-primary fw-bold">edit</a></td>
                 <td><a href="{{ route('product.destroy', $item->id) }}" class="text-decoration-none text-danger fw-bold" onclick="return confirm('Are you sure?')">delete</a></td>
                 </tr>
