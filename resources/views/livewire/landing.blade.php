@@ -37,16 +37,28 @@
             {{-- end form --}}
        
             
-            <div id="carouselExampleAutoplaying" class="carousel slide rounded" data-bs-ride="carousel">
-                <div class="carousel-inner rounded">
-                    <div class="carousel-item active">
-                        <img src="{{asset('images/22.svg')}}" class="d-block w-100">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded ">
+                    <div class="carousel-item active shadow rounded">
+                        <img src="{{asset('images/cover2.jpg')}}" class="d-block w-100 rounded shadow">
                     </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('images/23.svg')}}" class="d-block w-100">
+                    <div class="carousel-item shadow rounded">
+                        <img src="{{asset('images/23.svg')}}" class="d-block w-100 rounded shadow">
                     </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('images/24.svg')}}" class="d-block w-100">
+                    <div class="carousel-item shadow rounded">
+                      <img src="{{asset('images/cover4.jpg')}}" class="d-block w-100 rounded shadow">
+                  </div>
+                    <div class="carousel-item shadow rounded">
+                        <img src="{{asset('images/24.svg')}}" class="d-block w-100 rounded shadow">
+                    </div>
+                    <div class="carousel-item shadow rounded">
+                        <img src="{{asset('images/cover1.jpg')}}" class="d-block w-100 rounded shadow">
+                    </div>
+                    <div class="carousel-item shadow rounded">
+                        <img src="{{asset('images/22.svg')}}" class="d-block w-100 rounded shadow">
+                    </div>
+                    <div class="carousel-item shadow rounded">
+                        <img src="{{asset('images/cover3.jpg')}}" class="d-block w-100 rounded shadow">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

@@ -26,7 +26,7 @@ class UpdateProductsRequest extends FormRequest
         return [
             
             'title' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:11000',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:20000',
             'description' => 'required',
             'prix' => 'required',
             'city_id' => 'required',

@@ -3,12 +3,12 @@
 <head>
    @include('header')
 </head>
-<body>
-<div class="">
+<body class="">
+<div >
    <header class="">
        @include('navbar')
    </header>
-   <div id="main" class="">
+   <div  class="">
            @yield('content')
    </div>
    <footer class="">

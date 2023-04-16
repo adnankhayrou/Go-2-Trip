@@ -1,9 +1,9 @@
 @extends('layouts.index')
 @section('content')
-<div class="container">
+<div class="container pt-5" id="main">
 
-  <div class="text-center mt-4 mb-3">
-    <h1 class="fw_bold text-dark "><b>Find items faster with categories</b></h1>
+  <div class="text-center pb-4">
+    <h1 class="fw_bold text-dark mt-5"><b>Find items faster with categories</b></h1>
    </div>
 
   <div class="top_catagory_area section-padding-80 ">
@@ -11,10 +11,11 @@
         <div class="row justify-content-center">
             <!-- Single Catagory -->
             @foreach($category as $category)
-            <div class="col-12 col-sm-6 col-md-4 mb-2">
-            <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(https://picsum.photos/640/36{{$category->id}}); height: 10rem;">
+            <div class="col-12 col-sm-6 col-md-4 mb-3">          
+              {{-- style="background-image: url(https://picsum.photos/200{{$category->id}}/300/?blur=1.5); height: 10rem;" --}}
+            <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(https://picsum.photos/46{{$category->id}}?blur=1.5); height: 10rem;">
                   <div class="catagory-content">
-                      <a href="{{route('category.filterCategory', $category->id)}}" class="text-decoration-none text-light"><h1>{{$category->nameCategory}}</h1></a> 
+                      <a href="{{route('category.filterCategory', $category->id)}}" class="text-decoration-none text-light"><h1><b>{{$category->nameCategory}}</b></h1></a> 
                   </div>
               </div>
           </div>
@@ -29,7 +30,7 @@
 
    <div class="container row mx-auto">
   
-    <div id="carouselExample" class="carousel slide">
+    <div id="carouselExample" class="carousel slide mb-4">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="cards">

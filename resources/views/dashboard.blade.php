@@ -184,6 +184,9 @@
                                     @endforeach
                                 </tbody>
                                 </table> 
+                                <div class="">
+                                    {{$products->links('pagination::tailwind')}}
+                                </div>
                         </div>
                         {{-- all products table --}}
                         @livewire('dashboard')  
@@ -239,7 +242,10 @@
                         @endphp
                         @endforeach
                     </tbody>
-                    </table> 
+                    </table>
+                    <div class="">
+                        {{$categorys->links('pagination::tailwind')}}
+                    </div> 
                 
             </div>
             @endif
@@ -301,7 +307,7 @@
                         <td>{{$sub->nameSubCategory}}</td>
                         <td><i class="bi bi-clock-history"></i> {{$sub->created_at->diffForHumans(null, false, false)}}</td>
                         <td><a href="#modal-subCategory" data-bs-toggle="modal" onclick="showSubModel('{{$sub->nameSubCategory}}', {{$sub->id}}, '{{$sub->category->nameCategory}}', {{$sub->category->id}})" class="text-decoration-none text-primary fw-bold">edit</a></td>
-                        <td><a href="{{ route('subCategory.destroy', $category->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
+                        <td><a href="{{ route('subCategory.destroy', $sub->id) }}" onclick="return confirm('Are you sure?')" class="text-decoration-none text-danger fw-bold">delete</a></td>
                         </tr>
         
                         @php
@@ -310,6 +316,9 @@
                         @endforeach
                     </tbody>
                     </table> 
+                    <div class="">
+                        {{$subCategory->links('pagination::tailwind')}}
+                    </div>
                 
             </div>
             @endif
@@ -361,6 +370,9 @@
                     @endforeach
                 </tbody>
                 </table> 
+                <div class="">
+                    {{$citys->links('pagination::tailwind')}}
+                </div>
             </div>
             @endif
             {{-- end of citys --}}
