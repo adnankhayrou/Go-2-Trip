@@ -79,7 +79,7 @@
 
 
 <!-- alert login form -->
-<div  class="modal fade mt-5" id="modal-comment">
+<div  class="modal fade ms-5 mt-5" id="modal-comment">
     <div class="modal-dialog">
         <div class="modal-content text-center w-75">
             <form action="{{ route('login') }}">

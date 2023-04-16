@@ -15,6 +15,10 @@ body{
     object-fit: contain;
 }
 
+#message{
+  margin-right: -9em
+}
+
 #button{
   margin-bottom: 4em;
   margin-right: -4.5em;
@@ -29,6 +33,10 @@ body{
     margin-bottom: -2.5em;
     margin-right: -4.5em;
   }
+
+  #message{
+    margin-right: -8.5em;
+  }
 }
 
 @media (max-width: 420px){
@@ -40,6 +48,10 @@ body{
     #button{
       margin-bottom: 1em;
       margin-right: -5em;
+    }
+
+    #message{
+      margin-right: -6.5em;
     }
 
     
@@ -81,4 +93,41 @@ body{
     .card img {
       height: 11em;
     }
+  }
+
+
+
+
+
+
+
+
+
+  .livewire-pagination a {
+    background-color: #f00; /* Replace with your desired background color */
+  }
+  
+  /* Change the text color of the pagination links */
+  .livewire-pagination a {
+    color: #ff0000; /* Replace with your desired text color */
+  }
+  
+  /* Change the background color of the active pagination link */
+  .livewire-pagination .active a {
+    background-color: rgb(255, 0, 0); /* Replace with your desired background color */
+  }
+  
+  /* Change the text color of the active pagination link */
+  .livewire-pagination .active a {
+    color: #ff0000; /* Replace with your desired text color */
+  }
+  
+  /* Change the background color of the disabled pagination links */
+  .livewire-pagination .disabled a {
+    background-color: #ff0000; /* Replace with your desired background color */
+  }
+  
+  /* Change the text color of the disabled pagination links */
+  .livewire-pagination .disabled a {
+    color: #ff0000; /* Replace with your desired text color */
   }

@@ -25,10 +25,15 @@
                     <hr>
                     @auth
                     <li>
+                        @if (Auth()->user()->can('edit All product'))
                           {{-- <button class="ms-2 btn btn-dark me-2 "><a href="{{ url('/dashboard') }}" class="text-light text-decoration-none fs-bold">Dashboard</a></button> --}}
                         <a href="{{ url('/dashboard') }}" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                         </li>
+                        @else
+                        <a href="{{ url('/dashboard') }}" class="nav-link px-0 align-middle text-dark">
+                            <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Your items</span> </a>
+                        @endif
                         <hr>
                         @endauth
                     <li>

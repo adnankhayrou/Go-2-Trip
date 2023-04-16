@@ -17,8 +17,13 @@
                     <hr>
                     @auth
                     <li>
+                        @if (Auth()->user()->can('edit All product'))
                         <a href="{{ url('/dashboard') }}" class="nav-link px-0 align-middle text-dark">
                             <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                            @else
+                            <a href="{{ url('/dashboard') }}" class="nav-link px-0 align-middle text-dark">
+                                <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Your items</span> </a>
+                            @endif
                         </li>
                         <hr>
                         @endauth

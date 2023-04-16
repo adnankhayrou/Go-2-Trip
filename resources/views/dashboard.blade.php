@@ -20,8 +20,14 @@
                         </li>
                         <hr>
                         <li class="mb-4">
+                            @if (Auth()->user()->can('edit All product'))
                             <a href="#dashboard" class="nav-link px-0 align-middle text-dark">
                                 <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                                @else
+                                <a href="{{ url('/dashboard') }}" class="nav-link px-0 align-middle text-dark">
+                                    <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Your items</span> </a>
+                                @endif
+                                
                         </li>
                         @if (Auth()->user()->can('edit All product'))
                         <hr>
@@ -138,7 +144,12 @@
                 </div>
             
                 <div class="container pt-5 table-responsive">
-            
+                        @if (count($products) == 0)
+                            <div id="message" class="text-secondary position-absolute bottom-50 end-50 fs-3">
+                                <h1><b>You have no item yet!</b></h1>
+                            </div>                            
+                         @else
+                        
                             <table class="table table-responsive bg-white rounded text-center">
                                     @php
                                     $count = 1;
@@ -187,6 +198,7 @@
                                 <div class="">
                                     {{$products->links('pagination::tailwind')}}
                                 </div>
+                                @endif
                         </div>
                         {{-- all products table --}}
                         @livewire('dashboard')  
@@ -494,5 +506,6 @@
 		</div>
 	</div>
    
+<link rel="stylesheet" href="{{asset('css\app.css')}}">
 <script src="{{ asset('js/script.js') }}"></script>
 </x-app-layout>

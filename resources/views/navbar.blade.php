@@ -37,8 +37,8 @@
           </div> --}}
           {{-- end of navbar --}}
           {{-- button start --}}
-            <div id="button" class="position-absolute bottom-50 end-50">
-                <button class="btn btn-dark py-2"><a href="#main" class="text-decoration-none text-light"> <i class="fa-solid fa-angles-down fa-beat"></i> Start Now <i class="fa-solid fa-angles-down fa-beat"></i> </a></button>
+            <div id="button" class="position-absolute bottom-50 end-50 shadow">
+                <button class="btn btn-dark py-2 shadow"><a href="#main" class="text-decoration-none text-light"> <i class="fa-solid fa-angles-down fa-beat"></i> Start Now <i class="fa-solid fa-angles-down fa-beat"></i> </a></button>
             </div>
 
     </div>
