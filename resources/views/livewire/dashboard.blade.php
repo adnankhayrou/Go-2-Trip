@@ -8,7 +8,7 @@
     {{-- Do your work, then step back. --}}
     <div class="container pt-3 table-responsive">
             
-        <table class="table table-responsive bg-white rounded text-center">
+        <table class="table table-responsive shadow bg-white rounded text-center">
             <thead>
                 <tr>
                 <th scope="col">#{{count($products)}}</th>

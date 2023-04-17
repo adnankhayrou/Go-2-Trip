@@ -140,7 +140,7 @@
                 @endif
                 <div class="row items-center me-0">
                     <h1 id="your-products" class="col fw-bold ms-3 mt-5">Your Products</h1>  
-                    <button class="col-4 me-3 mt-5 btn btn-dark w-auto" href="" data-bs-toggle="modal"><a href="{{ url('add') }}"><b>+ </b> Add Product</a></button>
+                    <button class="col-4 me-3 mt-5 btn btn-dark w-auto shadow" href="" data-bs-toggle="modal"><a href="{{ url('add') }}"><b>+ </b> Add Product</a></button>
                 </div>
             
                 <div class="container pt-5 table-responsive">
@@ -150,7 +150,7 @@
                             </div>                            
                          @else
                         
-                            <table class="table table-responsive bg-white rounded text-center">
+                            <table class="table table-responsive bg-white shadow rounded text-center">
                                     @php
                                     $count = 1;
                                     @endphp
@@ -214,9 +214,9 @@
                 <form class="col" action="categorys" method="POST" id="" data-parsley-validate>
                     @csrf
                     <div class=" d-flex">
-                    <input type="text" name="nameCategory" class="col ms-2 form-control mb-2 mt-5 rounded @error('nameCategory') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
+                    <input type="text" name="nameCategory" class="col ms-2 shadow form-control mb-2 mt-5 rounded @error('nameCategory') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
                     
-                    <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
+                    <button type="submit" class="col-3 ms-2 rounded shadow text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                     </div>
                     <small class="text-danger">
                         @error('nameCategory')
@@ -227,7 +227,7 @@
                 </div>
             <div class="container pt-3 table-responsive">
             
-                <table class="table table-responsive bg-white rounded text-center">
+                <table class="table table-responsive bg-white shadow rounded text-center">
                     <thead>
                         <tr>
                         <th scope="col">#{{count($categorys)}}</th>
@@ -274,15 +274,15 @@
                     @csrf
                     <div class="d-flex">
                         <div class="col">
-                            <select class="form-select rounded border @error('category_id') is-invalid @enderror" name="category_id" aria-label="Default select example">
+                            <select class="form-select shadow rounded border @error('category_id') is-invalid @enderror" name="category_id" aria-label="Default select example">
                                 <option value="">Parent category</option>
                                 @foreach ($categorys as $category)
                                 <option value="{{$category->id}}">{{$category->nameCategory}}</option>
                                 @endforeach
                               </select>
                         </div>
-                    <input type="text" name="nameSubCategory" class="col ms-2 form-control rounded @error('nameSubCategory') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
-                    <button type="submit" class="col-3 ms-2 rounded text-light bg-black " id="category-add-btn">Add</button>
+                    <input type="text" name="nameSubCategory" class="col ms-2 shadow form-control rounded @error('nameSubCategory') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
+                    <button type="submit" class="col-3 ms-2 rounded shadow text-light bg-black " id="category-add-btn">Add</button>
                     </div>
                     <small class="text-danger">
                         @error('nameSubCategory')
@@ -293,7 +293,7 @@
                 </div>
             <div class="container pt-2 table-responsive">
             
-                <table class="table table-responsive bg-white rounded text-center">
+                <table class="table table-responsive shadow bg-white rounded text-center">
                     <thead>
                         <tr>
                         <th scope="col">#{{count($categorys)}}</th>
@@ -340,9 +340,9 @@
             <form class="col" action="citys" method="POST" id="" data-parsley-validate>
                 @csrf
                 <div class=" d-flex">
-                <input type="text" name="nameCity" class="col ms-2 form-control mb-2 mt-5 rounded @error('nameCity') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
+                <input type="text" name="nameCity" class="col ms-2 shadow form-control mb-2 mt-5 rounded @error('nameCity') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
                 
-                <button type="submit" class="col-3 ms-2 rounded text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
+                <button type="submit" class="col-3 ms-2 rounded shadow text-light bg-black me-2 mt-5 mb-2 " id="category-add-btn">Add</button>
                 </div>
                 <small class="text-danger">
                     @error('nameCity')
@@ -352,7 +352,7 @@
                 </div>
         <div class="container pt-3 table-responsive">
         
-            <table class="table table-responsive bg-white rounded text-center">
+            <table class="table table-responsive shadow bg-white rounded text-center">
                     @php
                     $count = 1;
                     @endphp
