@@ -11,7 +11,7 @@
 
                 <div class="col-12 mb-3">
                     <label class="form-label">Name</label>
-                    <input type="text" name="title"
+                    <input placeholder="item name..." type="text" name="title"
                         class="form-control rounded border @error('title') is-invalid @enderror" name="title" />
                     <small class="text-danger">
                         @error('title')
@@ -76,7 +76,7 @@
        
                <div class="col-xl-6 col-md-6 col-12 mb-3">
                    <label class="form-label">Phone number</label>
-                   <input type="tel" name="telephone" class="form-control rounded border" value=""/>
+                   <input placeholder="+212XXXXXXXXX" type="tel" name="telephone" class="form-control rounded border" value=""/>
                    <small class="text-danger">
                        @error('telephone')
                        {{ $message }}
@@ -97,7 +97,7 @@
        
                    <div class="col-12 mb-0">
                        <label class="form-label">Description</label>
-                       <textarea class="form-control border rounded" name="description" rows="3" ></textarea>
+                       <textarea placeholder="your description here..." class="form-control border rounded" name="description" rows="3" ></textarea>
                        <small class="text-danger">
                            @error('description')
                            {{ $message }}

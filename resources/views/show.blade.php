@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3 text-end mx-auto">
                     <p class="col-12 col-md-8 col-lg-4 text-light btn btn-dark mb-2"><i class="bi bi-phone"></i><a href="tel:{{$products->telephone}}">{{$products->telephone}}</a> </p>
-                    <p class="col-12 col-md-8 col-lg-4 text-light btn btn-success mb-2"><i class="bi bi-whatsapp"></i> <a aria-label="Chat on WhatsApp" href='https://wa.me/{{$products->telephone}}?text=Hello, is this item "{{$products->title}}" still available on Go2Trip market?'> <b>Contact Seller</b></a"> </p>
+                    <p class="col-12 col-md-8 col-lg-4 text-light btn btn-success mb-2"><i class="bi bi-whatsapp"></i> <a href='https://wa.me/{{$products->telephone}}?text=Hello, is this item "{{$products->title}}" still available on Go2Trip market?'> <b>Contact Seller</b></a> </p>
                 </div>
 
                 <div>

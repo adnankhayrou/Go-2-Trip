@@ -30,7 +30,7 @@ class StoreProductsRequest extends FormRequest
             'description' => 'required',
             'prix' => 'required',
             'city_id' => 'required',
-            'telephone' => 'required',
+            'telephone' => 'required|regex:/^[\+]?(212)[6-8]{1}[0-9]{8}$/',
             'category_id' => 'required',
             'subCategory_id' => 'required',
         ];

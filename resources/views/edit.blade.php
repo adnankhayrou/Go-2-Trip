@@ -12,7 +12,7 @@
             <div class=" row modal-body">
             <div class="col-12 mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" name="title" class="form-control rounded border" name="title" value="{{$products->title}}"/>
+                <input placeholder="item name..." type="text" name="title" class="form-control rounded border" name="title" value="{{$products->title}}"/>
                 <small class="text-danger">
                     @error('title')
                     {{ $message }}
@@ -76,7 +76,7 @@
 
         <div class="col-xl-6 col-md-6 col-12 mb-3">
             <label class="form-label">Phone number</label>
-            <input type="tel" name="telephone" class="form-control rounded border" value="{{$products->telephone}}"/>
+            <input placeholder="+212XXXXXXXXX" type="tel" name="telephone" class="form-control rounded border" value="{{$products->telephone}}"/>
             <small class="text-danger">
                 @error('telephone')
                 {{ $message }}
@@ -96,7 +96,7 @@
 
             <div class="col-12 mb-0">
                 <label class="form-label">Description</label>
-                <textarea class="form-control border rounded" name="description" rows="3" >{{$products->description}}</textarea>
+                <textarea placeholder="your description here..." class="form-control border rounded" name="description" rows="3" >{{$products->description}}</textarea>
                 <small class="text-danger">
                     @error('description')
                     {{ $message }}
