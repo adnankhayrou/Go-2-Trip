@@ -2,11 +2,9 @@ function showModel(nom,id){
 //  console.log(nom, id);
     document.querySelector("#city").value = nom;
     document.querySelector("#category").value = nom;
-    document.querySelector("#comment").value = nom;
 
     document.querySelector("#cityId").value = id;
     document.querySelector("#categoryId").value = id;
-    document.querySelector("#commentId").value = id;
     
 }
 

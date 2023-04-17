@@ -7,7 +7,7 @@
             <div class="row">
 
                 <div class="col-12 mb-3 bg-light rounded" >
-                    <img class="rounded mx-auto" src="{{asset('/storage/'.$products->image)}}" style="width: 40em">
+                    <img class="rounded mx-auto" src="{{asset('/storage/'.$products->image)}}" style="width: 40em;">
                 </div>
 
                 <div class="col-6 my-3">

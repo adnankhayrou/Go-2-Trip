@@ -86,6 +86,7 @@ class CategorysController extends Controller
             'id' => $request->input('id'),
             'nameCategory' => $request->input('nameCategory'),
         ];
+        // dd($data);
         Categorys::where('id', $request->id)->update($data);
         return redirect('/dashboard');
     }

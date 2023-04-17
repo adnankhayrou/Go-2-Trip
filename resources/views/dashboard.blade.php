@@ -280,10 +280,6 @@
                                 <option value="{{$category->id}}">{{$category->nameCategory}}</option>
                                 @endforeach
                               </select>
-                            {{-- <small class="text-danger">
-                                @error('category_id')
-                                {{ $message }}
-                            @enderror</small> --}}
                         </div>
                     <input type="text" name="nameSubCategory" class="col ms-2 form-control rounded @error('nameSubCategory') is-invalid @enderror" data-parsley-minlength="3" data-parsley-required/>
                     <button type="submit" class="col-3 ms-2 rounded text-light bg-black " id="category-add-btn">Add</button>

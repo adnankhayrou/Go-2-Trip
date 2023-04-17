@@ -13,9 +13,9 @@
             @foreach($category as $category)
             <div class="col-12 col-sm-6 col-md-4 mb-3">          
               {{-- style="background-image: url(https://picsum.photos/200{{$category->id}}/300/?blur=1.5); height: 10rem;" --}}
-            <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(https://picsum.photos/46{{$category->id}}?blur=1.5); height: 10rem;">
+            <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img rounded shadow" style="background-image: url(https://picsum.photos/{{$category->id}}?blur=10); height: 10rem;">
                   <div class="catagory-content">
-                      <a href="{{route('category.filterCategory', $category->id)}}" class="text-decoration-none text-light"><h1><b>{{$category->nameCategory}}</b></h1></a> 
+                      <a href="{{route('category.filterCategory', $category->id)}}" class="text-decoration-none text-light"><h1>{{$category->nameCategory}}</h1></a> 
                   </div>
               </div>
           </div>
@@ -30,7 +30,7 @@
 
    <div class="container row mx-auto">
   
-    <div id="carouselExample" class="carousel slide mb-4">
+    <div id="carouselExampleAutoplaying" class="carousel slide mb-4" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="cards">
