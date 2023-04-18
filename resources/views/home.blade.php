@@ -176,9 +176,10 @@
 <script>
     window.addEventListener("scroll", ()=>{
     document.querySelector("#nav").style.background = "whitesmoke"
-
+    document.querySelector("#buttonHide").setAttribute('class', 'd-none');
 if (window.scrollY === 0) {
     document.querySelector("#nav").style.backgroundColor = "transparent";
+    document.querySelector("#buttonHide").setAttribute('class', 'd-block');
   }
 })
 </script>

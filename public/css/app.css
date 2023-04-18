@@ -19,7 +19,7 @@ body{
   margin-right: -9em
 }
 
-#button{
+#buttonStart{
   margin-bottom: 4em;
   margin-right: -4.5em;
 }
@@ -29,7 +29,7 @@ body{
         background-image: url(/images/coverres.svg);
         border: 1px solid;
   }
-  #button{
+  #buttonStart{
     margin-bottom: -2.5em;
     margin-right: -4.5em;
   }
@@ -45,7 +45,7 @@ body{
         border: 3px solid;
     }
 
-    #button{
+    #buttonStart{
       margin-bottom: 1em;
       margin-right: -5em;
     }
