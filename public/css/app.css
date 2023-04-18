@@ -4,7 +4,6 @@ body{
 }
 
 .home{
-    /* background-color: red; */
     background-image: url(/images/cover.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;

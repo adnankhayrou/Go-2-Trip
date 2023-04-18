@@ -69,7 +69,8 @@
             <div class="col-10 col-md-9 col-lg-10 py-2" >
                     @if (Auth()->user()->can('edit All product'))
                 <div class="container">
-                    <!-- Minimal statistics section start -->
+
+                    <!-- statistics -->
                 <div class="row ">
                     <div class="col-12 mt-3 mb-1">
                     <h4 id="statistics" class="text-uppercase fw-bold">Statistics</h4>
@@ -134,7 +135,7 @@
                 </div>
 
 
-                <!-- // Minimal statistics section end -->
+                <!-- end of statistics -->
                 </div>
                 {{-- all products --}}
                 @endif
@@ -223,7 +224,6 @@
                         {{ $message }}
                     @enderror</small>
                 </form>
-                {{-- <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button> --}}
                 </div>
             <div class="container pt-3 table-responsive">
             
@@ -289,7 +289,6 @@
                         {{ $message }}
                     @enderror</small>
                 </form>
-                {{-- <button class="col-4 me-5 mt-5 btn btn-dark w-auto" href="#modal-meal" data-bs-toggle="modal"><b>+ </b> Add Product</button> --}}
                 </div>
             <div class="container pt-2 table-responsive">
             

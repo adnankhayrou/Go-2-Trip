@@ -10,12 +10,12 @@
                     <img class="rounded mx-auto" src="{{asset('/storage/'.$products->image)}}" style="width: 40em;">
                 </div>
 
-                <div class="col-6 my-3">
+                <div class="col-12 col-md-6 col-lg-6 my-3">
                     <p class="fs-4 me-2">
                         <b> {{$products->title}} </b>
                      </p>
                 </div>
-                <div class="col-6 my-3 ">
+                <div class="col-12 col-md-6 col-lg-6 my-gl-3 mb-3">
                   <p class="text-end fs-4 me-2">
                    <b>{{$products->prix}}{{$products->prix < 100 ? '.00DH' : 'DH'}} </b>
                   </p>
