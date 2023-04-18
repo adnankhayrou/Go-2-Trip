@@ -67,7 +67,7 @@ class ProductsController extends Controller
         $product1 = Products::take(4)->latest()->get();
         $product2 = Products::skip(4)->take(4)->latest()->get();
         $product3 = Products::skip(8)->take(4)->latest()->get();
-        $category = Categorys::all();   
+        $category = Categorys::take(3)->get();   
         $subCategory = SubCategory::all();
         $city = Citys::all();
         return view('home',compact('product1', 'product2', 'product3', 'city', 'category', 'subCategory'));
