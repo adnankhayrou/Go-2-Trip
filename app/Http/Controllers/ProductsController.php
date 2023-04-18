@@ -31,7 +31,7 @@ class ProductsController extends Controller
     {
         $categorys = Categorys::paginate(5);
         $subCategory = SubCategory::paginate(5);
-        $citys = Citys::paginate(5);
+        $citys = Citys::paginate(100);
         $comments = Comments::all();
         $products = Products::where('user_id','=',Auth::user()->id)->paginate(5);
         // dd($products);

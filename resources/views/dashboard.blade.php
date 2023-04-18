@@ -195,11 +195,11 @@
                                     @endforeach
                                 </tbody>
                                 </table> 
-                                <div class="">
-                                    {{$products->links('pagination::tailwind')}}
-                                </div>
                                 @endif
-                        </div>
+                            </div>
+                            <div class="container">
+                                {{$products->links('pagination::tailwind')}}
+                            </div>
                         {{-- all products table --}}
                         @livewire('dashboard')  
                         {{-- end of products --}}
@@ -255,11 +255,11 @@
                         @endforeach
                     </tbody>
                     </table>
-                    <div class="">
-                        {{$categorys->links('pagination::tailwind')}}
-                    </div> 
-                
-            </div>
+                    
+                </div>
+                <div class="container">
+                    {{$categorys->links('pagination::tailwind')}}
+                </div> 
             @endif
             {{-- end of categorys --}}
 
@@ -324,11 +324,11 @@
                         @endforeach
                     </tbody>
                     </table> 
-                    <div class="">
-                        {{$subCategory->links('pagination::tailwind')}}
-                    </div>
-                
-            </div>
+                    
+                </div>
+                <div class="container">
+                    {{$subCategory->links('pagination::tailwind')}}
+                </div>
             @endif
             {{-- end of subcategorys --}}
 
@@ -378,9 +378,9 @@
                     @endforeach
                 </tbody>
                 </table> 
-                <div class="">
-                    {{$citys->links('pagination::tailwind')}}
-                </div>
+            </div>
+            <div class="container">
+                {{$citys->links('pagination::tailwind')}}
             </div>
             @endif
             {{-- end of citys --}}

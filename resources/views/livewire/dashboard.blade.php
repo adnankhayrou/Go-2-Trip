@@ -1,11 +1,11 @@
 <div>
     @if (Auth()->user()->can('edit All product'))
-    <div class="row items-center me-0">
-        <h1 id="all-products" class="col fw-bold ms-3 mt-5">All Products</h1>  
+    <div class="row items-center container">
+        <h1 id="all-products" class="col fw-bold mt-5 ms-1 text-center text-lg-start">All Products</h1>  
         <!-- Search form -->
-        <input class="form-control col-4 me-2 mt-5 w-auto rounded border shadow" wire:model="search" placeholder="Search" >    
+        <input class="form-control col-4 mt-3 mt-gl-5 w-auto ms-5 rounded border shadow" wire:model="search" placeholder="Search" >    
     </div>
-    {{-- Do your work, then step back. --}}
+
     <div class="container pt-3 table-responsive">
             
         <table class="table table-responsive shadow bg-white rounded text-center">
