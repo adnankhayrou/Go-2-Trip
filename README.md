@@ -1,66 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Go2Trip 🧭 🏕️
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Un système en ligne pour vendre les produits de trip .(Marketplace)
+### 1. Présentation :
 
-## About Laravel
+- un site web pour vendre les produits de trip en ligne . Le site web permet aux utilisateurs de vendre des produits de trip qu'ils n'utilisent plus. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 1.1 Les objectifs du site :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- L'objectif du site web est de fournir des produits de trip pour motiver les gens à sortir et à voyager.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+### 2. Description fonctionnelle: 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 2.1 Arborescence du site :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Le site décompose 5 pages :
 
-## Laravel Sponsors
+●     ``Accueil``
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+●     ``Catégories des annonces``
 
-### Premium Partners
+●     ``fiches annonces``
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+●     ``Mon compte``
 
-## Contributing
+●     ``tableau de bord``
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2.2 Description fonctionnelle du site :
 
-## Code of Conduct
+### Accueil:  
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Page d'accueil  présente les produits qui poster les vendeurs, plus une barre de recherche pour trouver rapidement les produits qu'ils recherchent.
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Catégories de produits: 
 
-## License
+- Les utilisateurs pourraient également utiliser des filtres pour affiner leurs recherches avec les catégories et les villes.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+### Fiches Annonces
+
+Chaque fiche annonce est composée des informations des produits suivantes :
+
+- ``Nom de produit``
+
+- ``Photo de produit``
+
+- ``Prix de produit``
+
+- ``Catégorie de produit``
+
+- ``téléphone  de vendeur``
+
+- ``Adress de vendeur``
+
+### Mon compte:
+
+- ``Connexion / Inscription``
+
+- ``Modification des informations de profil``
+
+- ``geger les annonces``
+
+
+### Tableau de bord
+
+- Chaque admin aura son tableau de bord pour gérer son annonce tous les annonces, catégories, subCategories, commentaires, villes et tous les vendeurs.
+
+
+### 3 Description fonctionnelle du back-office:
+
+
+### 3.1 interface utilisateur :
+
+
+- Une page d'accueil qui affiche tous les produits de trip disponibles.
+- Une page qui affiche tous les détails du produit que l’utilisateur sélectionne.
+- Une fonctionnalité de recherche qui permet aux clients de trouver facilement les produits qu'ils cherchent.
+
+
+### 3.2 comptes d’utilisateurs :
+
+
+- Une page d'inscription de l’ utilisateur pour crée son compte et ajoute des produits.
+- Un tableau de bord pour gérer, afficher, ajouter, modifier et supprimer les produits.
+- Les utilisateurs pourront se connecter pour laisser des commentaires.
+
+
+### 3.3 Fonctionnalités d’administration :
+
+
+- Un Tableau de bord pour  ajouter, modifier, supprimer les catégories et subCategories,  gérer les commentaires, tous les produits et les vendeurs.
+
+
+
+
+### 4. Base de données:
+
+- La base de données sécurisée et accessible uniquement aux utilisateurs autorisés.
+
+
+### 5. Exigences techniques:
+
+
+Le système et réactif et accessible sur différents appareils (ordinateur de bureau, tablette, mobile).
+Le système doit être compatible avec différents navigateurs web.
+Le système doit être développé à l'aide d'un cadre de développement web moderne et de technologies adaptées.
+Le système testé et débogué avant la mise en production.
+
+
+### 6. les technologies utilisées:
+
+
+### Front-End:
+
+- ``Html5``
+
+- ``Css3/Bootstrap 5``
+
+- ``Javascript``
+
+
+### Back-End:
+
+- ``Laravel``
