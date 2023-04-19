@@ -25,3 +25,13 @@ function showSubModel(nom,id, catNome, catId){
     document.querySelector("#catId").innerText = catNome;
     document.querySelector("#catId").value = catId;   
 }
+
+
+
+    window.addEventListener("scroll", ()=>{
+    document.querySelector("#toTop").setAttribute('class', 'pt-0');
+    if (window.scrollY === 0) {
+        document.querySelector("#toTop").setAttribute('class', 'pt-4');
+    }
+    })
+

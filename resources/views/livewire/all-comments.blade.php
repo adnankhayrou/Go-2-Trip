@@ -32,13 +32,13 @@
                         <form id="form-{{$comment->id}}" class="d-none"  wire:submit.prevent="update({{$comment->id}})">
                             <p>                                 
                                 <input id="cmt-input-{{$comment->id}}" type="text" wire:model.defer="updateComment" class="p-1 coment-content-input rounded border" value="">
-                            <button onclick="showComment('')" class="edit-btn-dark" type="submit"><b class="text-secondary" style="font-size: .8em">Save</b></button>
+                            <button onclick="showComment('')" class="edit-btn-dark" type="submit"><b class="text-success">Save</b></button>
                             </p>
                         </form>
                     </td>
                     <td>{{$comment->user->name}}</td>
                     <td><i class="bi bi-clock-history"></i> {{$comment->created_at->diffForHumans(null, false, false)}}</td>
-                    <td><button onclick="showComment('{{ $comment->id }}'   )" ><b class="text-primary">edit</b></button></td>
+                    <td><button onclick="showComment('{{ $comment->id }}')" ><b class="text-primary">edit</b></button></td>
                     <td><button wire:click="destroy({{$comment->id}})" class="text-decoration-none text-danger fw-bold" onclick="return confirm('Are you sure?')">delete</button></td>
                     </tr>
                 

@@ -3,7 +3,8 @@
     <div class="container-fluid" id="dashboard">
         <div class="row">
             <div class="col-2 col-md-3 col-lg-2 px-sm-2 px-0 bg-light shadow " style="min-height: 52rem">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-4 text-white min-vh-100  position-fixed ">
+              <div id="toTop">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3  text-white min-vh-100  position-fixed ">
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item mb-4">
                             <a href="/" class="nav-link align-middle px-0 text-dark">
@@ -16,16 +17,6 @@
                                 <i class="bi bi-grid-3x3-gap"></i> <span class="ms-1 d-none d-sm-inline">All items</span> </a>
                         </li>
                         <hr>
-                        {{-- <li class="mb-4">
-                            @if (Auth()->user()->can('edit All product'))
-                            <a href="#dashboard" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                                @else
-                                <a href="{{ url('/dashboard') }}" class="nav-link px-0 align-middle text-dark">
-                                    <i class="bi bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Your items</span> </a>
-                                @endif
-                                
-                        </li> --}}
                         @if (Auth()->user()->can('edit All product'))
                         <hr>
                         <li class="mb-4">
@@ -55,12 +46,12 @@
                         <hr>
                         <li class="mb-4">
                             <a href="#all-comments" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-comment"></i> <span class="ms-1 d-none d-sm-inline">All Comments</span> </a>
+                                <i class="bi bi-chat-left-text"></i> <span class="ms-1 d-none d-sm-inline">All Comments</span> </a>
                         </li>
                         <hr>
                         <li class="mb-4">
                             <a href="#all-sellers" class="nav-link px-0 align-middle text-dark">
-                                <i class="bi bi-comment"></i> <span class="ms-1 d-none d-sm-inline">All Sellers</span> </a>
+                                <i class="bi bi-people"></i> <span class="ms-1 d-none d-sm-inline">All Sellers</span> </a>
                         </li>
                         <hr>
                         <li class="mb-4">
@@ -68,10 +59,11 @@
                                 <i class="bi bi-houses"></i> <span class="ms-1 d-none d-sm-inline">Cities</span> </a>
                         </li>
                     </ul>
-                    <hr>
+                    
                     @endif  
                 </div>
             </div>
+        </div>
 
             <div class="col-10 col-md-9 col-lg-10 py-2" >
                     @if (Auth()->user()->can('edit All product'))
@@ -303,7 +295,7 @@
                 <table class="table table-responsive shadow bg-white rounded text-center">
                     <thead>
                         <tr>
-                        <th scope="col">#{{count($categorys)}}</th>
+                        <th scope="col">#{{count($subCategory)}}</th>
                         <th scope="col">Parent</th>
                         <th scope="col">Name</th>
                         <th scope="col">Time</th>
@@ -344,6 +336,7 @@
             {{-- end comments --}}
 
             {{-- all users --}}
+            @livewire('all-users')
             {{-- end users --}}
 
             {{-- citys --}}
