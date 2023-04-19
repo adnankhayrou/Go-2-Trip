@@ -11,8 +11,6 @@ class Comment extends Component
     public $commentText;
     public $productId;
     public $updateComment;
-    public $commentId;
-    public $editingCommentId;
     
     public function sendText()
     {

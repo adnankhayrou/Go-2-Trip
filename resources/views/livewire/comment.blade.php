@@ -19,7 +19,7 @@
                           <form id="form-{{$comment->id}}" class="d-none"  wire:submit.prevent="update({{$comment->id}})">
                               <p>                                 
                                   <input id="cmt-input-{{$comment->id}}" type="text" wire:model.defer="updateComment" class="p-1 coment-content-input rounded border" value="">
-                                  <button onclick="showComment('', 0)" class="edit-btn-dark" type="submit"><b class="text-secondary" style="font-size: .8em">Save</b></button>
+                                  <button onclick="showComment('')" class="edit-btn-dark" type="submit"><b class="text-secondary" style="font-size: .8em">Save</b></button>
                               </p>
                           </form>
 
@@ -27,9 +27,9 @@
 
                          <span class="text-secondary ms-4" style="font-size: .7em">{{ $comment->created_at->diffForHumans(null, false, false) }}</span>
                         
-                         @if ($editingCommentId !== $comment->id)
-                          <span><button onclick="showComment('{{ $comment->id }}', 1)" ><b class="text-secondary" style="font-size: .8em">edit</b></button> 
-                            @endif
+                        
+                          <span><button onclick="showComment('{{ $comment->id }}')" ><b class="text-secondary" style="font-size: .8em">edit</b></button> 
+                           
                             <span><button wire:click="destroy({{$comment->id}})" onclick="return confirm('Are you sure?')" class="text-secondary " style="font-size: .8em;"><b>delete</b></button></span></span>
                     </div>
 
