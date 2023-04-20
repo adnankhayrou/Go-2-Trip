@@ -33,14 +33,20 @@
                         <td>{{ $user->name }}</td>
                         <td><p id="cmt-txt-{{$user->id}}" class="text-center text-wrap">{{$role->name}}</p>
                             <form id="form-{{$user->id}}" class="d-none"  wire:submit.prevent="update({{$user->id}})">                        
-                                    <select id="cmt-input-{{$user->id}}" wire:model.defer="roleId" class="form-select rounded border" aria-label="Default select example">
-                                        {{-- <option selected >select new role</option> --}}
-                                        @foreach($Roles as $Role)
-                                            <option value="{{$Role->id}}">{{$Role->name}}</option>
-                                        @endforeach
-                                    </select>
-                                <button onclick="showComment('')" class="edit-btn-dark" type="submit"><b class="text-success">Save</b></button>
-                            </form>
+                                @if (session('alert'))
+                                <small id="cmt-txt-{{$user->id}}" class="ms-1 text-danger">{{session('alert')}}</small>
+                                @endif 
+                                @foreach($Roles as $Role)
+                                <div id="cmt-input-{{$user->id}}" class="form-check">
+                                    <input class="form-check-input" wire:model.defer="roleId" {{$role->id != $Role->id ? 'checked' : ''}} type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{$Role->id}}">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        {{$Role->name}}
+                                    </label>
+                                </div>
+                                @endforeach
+                                    </div>
+                                    <button onclick="showComment('')" class="edit-btn-dark" type="submit"><b class="text-success">Save</b></button> 
+                             </form>
                         </td>
                         <td><i class="bi bi-clock-history"></i> {{$user->created_at->diffForHumans(null, false, false)}}</td>
                         <td><button onclick="showComment('{{ $user->id }}')" ><b class="text-primary">edit</b></button></td>

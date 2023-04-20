@@ -31,6 +31,9 @@ class AllUsers extends Component
     }
 
     public function update($id){
+        if($this->roleId == null){
+            return  session()->flash('alert', 'New role is requered!');
+          }
 
         $user = User::find($id);
         $user->syncRoles($this->roleId); 
