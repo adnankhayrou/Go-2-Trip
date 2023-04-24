@@ -9,7 +9,7 @@
         @if($products == $comment->product_id)
 
             
-            @if ($comment->user->name == auth()->user()?->name )
+            @if ($comment->user->name == auth()->user()?->name || auth()->user()->hasRole('admin'))
 
                 <div class="incoming_msg mb-4" >
                         
